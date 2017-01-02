@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Upload with Node and Multer</title>
+  <link rel="stylesheet" type="text/css" href="https://alexanderkatz.github.io/css/site.css">
+
+</head>
+<body>
+
+<header>
+  <div id="logo"><a href="https://alexanderkatz.github.io/"></a></div>
+  <a href="https://alexanderkatz.github.io/posts" class="header_link push-right">Blog</a>
+  
+</header>
+
+
+
+<section class="inner">
+
+<section class="post">
+    <h1>Image Upload with Node and Multer</h1>
+  <h6 class="date">Sat, Dec 3, 2016</h6>
+  <p>This tutorial provides an end to end walkthrough of uploading images in Node with Multer.</p>
+
+<p>To make things simple I am providing an app-template and complete code.
+Feel free to use the template or an app that you are working on.</p>
+
+<p><a href="https://github.com/alexanderkatz/app-template" target="_blank">App-Template</a></p>
+
+<p><a href="http://Complete Code" target="_blank">Complete Code</a></p>
+
+<p>I am using <a href="https://github.com/expressjs/multer" target="_blank">Multer 1.2.0</a> and Node 6.4.0.</p>
+
+<ol>
+<li>Install Multer, Mime, and Cryto and save to dependencies.</li>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span> <span style="color: #e6db74">`npm install -S multer`</span>
+
+ <span style="color: #e6db74">`npm install -S mime`</span>
+
+ <span style="color: #e6db74">`npm install -S crypto`</span>
+</pre></div>
+
+
+
+<li>Require depencies in route `index.js`</li>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">var</span> <span style="color: #a6e22e">express</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">require</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;express&#39;</span><span style="color: #f8f8f2">),</span>
+    <span style="color: #a6e22e">router</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">express</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">Router</span><span style="color: #f8f8f2">(),</span>
+    <span style="color: #a6e22e">mime</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">require</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;mime&#39;</span><span style="color: #f8f8f2">),</span>
+    <span style="color: #a6e22e">multer</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">require</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;multer&#39;</span><span style="color: #f8f8f2">);</span>
+</pre></div>
+
+
+<li>Create a form in `index.ejs`</li>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">&lt;</span><span style="color: #f92672">form</span> <span style="color: #a6e22e">action</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;/upload&quot;</span> <span style="color: #a6e22e">enctype</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;multipart/form-data&quot;</span> <span style="color: #a6e22e">method</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;POST&quot;</span><span style="color: #f8f8f2">&gt;</span>
+Select an image to upload:
+<span style="color: #f8f8f2">&lt;</span><span style="color: #f92672">input</span> <span style="color: #a6e22e">name</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;image&quot;</span> <span style="color: #a6e22e">type</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;file&quot;</span> <span style="color: #f8f8f2">/&gt;</span>
+<span style="color: #f8f8f2">&lt;</span><span style="color: #f92672">input</span> <span style="color: #a6e22e">type</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;submit&quot;</span> <span style="color: #a6e22e">value</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;Upload Image&quot;</span> <span style="color: #f8f8f2">/&gt;</span>
+<span style="color: #f8f8f2">&lt;/</span><span style="color: #f92672">form</span><span style="color: #f8f8f2">&gt;</span>
+</pre></div>
+
+
+The form `enctype` must be `multipart/form-data`, which is the encoding used for forms that upload files. The `enctype` specifies how the form-data is encoded when it is submitted to a server.
+
+When submitted, the form will send a POST request to our upload route. We will construct the route in a later step.
+
+<li>Before we can write our upload route, we need to configure Multer's storage. Multer ships with two different storage engines, `DiskStorage` and `MemoryStorage`. I will be using `DiskStorage` which gives you full control over storing files to disk. </li>
+
+Create a folder called `uploads` in `public`.
+
+In `index.js` underneath your require statements, write the following.
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">var</span> <span style="color: #a6e22e">storage</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">multer</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">diskStorage</span><span style="color: #f8f8f2">({</span>
+  <span style="color: #a6e22e">destination</span><span style="color: #f92672">:</span> <span style="color: #66d9ef">function</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">req</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">file</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">cb</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #a6e22e">cb</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">null</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;public/uploads/&#39;</span><span style="color: #f8f8f2">)</span>
+  <span style="color: #f8f8f2">},</span>
+  <span style="color: #a6e22e">filename</span><span style="color: #f92672">:</span> <span style="color: #66d9ef">function</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">req</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">file</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">cb</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #a6e22e">crypto</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">pseudoRandomBytes</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">16</span><span style="color: #f8f8f2">,</span> <span style="color: #66d9ef">function</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">err</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">raw</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+          <span style="color: #a6e22e">cb</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">null</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">raw</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">toString</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;hex&#39;</span><span style="color: #f8f8f2">)</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">Date.</span><span style="color: #a6e22e">now</span><span style="color: #f8f8f2">()</span> <span style="color: #f92672">+</span> <span style="color: #e6db74">&#39;.&#39;</span> <span style="color: #f92672">+</span> <span style="color: #a6e22e">mime</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">extension</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">file</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">mimetype</span><span style="color: #f8f8f2">));</span>
+      <span style="color: #f8f8f2">});</span>
+    <span style="color: #f8f8f2">}</span>
+<span style="color: #f8f8f2">});</span>
+
+<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">upload</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">multer</span><span style="color: #f8f8f2">({</span>
+  <span style="color: #a6e22e">storage</span><span style="color: #f92672">:</span> <span style="color: #a6e22e">storage</span>
+<span style="color: #f8f8f2">});</span>
+</pre></div>
+
+
+The two options for `DiskStorage`, `destination` and `filename`, are functions that determine where the file should be stored. As their name's suggest, destination determines the upload location and filename determines the filename.
+
+Multer does not provide a file extension for the upload, so the filename function must return a filename with an extension. Filename uses `Crypto` to generate a random name and uses `Mime` to determine the correct file extension. Generating a random filename prevents collisions if two files are uploaded with the same name. While not required, this is good practice.
+
+`upload` will be called to upload an image.
+
+<li>Write upload route </li>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #75715e">// POST Upload Image</span>
+<span style="color: #a6e22e">router</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">post</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;/upload&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">upload</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">single</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;image&quot;</span><span style="color: #f8f8f2">),</span> <span style="color: #66d9ef">function</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">req</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">res</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+  <span style="color: #a6e22e">res</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">send</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;&lt;img src=&quot;/uploads/&#39;</span> <span style="color: #f92672">+</span> <span style="color: #a6e22e">req</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">file</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">filename</span> <span style="color: #f92672">+</span> <span style="color: #e6db74">&#39;&quot; /&gt;&#39;</span><span style="color: #f8f8f2">);</span>
+<span style="color: #f8f8f2">});</span>
+</pre></div>
+
+This route first uses Multer to upload the image and then sends a response to the client that includes the image, now hosted on the server.
+
+You should be all set, but if there are any issues please comment.
+</ol>
+
+<p>Sources</p>
+
+<p><a href="https://github.com/expressjs/multer" target="_blank">Multer</a></p>
+
+<p><a href="https://github.com/expressjs/multer/issues/170" target="_blank">Multer Issue: Files are uploading as &lsquo;file without its extension</a></p>
+
+</section>
+
+</section>
+    
+    
+
+    <footer>
+
+    </footer>
+  </body>
+</html>
