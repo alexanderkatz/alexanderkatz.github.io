@@ -38,11 +38,6 @@ table {
 a {
   text-decoration: none; }
 
-.inner {
-  max-width: 900px;
-  width: 84%;
-  margin-left: 7%; }
-
 html {
   font-size: 18px;
   font-family: robotoregular;
@@ -74,7 +69,8 @@ h6 {
 p {
   font-family: robotoregular;
   font-size: 1rem;
-  line-height: 1.5rem; }
+  line-height: 1.5rem;
+  margin-bottom: .75rem; }
 
 a {
   border-bottom: 3px solid #01FFC7;
@@ -200,37 +196,85 @@ header {
   font-family: firasansmedium; }
 
 .portfolio .portfolio_item {
-  border: solid 1px orange; }
+  background-size: cover !important; }
+  .portfolio .portfolio_item a {
+    border: 0px;
+    color: rgba(212, 212, 212, 0); }
+    .portfolio .portfolio_item a:hover {
+      background: rgba(212, 212, 212, 0); }
 
-.post .date {
-  margin-top: 14px;
-  margin-bottom: 30px; }
+/* Base Layout For Site */
+.padding {
+  padding: 0px 20px; }
 
-.post h2 {
-  margin-top: 2rem; }
+.center-block {
+  margin: auto;
+  max-width: 750px; }
 
-.post h3 {
-  margin-top: 1rem; }
+.page-title {
+  margin-bottom: 2rem; }
 
-.post p {
-  margin-bottom: .75rem; }
-
-.post ul, .post ol {
-  margin-bottom: .75rem; }
-  .post ul li, .post ol li {
+.post {
+  max-width: 750px;
+  width: 100%; }
+  .post .date {
+    margin-top: 14px;
+    margin-bottom: 30px; }
+  .post h2 {
+    margin-top: 2rem; }
+  .post h3 {
     margin-top: 1rem; }
+  .post ul, .post ol {
+    margin-bottom: .75rem; }
+    .post ul li, .post ol li {
+      margin-top: 1rem; }
 
-.post-list .post {
-  margin-bottom: 120px; }
+.post-list {
+  margin: auto; }
+  .post-list .post {
+    margin-bottom: 120px; }
 
 .portfolio {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between; }
+  max-width: 1260px;
+  margin: 2rem auto;
+  column-width: 250px;
+  column-gap: 20px;
+  -webkit-column-gap: 20px; }
   .portfolio .portfolio_item {
-    width: 270px;
-    height: 200px;
-    margin-top: 40px; }
+    margin-bottom: 20px;
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    position: relative; }
+    .portfolio .portfolio_item a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      line-height: 45px;
+      position: absolute;
+      bottom: 0px; }
+  .portfolio .std {
+    height: 250px; }
+  .portfolio .poster {
+    height: 386px; }
 
 footer {
   margin-top: 100px; }
+
+img.full {
+  max-height: calc(100vh - 50px);
+  max-width: 100%; }
+
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+  margin-bottom: 50px; }
+
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }

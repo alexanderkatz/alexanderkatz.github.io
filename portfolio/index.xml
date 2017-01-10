@@ -6,35 +6,8 @@
     <description>Recent content in Portfolio-rsses on Alex Katz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 01 Jan 2017 14:01:38 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 01 Jan 2017 14:01:01 -0500</lastBuildDate>
     <atom:link href="https://alexanderkatz.github.io/portfolio/index.xml" rel="self" type="application/rss+xml" />
-    
-    <item>
-      <title>maw</title>
-      <link>https://alexanderkatz.github.io/portfolio/maw/</link>
-      <pubDate>Sun, 01 Jan 2017 14:01:38 -0500</pubDate>
-      
-      <guid>https://alexanderkatz.github.io/portfolio/maw/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Blown</title>
-      <link>https://alexanderkatz.github.io/portfolio/blown/</link>
-      <pubDate>Sun, 01 Jan 2017 14:01:24 -0500</pubDate>
-      
-      <guid>https://alexanderkatz.github.io/portfolio/blown/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Purple Crayon</title>
-      <link>https://alexanderkatz.github.io/portfolio/purple-crayon/</link>
-      <pubDate>Sun, 01 Jan 2017 14:01:10 -0500</pubDate>
-      
-      <guid>https://alexanderkatz.github.io/portfolio/purple-crayon/</guid>
-      <description></description>
-    </item>
     
     <item>
       <title>O.D.C.</title>
@@ -42,7 +15,10 @@
       <pubDate>Sun, 01 Jan 2017 14:01:01 -0500</pubDate>
       
       <guid>https://alexanderkatz.github.io/portfolio/odc/</guid>
-      <description></description>
+      <description>&lt;div class=&#34;videoWrapper&#34;&gt;
+&lt;iframe src=&#34;https://player.vimeo.com/video/174838239&#34; width=&#34;640&#34; height=&#34;360&#34; frameborder=&#34;0&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
@@ -51,7 +27,13 @@
       <pubDate>Sun, 01 Jan 2017 14:00:50 -0500</pubDate>
       
       <guid>https://alexanderkatz.github.io/portfolio/for-millie/</guid>
-      <description></description>
+      <description>&lt;div class=&#34;videoWrapper&#34;&gt;
+&lt;iframe src=&#34;https://player.vimeo.com/video/146190267&#34; width=&#34;640&#34; height=&#34;360&#34; frameborder=&#34;0&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;For Millie, is a solo that I performed for Oberlin&amp;rsquo;s Fall Forward. It is a mix of choreography and structured improvisation. It is a House piece, but I also draw on breaking and contemporary.
+Thank you Millie and Rennie for introducing me to House.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -60,7 +42,10 @@
       <pubDate>Sun, 01 Jan 2017 14:00:25 -0500</pubDate>
       
       <guid>https://alexanderkatz.github.io/portfolio/append/</guid>
-      <description></description>
+      <description>&lt;div class=&#34;videoWrapper&#34;&gt;
+&lt;iframe src=&#34;https://player.vimeo.com/video/173984674&#34; width=&#34;100%&#34; frameborder=&#34;0&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
@@ -69,7 +54,20 @@
       <pubDate>Sun, 01 Jan 2017 14:00:04 -0500</pubDate>
       
       <guid>https://alexanderkatz.github.io/portfolio/kinect/</guid>
-      <description></description>
+      <description>&lt;p&gt;During my junior year I decided to take a break from all things web and to focus my energy on combining my two passions, coding and dance. I designed a private study in which I created a dance piece that utilized a dancer’s motion to manipulate and generate audio. I used a Kinect to capture video and processed it using Synapse and MAX.&lt;/p&gt;
+
+&lt;p&gt;My piece was performed at Oberlin’s Student Dance Showcase. The piece would not have been possible without Jon Bellona’s Kinect-via-Synapse and Synapse.&lt;/p&gt;
+
+&lt;p&gt;The video below is of the second performance, the audio was generated and recorded live.&lt;/p&gt;
+
+&lt;div class=&#34;videoWrapper&#34;&gt;
+&lt;iframe src=&#34;https://player.vimeo.com/video/112592624&#34; width=&#34;640&#34; height=&#34;360&#34; frameborder=&#34;0&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;videoWrapper&#34;&gt;
+&lt;iframe src=&#34;https://player.vimeo.com/video/138936244&#34; width=&#34;640&#34; height=&#34;360&#34; frameborder=&#34;0&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
@@ -78,7 +76,11 @@
       <pubDate>Sun, 01 Jan 2017 13:59:43 -0500</pubDate>
       
       <guid>https://alexanderkatz.github.io/portfolio/personal-brand/</guid>
-      <description></description>
+      <description>&lt;p&gt;&lt;img class=&#34;full&#34; src=&#34;https://alexanderkatz.github.io/img/personal-brand/logostudy2.png&#34;/&gt;
+&lt;img class=&#34;full&#34; src=&#34;https://alexanderkatz.github.io/img/personal-brand/logostudy1.png&#34;/&gt;
+&lt;img class=&#34;full&#34; src=&#34;https://alexanderkatz.github.io/img/personal-brand/logostudy3.png&#34;/&gt;
+&lt;img class=&#34;full&#34; src=&#34;https://alexanderkatz.github.io/img/personal-brand/logostudy4.png&#34;/&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -87,7 +89,8 @@
       <pubDate>Sun, 01 Jan 2017 13:59:32 -0500</pubDate>
       
       <guid>https://alexanderkatz.github.io/portfolio/ocovoco/</guid>
-      <description></description>
+      <description>&lt;p&gt;&lt;img class=&#34;full&#34; src=&#34;https://alexanderkatz.github.io/img/ocovoco/ocovoco.png&#34;/&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -96,7 +99,8 @@
       <pubDate>Mon, 26 Dec 2016 20:27:22 -0600</pubDate>
       
       <guid>https://alexanderkatz.github.io/portfolio/listen-and-tell/</guid>
-      <description></description>
+      <description>&lt;p&gt;&lt;img class=&#34;full&#34; src=&#34;https://alexanderkatz.github.io/img/listen-and-tell/listen-and-tell.png&#34;/&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -105,7 +109,10 @@
       <pubDate>Mon, 26 Dec 2016 20:24:42 -0600</pubDate>
       
       <guid>https://alexanderkatz.github.io/portfolio/kendrick-lamar/</guid>
-      <description></description>
+      <description>&lt;p&gt;&lt;img class=&#34;full&#34; src=&#34;https://alexanderkatz.github.io/img/kendrick-lamar/kendrick3.jpg&#34;/&gt;
+&lt;img class=&#34;full&#34; src=&#34;https://alexanderkatz.github.io/img/kendrick-lamar/kendrick1.jpg&#34;/&gt;
+&lt;img class=&#34;full&#34; src=&#34;https://alexanderkatz.github.io/img/kendrick-lamar/kendrick2.jpg&#34;/&gt;&lt;/p&gt;
+</description>
     </item>
     
   </channel>
