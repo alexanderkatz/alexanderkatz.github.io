@@ -88,7 +88,7 @@ If the audio is playing we pause it and change pButton’s class to play.</p>
 
 <p>That is all the code you need to make a play button that targets the audio element.</p>
 
-<p>Functions like play and pause are part of the HTMLMediaElement’s interface. If you are interested the API is here.</p>
+<p>Functions like play and pause are part of the HTMLMediaElement’s interface. If you are interested the API is <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement">here</a>.</p>
 
 <h2 id="track-progress">TRACK PROGRESS</h2>
 
@@ -164,12 +164,12 @@ If the audio is playing we pause it and change pButton’s class to play.</p>
 <span style="color: #f8f8f2">},</span> <span style="color: #66d9ef">false</span><span style="color: #f8f8f2">);</span>
 
 <span style="color: #75715e">// returns click as decimal (.77) of the total timelineWidth</span>
-<span style="color: #66d9ef">function</span> <span style="color: #a6e22e">clickPercent</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">e</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
-	<span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">e</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">pageX</span> <span style="color: #f92672">-</span> <span style="color: #a6e22e">timeline</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">offsetLeft</span><span style="color: #f8f8f2">)</span> <span style="color: #f92672">/</span> <span style="color: #a6e22e">timelineWidth</span><span style="color: #f8f8f2">;</span>
+<span style="color: #66d9ef">function</span> <span style="color: #a6e22e">clickPercent</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">event</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">event</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">clientX</span> <span style="color: #f92672">-</span> <span style="color: #a6e22e">getPosition</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">timeline</span><span style="color: #f8f8f2">))</span> <span style="color: #f92672">/</span> <span style="color: #a6e22e">timelineWidth</span><span style="color: #f8f8f2">;</span>
 <span style="color: #f8f8f2">}</span>
 
-<span style="color: #66d9ef">function</span> <span style="color: #a6e22e">moveplayhead</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">e</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
-	<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">newMargLeft</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">e</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">pageX</span> <span style="color: #f92672">-</span> <span style="color: #a6e22e">timeline</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">offsetLeft</span><span style="color: #f8f8f2">;</span>
+<span style="color: #66d9ef">function</span> <span style="color: #a6e22e">moveplayhead</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">event</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #66d9ef">var</span> <span style="color: #a6e22e">newMargLeft</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">event</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">clientX</span> <span style="color: #f92672">-</span> <span style="color: #a6e22e">getPosition</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">timeline</span><span style="color: #f8f8f2">);</span>
 
 	<span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">newMargLeft</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0</span> <span style="color: #a6e22e">amp</span><span style="color: #f8f8f2">;</span><span style="color: #a6e22e">amp</span><span style="color: #f8f8f2">;</span> <span style="color: #a6e22e">newMargLeft</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">timelineWidth</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
 		<span style="color: #a6e22e">playhead</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">style</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">marginLeft</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">newMargLeft</span> <span style="color: #f92672">+</span> <span style="color: #e6db74">&quot;px&quot;</span><span style="color: #f8f8f2">;</span>
@@ -181,18 +181,24 @@ If the audio is playing we pause it and change pButton’s class to play.</p>
 		<span style="color: #a6e22e">playhead</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">style</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">marginLeft</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">timelineWidth</span> <span style="color: #f92672">+</span> <span style="color: #e6db74">&quot;px&quot;</span><span style="color: #f8f8f2">;</span>
 	<span style="color: #f8f8f2">}</span>
 <span style="color: #f8f8f2">}</span>
+
+<span style="color: #75715e">// getPosition</span>
+<span style="color: #75715e">// Returns elements left position relative to top-left of viewport</span>
+<span style="color: #66d9ef">function</span> <span style="color: #a6e22e">getPosition</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">el</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #66d9ef">return</span> <span style="color: #a6e22e">el</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">getBoundingClientRect</span><span style="color: #f8f8f2">().</span><span style="color: #a6e22e">left</span><span style="color: #f8f8f2">;</span>
+<span style="color: #f8f8f2">}</span>
 </pre></div>
 
 
 <p>The code above adds an event listener to the timeline. If the timeline is clicked, this function fires which moves the playhead to the click position and updates the track’s current time.</p>
 
-<p>The moveplayhead function works by changing the playhead’s left margin. The left margin controls the space between the left side of the timeline and the playhead. To calculate the correct left margin value, the x-coordinate of the click event is subtracted by the timeline’s left offset.</p>
+<p>The moveplayhead function works by changing the playhead’s left margin. The left margin controls the space between the left side of the timeline and the playhead. To calculate the correct left margin value, the x-coordinate of the click event is subtracted by the timeline’s left offset. The left offset is calculated with <code>getPosition</code>.</p>
 
 <p>The conditionals are necessary if the you want to support playhead dragging. If you don’t, just set the playhead’s left margin to newMarginLeft, as any click will be inside the timeline.</p>
 
 <p>The codepen below puts everything together.</p>
 
-<p><p data-height="330" data-theme-id="5580" data-slug-hash="Kfgix" data-default-tab="result" data-user="katzkode" data-embed-version="2" data-pen-title="HTML5 Audio Player" class="codepen">See the Pen <a href="http://codepen.io/katzkode/pen/Kfgix/">HTML5 Audio Player</a> by Alex Katz (<a href="http://codepen.io/katzkode">@katzkode</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<p><p data-height="300" data-theme-id="5580" data-slug-hash="Kfgix" data-default-tab="result" data-user="katzkode" data-embed-version="2" data-pen-title="HTML5 Audio Player" class="codepen">See the Pen <a href="http://codepen.io/katzkode/pen/Kfgix/">HTML5 Audio Player</a> by Alex Katz (<a href="http://codepen.io/katzkode">@katzkode</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script></p>
 
 <p>If you are interested in using multiple audio players on the same page, you can check out my code here – <a href="https://alexanderkatz.github.io/posts/multiple-html5-audio-players">Multiple HTML5 Audio Players</a>.</p>
