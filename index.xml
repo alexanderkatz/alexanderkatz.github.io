@@ -197,6 +197,8 @@ If the audio is playing we pause it and change pButton’s class to play.&lt;/p&
 &lt;p&gt;&lt;p data-height=&#34;300&#34; data-theme-id=&#34;5580&#34; data-slug-hash=&#34;Kfgix&#34; data-default-tab=&#34;result&#34; data-user=&#34;katzkode&#34; data-embed-version=&#34;2&#34; data-pen-title=&#34;HTML5 Audio Player&#34; class=&#34;codepen&#34;&gt;See the Pen &lt;a href=&#34;http://codepen.io/katzkode/pen/Kfgix/&#34;&gt;HTML5 Audio Player&lt;/a&gt; by Alex Katz (&lt;a href=&#34;http://codepen.io/katzkode&#34;&gt;@katzkode&lt;/a&gt;) on &lt;a href=&#34;http://codepen.io&#34;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
 &lt;script async src=&#34;https://production-assets.codepen.io/assets/embed/ei.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
 
+&lt;p&gt;&lt;a href=&#34;https://github.com/alexanderkatz/HTML5-Audio&#34;&gt;Complete Code on GitHub&lt;/a&gt;&lt;/p&gt;
+
 &lt;p&gt;If you are interested in using multiple audio players on the same page, you can check out my code here – &lt;a href=&#34;https://alexanderkatz.github.io/posts/multiple-html5-audio-players&#34;&gt;Multiple HTML5 Audio Players&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     
