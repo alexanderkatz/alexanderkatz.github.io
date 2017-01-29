@@ -122,7 +122,7 @@ If the audio is playing we pause it and change pButton’s class to play.&lt;/p&
 
 &lt;p&gt;The audio player should look something like this&lt;/p&gt;
 
-&lt;h2 id=&#34;image-goes-here&#34;&gt;Image Goes Here&lt;/h2&gt;
+&lt;p&gt;&lt;img width=&#34;400&#34; src=&#34;https://alexanderkatz.github.io/img/building-a-custom-html5-audio-player-with-javascript/audioplayer.png&#34;&gt;&lt;/p&gt;
 
 &lt;p&gt;The next step is to write JavaScript that will move the playhead as the track advances. This is accomplished by adding an event listener for timeupdate that triggers a function that moves the playhead the appropriate amount. In order for time update to work we will also need to get the duration of the audio file. The code is also below.&lt;/p&gt;
 
@@ -192,6 +192,49 @@ If the audio is playing we pause it and change pButton’s class to play.&lt;/p&
 &lt;script async src=&#34;https://production-assets.codepen.io/assets/embed/ei.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;If you are interested in using multiple audio players on the same page, you can check out my code here – &lt;a href=&#34;https://alexanderkatz.github.io/posts/multiple-html5-audio-players&#34;&gt;Multiple HTML5 Audio Players&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>SVG Mask</title>
+      <link>https://alexanderkatz.github.io/posts/svg-mask/</link>
+      <pubDate>Sun, 29 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://alexanderkatz.github.io/posts/svg-mask/</guid>
+      <description>&lt;p&gt;Although this technique is not new, I still wanted to share it.&lt;/p&gt;
+
+&lt;p&gt;In the past if I wanted to change the color of an icon on hover I would have changed the background of the element to a differently colored icon. The CSS would have looked something like this.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;.icon&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;{&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;background&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;path/to/icon.png&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;);&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color: #a6e22e&#34;&gt;.icon:hover&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;{&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;background&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;path/to/different-icon.png&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;);&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This doesn&amp;rsquo;t seem too cumbersome, but for each icon you need two files with differently colored icons. To make a change to the color, a new file needs to be created.&lt;/p&gt;
+
+&lt;p&gt;The beauty of using the &lt;code&gt;mask&lt;/code&gt; and &lt;code&gt;background-color&lt;/code&gt; properties, is that an SVG can be changed to any color. This limits the number of files you have to keep track of, but more importantly grants more flexibility and can lead to more organized code.&lt;/p&gt;
+
+&lt;p&gt;To use this technique, set the value of &lt;code&gt;mask&lt;/code&gt; to the correct file and set the &lt;code&gt;background-color&lt;/code&gt; as desired. The SVG will act as mask and the &lt;code&gt;background-color&lt;/code&gt; will only be visible where the icon is. Define a different &lt;code&gt;background-color&lt;/code&gt; for &lt;code&gt;:hover&lt;/code&gt; to switch between colors on hover.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;.icon&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;{&lt;/span&gt;
+  &lt;span style=&#34;color: #f8f8f2&#34;&gt;background-color&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;#005397&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;;&lt;/span&gt;
+  &lt;span style=&#34;color: #f8f8f2&#34;&gt;mask&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;url(&amp;#39;http://alexkatz.me/img/logo.svg&amp;#39;)&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;no-repeat&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;50%&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;50%&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;;&lt;/span&gt;
+  &lt;span style=&#34;color: #f8f8f2&#34;&gt;mask&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;size&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;cover;&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color: #f92672&#34;&gt;icon&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;:hover&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;{&lt;/span&gt;
+  &lt;span style=&#34;color: #f8f8f2&#34;&gt;background-color&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;#01FFC7&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;;&lt;/span&gt;
+  &lt;span style=&#34;color: #f8f8f2&#34;&gt;transition&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;background-color&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;.5s&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Feel free to experiment with this pen.
+&lt;p data-height=&#34;300&#34; data-theme-id=&#34;5580&#34; data-slug-hash=&#34;PWJEjK&#34; data-default-tab=&#34;css,result&#34; data-user=&#34;katzkode&#34; data-embed-version=&#34;2&#34; data-pen-title=&#34;SVG Mask&#34; class=&#34;codepen&#34;&gt;See the Pen &lt;a href=&#34;https://codepen.io/katzkode/pen/PWJEjK/&#34;&gt;SVG Mask&lt;/a&gt; by Alex Katz (&lt;a href=&#34;http://codepen.io/katzkode&#34;&gt;@katzkode&lt;/a&gt;) on &lt;a href=&#34;http://codepen.io&#34;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
+&lt;script async src=&#34;https://production-assets.codepen.io/assets/embed/ei.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
