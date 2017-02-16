@@ -6,8 +6,26 @@
     <description>Recent content in Portfolio-rsses on Alex Katz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 01 Jan 2017 14:01:01 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 01 Jan 2017 14:01:10 -0500</lastBuildDate>
     <atom:link href="https://alexanderkatz.github.io/portfolio/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Purple Crayon</title>
+      <link>https://alexanderkatz.github.io/portfolio/purple-crayon/</link>
+      <pubDate>Sun, 01 Jan 2017 14:01:10 -0500</pubDate>
+      
+      <guid>https://alexanderkatz.github.io/portfolio/purple-crayon/</guid>
+      <description>&lt;p&gt;Purple Crayon is a blogging platform I developed and designed with Ilona Brand. We used Node, express, and Passport along with other technologies.&lt;/p&gt;
+
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/alexanderkatz/node-blog&#34;&gt;GitHub Repository&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;full&#34; src=&#34;https://alexanderkatz.github.io/img/purple-crayon/purplecrayon-mobile-1.png&#34;/&gt;
+&lt;img class=&#34;full browser&#34; src=&#34;https://alexanderkatz.github.io/img/purple-crayon/purplecrayon-desktop-1.png&#34;/&gt;
+&lt;img class=&#34;full browser&#34; src=&#34;https://alexanderkatz.github.io/img/purple-crayon/purplecrayon-desktop-2.png&#34;/&gt;
+&lt;img class=&#34;full browser&#34; src=&#34;https://alexanderkatz.github.io/img/purple-crayon/purplecrayon-desktop-3.png&#34;/&gt;
+&lt;img class=&#34;full browser&#34; src=&#34;https://alexanderkatz.github.io/img/purple-crayon/purplecrayon-desktop-4.png&#34;/&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>O.D.C.</title>
