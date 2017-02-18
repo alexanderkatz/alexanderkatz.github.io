@@ -255,7 +255,7 @@ If the audio is playing we pause it and change pButton’s class to play.&lt;/p&
 
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/alexanderkatz/node-blog&#34;&gt;GitHub Repository&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img class=&#34;full&#34; src=&#34;https://alexanderkatz.github.io/img/purple-crayon/purplecrayon-mobile-1.png&#34;/&gt;
+&lt;p&gt;&lt;img class=&#34;full topmargin&#34; src=&#34;https://alexanderkatz.github.io/img/purple-crayon/purplecrayon-mobile-1.png&#34;/&gt;
 &lt;img class=&#34;full browser&#34; src=&#34;https://alexanderkatz.github.io/img/purple-crayon/purplecrayon-desktop-1.png&#34;/&gt;
 &lt;img class=&#34;full browser&#34; src=&#34;https://alexanderkatz.github.io/img/purple-crayon/purplecrayon-desktop-2.png&#34;/&gt;
 &lt;img class=&#34;full browser&#34; src=&#34;https://alexanderkatz.github.io/img/purple-crayon/purplecrayon-desktop-3.png&#34;/&gt;
