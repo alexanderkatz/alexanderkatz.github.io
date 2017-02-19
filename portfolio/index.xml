@@ -17,7 +17,12 @@
       <guid>https://alexanderkatz.github.io/portfolio/purple-crayon/</guid>
       <description>&lt;p&gt;Purple Crayon is a blogging platform I developed and designed with Ilona Brand. We used Node, express, and Passport along with other technologies.&lt;/p&gt;
 
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/alexanderkatz/node-blog&#34;&gt;GitHub Repository&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;In addition to supporting account creation and authentication we used Express to give each user their own subdomain:
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;username&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;&amp;gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;purplecrayon&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;me&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Feel free to check out &lt;a class=&#34;link&#34; href=&#34;http://purplecrayon.me&#34;&gt;Purple Crayon&lt;/a&gt; or the &lt;a class=&#34;link&#34; href=&#34;https://github.com/alexanderkatz/node-blog&#34;&gt;GitHub Repository&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;img class=&#34;full topmargin&#34; src=&#34;https://alexanderkatz.github.io/img/purple-crayon/purplecrayon-mobile-1.png&#34;/&gt;
 &lt;img class=&#34;full browser&#34; src=&#34;https://alexanderkatz.github.io/img/purple-crayon/purplecrayon-desktop-1.png&#34;/&gt;
@@ -51,6 +56,19 @@
 
 &lt;p&gt;For Millie, is a solo that I performed for Oberlin&amp;rsquo;s Fall Forward. It is a mix of choreography and structured improvisation. It is a House piece, but I also draw on breaking and contemporary.
 Thank you Millie and Rennie for introducing me to House.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Animation</title>
+      <link>https://alexanderkatz.github.io/portfolio/animation/</link>
+      <pubDate>Sun, 01 Jan 2017 14:00:25 -0500</pubDate>
+      
+      <guid>https://alexanderkatz.github.io/portfolio/animation/</guid>
+      <description>&lt;p&gt;Here is an animation I made recently. In the near future I will add more experiments and the ability to pause and play animations.&lt;/p&gt;
+
+&lt;p&gt;&lt;p data-height=&#34;441&#34; data-theme-id=&#34;5580&#34; data-slug-hash=&#34;qRGewx&#34; data-default-tab=&#34;result&#34; data-user=&#34;katzkode&#34; data-embed-version=&#34;2&#34; data-pen-title=&#34;Cube Animation&#34; class=&#34;codepen&#34;&gt;See the Pen &lt;a href=&#34;https://codepen.io/katzkode/pen/qRGewx/&#34;&gt;Cube Animation&lt;/a&gt; by Alex Katz (&lt;a href=&#34;http://codepen.io/katzkode&#34;&gt;@katzkode&lt;/a&gt;) on &lt;a href=&#34;http://codepen.io&#34;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
+&lt;script async src=&#34;https://production-assets.codepen.io/assets/embed/ei.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
 </description>
     </item>
     
