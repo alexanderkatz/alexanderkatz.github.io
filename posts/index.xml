@@ -203,6 +203,42 @@ If the audio is playing we pause it and change pButton’s class to play.&lt;/p&
     </item>
     
     <item>
+      <title>CSS Placeholder Text</title>
+      <link>https://alexanderkatz.github.io/posts/css-placeholder-text/</link>
+      <pubDate>Fri, 10 Mar 2017 11:35:29 -0500</pubDate>
+      
+      <guid>https://alexanderkatz.github.io/posts/css-placeholder-text/</guid>
+      <description>
+
+&lt;p&gt;How can you find all empty elements on a web page and populate them with placeholder text?&lt;/p&gt;
+
+&lt;p&gt;My first thought was to use JavaScript, loop through each element, and populate the empty ones. This approach works, but CSS provides a simple solution.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;:empty&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;:before&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;{&lt;/span&gt; 
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;content&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;Please Add Information&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;;&lt;/span&gt; 
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Using the empty selector and the pseudo element before, placeholder text can be defined using the CSS &lt;code&gt;content&lt;/code&gt; property. The &lt;code&gt;:before&lt;/code&gt; element is used because the &lt;code&gt;content&lt;/code&gt; property only works with pseudo elements.&lt;/p&gt;
+
+&lt;h3 id=&#34;my-use-case&#34;&gt;My Use Case&lt;/h3&gt;
+
+&lt;p&gt;I am working on an application that allows researchers to create and manage personas.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;To create a new persona a user enters data into a form.&lt;/li&gt;
+&lt;li&gt;A page is generated for each persona that displays their associated data.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Because research is an ongoing process, not all of the data fields are filled when a persona is created. Because of this, certain persona pages had a number of blank sections. Instead of hiding blank sections, I used CSS to insert a &amp;ldquo;call to action&amp;rdquo; that prompted researches to update personas with their latest findings.&lt;/p&gt;
+
+&lt;p&gt;&lt;p data-height=&#34;487&#34; data-theme-id=&#34;5580&#34; data-slug-hash=&#34;vxxzjN&#34; data-default-tab=&#34;result&#34; data-user=&#34;katzkode&#34; data-embed-version=&#34;2&#34; data-pen-title=&#34;Placeholder Text Using CSS&#34; class=&#34;codepen&#34;&gt;See the Pen &lt;a href=&#34;http://codepen.io/katzkode/pen/vxxzjN/&#34;&gt;Placeholder Text Using CSS&lt;/a&gt; by Alex Katz (&lt;a href=&#34;http://codepen.io/katzkode&#34;&gt;@katzkode&lt;/a&gt;) on &lt;a href=&#34;http://codepen.io&#34;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
+&lt;script async src=&#34;https://production-assets.codepen.io/assets/embed/ei.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Using SVG in an Interface</title>
       <link>https://alexanderkatz.github.io/posts/using-svg/</link>
       <pubDate>Wed, 22 Feb 2017 00:00:00 +0000</pubDate>

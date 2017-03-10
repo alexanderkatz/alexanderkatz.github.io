@@ -203,6 +203,42 @@ If the audio is playing we pause it and change pButton’s class to play.&lt;/p&
     </item>
     
     <item>
+      <title>CSS Placeholder Text</title>
+      <link>https://alexanderkatz.github.io/posts/css-placeholder-text/</link>
+      <pubDate>Fri, 10 Mar 2017 11:35:29 -0500</pubDate>
+      
+      <guid>https://alexanderkatz.github.io/posts/css-placeholder-text/</guid>
+      <description>
+
+&lt;p&gt;How can you find all empty elements on a web page and populate them with placeholder text?&lt;/p&gt;
+
+&lt;p&gt;My first thought was to use JavaScript, loop through each element, and populate the empty ones. This approach works, but CSS provides a simple solution.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;:empty&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;:before&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;{&lt;/span&gt; 
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;content&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;Please Add Information&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;;&lt;/span&gt; 
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Using the empty selector and the pseudo element before, placeholder text can be defined using the CSS &lt;code&gt;content&lt;/code&gt; property. The &lt;code&gt;:before&lt;/code&gt; element is used because the &lt;code&gt;content&lt;/code&gt; property only works with pseudo elements.&lt;/p&gt;
+
+&lt;h3 id=&#34;my-use-case&#34;&gt;My Use Case&lt;/h3&gt;
+
+&lt;p&gt;I am working on an application that allows researchers to create and manage personas.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;To create a new persona a user enters data into a form.&lt;/li&gt;
+&lt;li&gt;A page is generated for each persona that displays their associated data.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Because research is an ongoing process, not all of the data fields are filled when a persona is created. Because of this, certain persona pages had a number of blank sections. Instead of hiding blank sections, I used CSS to insert a &amp;ldquo;call to action&amp;rdquo; that prompted researches to update personas with their latest findings.&lt;/p&gt;
+
+&lt;p&gt;&lt;p data-height=&#34;487&#34; data-theme-id=&#34;5580&#34; data-slug-hash=&#34;vxxzjN&#34; data-default-tab=&#34;result&#34; data-user=&#34;katzkode&#34; data-embed-version=&#34;2&#34; data-pen-title=&#34;Placeholder Text Using CSS&#34; class=&#34;codepen&#34;&gt;See the Pen &lt;a href=&#34;http://codepen.io/katzkode/pen/vxxzjN/&#34;&gt;Placeholder Text Using CSS&lt;/a&gt; by Alex Katz (&lt;a href=&#34;http://codepen.io/katzkode&#34;&gt;@katzkode&lt;/a&gt;) on &lt;a href=&#34;http://codepen.io&#34;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
+&lt;script async src=&#34;https://production-assets.codepen.io/assets/embed/ei.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Using SVG in an Interface</title>
       <link>https://alexanderkatz.github.io/posts/using-svg/</link>
       <pubDate>Wed, 22 Feb 2017 00:00:00 +0000</pubDate>
@@ -342,6 +378,37 @@ Thank you Millie and Rennie for introducing me to House.&lt;/p&gt;
     </item>
     
     <item>
+      <title>Personas Site</title>
+      <link>https://alexanderkatz.github.io/portfolio/personasite/</link>
+      <pubDate>Sun, 01 Jan 2017 14:00:25 -0500</pubDate>
+      
+      <guid>https://alexanderkatz.github.io/portfolio/personasite/</guid>
+      <description>&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;#attribution&#34;&gt;Property of IBM&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The Personas Site is an application I built at IBM for my team to record and share research findings. I used Node.js, Express, MongoDB, and Nunjucks.&lt;/p&gt;
+
+&lt;p&gt;Users create personas through a webform in which they can upload an image, document their research, and link to external resources.&lt;/p&gt;
+
+&lt;p&gt;I used Nunjucks macros to format the data on the individual persona pages.&lt;/p&gt;
+
+&lt;div class=&#34;sidebyside&#34;&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img class=&#34;full browser topmargin&#34; src=&#34;https://alexanderkatz.github.io/img/personas-site/home.png&#34;/&gt;
+&lt;img class=&#34;full browser&#34; src=&#34;https://alexanderkatz.github.io/img/personas-site/felix.png&#34;/&gt;
+&lt;img class=&#34;full browser&#34; src=&#34;https://alexanderkatz.github.io/img/personas-site/management.png&#34;/&gt;
+&lt;img class=&#34;full browser&#34; src=&#34;https://alexanderkatz.github.io/img/personas-site/newpersona.png&#34;/&gt;
+&lt;img class=&#34;full browser&#34; src=&#34;https://alexanderkatz.github.io/img/personas-site/patrick.png&#34;/&gt;
+&lt;img class=&#34;full browser&#34; src=&#34;https://alexanderkatz.github.io/img/personas-site/metadata.png&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a name=&#34;attribution&#34;&gt;Attribution:&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I created this application at IBM Design. I was the primary developer for this project. All of the persona information is fictitious.&lt;/p&gt;
+
+&lt;p&gt;Persona images are from &lt;a class=&#34;link&#34; href=&#34;https://thenounproject.com/yuluck/&#34;&gt;The Noun Project&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>append</title>
       <link>https://alexanderkatz.github.io/portfolio/append/</link>
       <pubDate>Sun, 01 Jan 2017 14:00:25 -0500</pubDate>
@@ -417,119 +484,6 @@ Thank you Millie and Rennie for introducing me to House.&lt;/p&gt;
       <description>&lt;p&gt;&lt;img class=&#34;full&#34; src=&#34;https://alexanderkatz.github.io/img/kendrick-lamar/kendrick3.jpg&#34;/&gt;
 &lt;img class=&#34;full&#34; src=&#34;https://alexanderkatz.github.io/img/kendrick-lamar/kendrick1.jpg&#34;/&gt;
 &lt;img class=&#34;full&#34; src=&#34;https://alexanderkatz.github.io/img/kendrick-lamar/kendrick2.jpg&#34;/&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>about</title>
-      <link>https://alexanderkatz.github.io/about/</link>
-      <pubDate>Sun, 25 Dec 2016 09:04:58 -0600</pubDate>
-      
-      <guid>https://alexanderkatz.github.io/about/</guid>
-      <description>&lt;p&gt;Neque porro quisquam est qui dolorem
-ipsum quia dolor sit amet consectetur
-adipisci velit.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Image Upload with Node and Multer</title>
-      <link>https://alexanderkatz.github.io/posts/image-upload-with-node-and-multer/</link>
-      <pubDate>Sat, 03 Dec 2016 21:54:24 -0600</pubDate>
-      
-      <guid>https://alexanderkatz.github.io/posts/image-upload-with-node-and-multer/</guid>
-      <description>&lt;p&gt;This tutorial provides an end to end walkthrough of uploading images in Node with Multer.&lt;/p&gt;
-
-&lt;p&gt;To make things simple I am providing an app-template and complete code.
-Feel free to use the template or an app that you are working on.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/alexanderkatz/app-template&#34; target=&#34;_blank&#34;&gt;App-Template&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://Complete Code&#34; target=&#34;_blank&#34;&gt;Complete Code&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;I am using &lt;a href=&#34;https://github.com/expressjs/multer&#34; target=&#34;_blank&#34;&gt;Multer 1.2.0&lt;/a&gt; and Node 6.4.0.&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Install Multer, Mime, and Cryto and save to dependencies.&lt;/li&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;`npm install -S multer`&lt;/span&gt;
-
- &lt;span style=&#34;color: #e6db74&#34;&gt;`npm install -S mime`&lt;/span&gt;
-
- &lt;span style=&#34;color: #e6db74&#34;&gt;`npm install -S crypto`&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-
-&lt;li&gt;Require depencies in route `index.js`&lt;/li&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;express&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;require&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;express&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;),&lt;/span&gt;
-    &lt;span style=&#34;color: #a6e22e&#34;&gt;router&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;express&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;Router&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(),&lt;/span&gt;
-    &lt;span style=&#34;color: #a6e22e&#34;&gt;mime&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;require&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;mime&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;),&lt;/span&gt;
-    &lt;span style=&#34;color: #a6e22e&#34;&gt;multer&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;require&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;multer&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;);&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;li&gt;Create a form in `index.ejs`&lt;/li&gt;
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;form&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;action&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;/upload&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;enctype&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;multipart/form-data&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;method&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;POST&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;&amp;gt;&lt;/span&gt;
-Select an image to upload:
-&lt;span style=&#34;color: #f8f8f2&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;image&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;file&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;/&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #f8f8f2&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;submit&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;Upload Image&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;/&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #f8f8f2&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;form&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-The form `enctype` must be `multipart/form-data`, which is the encoding used for forms that upload files. The `enctype` specifies how the form-data is encoded when it is submitted to a server.
-
-When submitted, the form will send a POST request to our upload route. We will construct the route in a later step.
-
-&lt;li&gt;Before we can write our upload route, we need to configure Multer&#39;s storage. Multer ships with two different storage engines, `DiskStorage` and `MemoryStorage`. I will be using `DiskStorage` which gives you full control over storing files to disk. &lt;/li&gt;
-
-Create a folder called `uploads` in `public`.
-
-In `index.js` underneath your require statements, write the following.
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;storage&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;multer&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;diskStorage&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;({&lt;/span&gt;
-  &lt;span style=&#34;color: #a6e22e&#34;&gt;destination&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;function&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;req&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;file&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;cb&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;{&lt;/span&gt;
-      &lt;span style=&#34;color: #a6e22e&#34;&gt;cb&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;public/uploads/&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
-  &lt;span style=&#34;color: #f8f8f2&#34;&gt;},&lt;/span&gt;
-  &lt;span style=&#34;color: #a6e22e&#34;&gt;filename&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;function&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;req&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;file&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;cb&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;{&lt;/span&gt;
-      &lt;span style=&#34;color: #a6e22e&#34;&gt;crypto&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;pseudoRandomBytes&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;16&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;function&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;err&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;raw&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;{&lt;/span&gt;
-          &lt;span style=&#34;color: #a6e22e&#34;&gt;cb&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;raw&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;toString&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;hex&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;Date.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;now&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;.&amp;#39;&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;mime&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;extension&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;file&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;mimetype&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;));&lt;/span&gt;
-      &lt;span style=&#34;color: #f8f8f2&#34;&gt;});&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;}&lt;/span&gt;
-&lt;span style=&#34;color: #f8f8f2&#34;&gt;});&lt;/span&gt;
-
-&lt;span style=&#34;color: #66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;upload&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;multer&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;({&lt;/span&gt;
-  &lt;span style=&#34;color: #a6e22e&#34;&gt;storage&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;storage&lt;/span&gt;
-&lt;span style=&#34;color: #f8f8f2&#34;&gt;});&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-The two options for `DiskStorage`, `destination` and `filename`, are functions that determine where the file should be stored. As their name&#39;s suggest, destination determines the upload location and filename determines the filename.
-
-Multer does not provide a file extension for the upload, so the filename function must return a filename with an extension. Filename uses `Crypto` to generate a random name and uses `Mime` to determine the correct file extension. Generating a random filename prevents collisions if two files are uploaded with the same name. While not required, this is good practice.
-
-`upload` will be called to upload an image.
-
-&lt;li&gt;Write upload route &lt;/li&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #75715e&#34;&gt;// POST Upload Image&lt;/span&gt;
-&lt;span style=&#34;color: #a6e22e&#34;&gt;router&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;post&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;/upload&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;upload&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;single&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;image&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;),&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;function&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;req&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;res&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;{&lt;/span&gt;
-  &lt;span style=&#34;color: #a6e22e&#34;&gt;res&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;send&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;&amp;lt;img src=&amp;quot;/uploads/&amp;#39;&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;req&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;file&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;filename&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;&amp;quot; /&amp;gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;);&lt;/span&gt;
-&lt;span style=&#34;color: #f8f8f2&#34;&gt;});&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-This route first uses Multer to upload the image and then sends a response to the client that includes the image, now hosted on the server.
-
-You should be all set, but if there are any issues please comment.
-&lt;/ol&gt;
-
-&lt;p&gt;Sources&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/expressjs/multer&#34; target=&#34;_blank&#34;&gt;Multer&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/expressjs/multer/issues/170&#34; target=&#34;_blank&#34;&gt;Multer Issue: Files are uploading as &amp;lsquo;file without its extension&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

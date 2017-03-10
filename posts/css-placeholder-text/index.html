@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Portfolios</title>
+  <title>CSS Placeholder Text</title>
   <meta name="description" content="Alex Katz's portfolio and blog.">
   <link rel="stylesheet" type="text/css" href="https://alexanderkatz.github.io/css/site.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,43 +22,41 @@
   </header>
 
 
-    <section class="portfolio padding">
-      <section class="portfolio_item std" style="background:url(/img/purple-crayon/thumb.png) center no-repeat">
-          <a href="https://alexanderkatz.github.io/portfolio/purple-crayon/"><span>Purple Crayon</span></a>
-      </section>
-      <section class="portfolio_item std" style="background:url(/img/odc/thumb.png) center no-repeat">
-          <a href="https://alexanderkatz.github.io/portfolio/odc/"><span>O.D.C.</span></a>
-      </section>
-      <section class="portfolio_item poster" style="background:url(/img/for-millie/thumb.png) center no-repeat">
-          <a href="https://alexanderkatz.github.io/portfolio/for-millie/"><span>For Millie</span></a>
-      </section>
-      <section class="portfolio_item poster" style="background:url(/img/animation/thumb.png) center no-repeat">
-          <a href="https://alexanderkatz.github.io/portfolio/animation/"><span>Animation</span></a>
-      </section>
-      <section class="portfolio_item std" style="background:url(/img/personas-site/thumb.png) center no-repeat">
-          <a href="https://alexanderkatz.github.io/portfolio/personasite/"><span>Personas Site</span></a>
-      </section>
-      <section class="portfolio_item std" style="background:url(/img/append/thumb.png) center no-repeat">
-          <a href="https://alexanderkatz.github.io/portfolio/append/"><span>append</span></a>
-      </section>
-      <section class="portfolio_item std" style="background:url(/img/kinect/thumb.png) center no-repeat">
-          <a href="https://alexanderkatz.github.io/portfolio/kinect/"><span>Kinect</span></a>
-      </section>
-      <section class="portfolio_item std" style="background:url(/img/personal-brand/thumb.png) center no-repeat">
-          <a href="https://alexanderkatz.github.io/portfolio/personal-brand/"><span>Personal Brand</span></a>
-      </section>
-      <section class="portfolio_item poster" style="background:url(/img/ocovoco/thumb.png) center no-repeat">
-          <a href="https://alexanderkatz.github.io/portfolio/ocovoco/"><span>ocovoco</span></a>
-      </section>
-      <section class="portfolio_item poster" style="background:url(/img/listen-and-tell/thumb.png) center no-repeat">
-          <a href="https://alexanderkatz.github.io/portfolio/listen-and-tell/"><span>Listen and Tell</span></a>
-      </section>
-      <section class="portfolio_item std" style="background:url(/img/kendrick-lamar/thumb.png) center no-repeat">
-          <a href="https://alexanderkatz.github.io/portfolio/kendrick-lamar/"><span>Kendrick Lamar</span></a>
-      </section>
-    </section>
-
+<section class="center-block padding">
+  <section class="post">
+      <h1>CSS Placeholder Text</h1>
+    <h6 class="date">Fri, Mar 10, 2017</h6>
     
+
+<p>How can you find all empty elements on a web page and populate them with placeholder text?</p>
+
+<p>My first thought was to use JavaScript, loop through each element, and populate the empty ones. This approach works, but CSS provides a simple solution.</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f92672">*</span><span style="color: #a6e22e">:empty</span><span style="color: #f92672">:</span><span style="color: #a6e22e">:before</span><span style="color: #f8f8f2">{</span> 
+    <span style="color: #f8f8f2">content</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&quot;Please Add Information&quot;</span><span style="color: #f8f8f2">;</span> 
+<span style="color: #f8f8f2">}</span>
+</pre></div>
+
+
+<p>Using the empty selector and the pseudo element before, placeholder text can be defined using the CSS <code>content</code> property. The <code>:before</code> element is used because the <code>content</code> property only works with pseudo elements.</p>
+
+<h3 id="my-use-case">My Use Case</h3>
+
+<p>I am working on an application that allows researchers to create and manage personas.</p>
+
+<ul>
+<li>To create a new persona a user enters data into a form.</li>
+<li>A page is generated for each persona that displays their associated data.</li>
+</ul>
+
+<p>Because research is an ongoing process, not all of the data fields are filled when a persona is created. Because of this, certain persona pages had a number of blank sections. Instead of hiding blank sections, I used CSS to insert a &ldquo;call to action&rdquo; that prompted researches to update personas with their latest findings.</p>
+
+<p><p data-height="487" data-theme-id="5580" data-slug-hash="vxxzjN" data-default-tab="result" data-user="katzkode" data-embed-version="2" data-pen-title="Placeholder Text Using CSS" class="codepen">See the Pen <a href="http://codepen.io/katzkode/pen/vxxzjN/">Placeholder Text Using CSS</a> by Alex Katz (<a href="http://codepen.io/katzkode">@katzkode</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script></p>
+
+  </section>
+</section>
+  
   
 
   <footer>
@@ -82,4 +80,3 @@
   </script>
   </body>
 </html>
-

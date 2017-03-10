@@ -73,6 +73,37 @@ Thank you Millie and Rennie for introducing me to House.&lt;/p&gt;
     </item>
     
     <item>
+      <title>Personas Site</title>
+      <link>https://alexanderkatz.github.io/portfolio/personasite/</link>
+      <pubDate>Sun, 01 Jan 2017 14:00:25 -0500</pubDate>
+      
+      <guid>https://alexanderkatz.github.io/portfolio/personasite/</guid>
+      <description>&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;#attribution&#34;&gt;Property of IBM&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The Personas Site is an application I built at IBM for my team to record and share research findings. I used Node.js, Express, MongoDB, and Nunjucks.&lt;/p&gt;
+
+&lt;p&gt;Users create personas through a webform in which they can upload an image, document their research, and link to external resources.&lt;/p&gt;
+
+&lt;p&gt;I used Nunjucks macros to format the data on the individual persona pages.&lt;/p&gt;
+
+&lt;div class=&#34;sidebyside&#34;&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img class=&#34;full browser topmargin&#34; src=&#34;https://alexanderkatz.github.io/img/personas-site/home.png&#34;/&gt;
+&lt;img class=&#34;full browser&#34; src=&#34;https://alexanderkatz.github.io/img/personas-site/felix.png&#34;/&gt;
+&lt;img class=&#34;full browser&#34; src=&#34;https://alexanderkatz.github.io/img/personas-site/management.png&#34;/&gt;
+&lt;img class=&#34;full browser&#34; src=&#34;https://alexanderkatz.github.io/img/personas-site/newpersona.png&#34;/&gt;
+&lt;img class=&#34;full browser&#34; src=&#34;https://alexanderkatz.github.io/img/personas-site/patrick.png&#34;/&gt;
+&lt;img class=&#34;full browser&#34; src=&#34;https://alexanderkatz.github.io/img/personas-site/metadata.png&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a name=&#34;attribution&#34;&gt;Attribution:&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I created this application at IBM Design. I was the primary developer for this project. All of the persona information is fictitious.&lt;/p&gt;
+
+&lt;p&gt;Persona images are from &lt;a class=&#34;link&#34; href=&#34;https://thenounproject.com/yuluck/&#34;&gt;The Noun Project&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>append</title>
       <link>https://alexanderkatz.github.io/portfolio/append/</link>
       <pubDate>Sun, 01 Jan 2017 14:00:25 -0500</pubDate>
