@@ -78,88 +78,88 @@ Finally we can start the fun part. Everything up until this point has been setup
 
 <p>As much as I wanted to wait until the end to give the complete code, it makes more sense for me to do it now and then provide a walkthrough.</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #75715e">&lt;!DOCTYPE html&gt;</span>
-<span style="color: #f8f8f2">&lt;</span><span style="color: #f92672">html</span><span style="color: #f8f8f2">&gt;</span>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020">&lt;!DOCTYPE html&gt;</span>
+&lt;<span style="color: #062873; font-weight: bold">html</span>&gt;
 
-<span style="color: #f8f8f2">&lt;</span><span style="color: #f92672">head</span><span style="color: #f8f8f2">&gt;</span>
-	<span style="color: #f8f8f2">&lt;</span><span style="color: #f92672">title</span><span style="color: #f8f8f2">&gt;</span>Embed API Demo<span style="color: #f8f8f2">&lt;/</span><span style="color: #f92672">title</span><span style="color: #f8f8f2">&gt;</span>
-<span style="color: #f8f8f2">&lt;/</span><span style="color: #f92672">head</span><span style="color: #f8f8f2">&gt;</span>
+&lt;<span style="color: #062873; font-weight: bold">head</span>&gt;
+	&lt;<span style="color: #062873; font-weight: bold">title</span>&gt;Embed API Demo&lt;/<span style="color: #062873; font-weight: bold">title</span>&gt;
+&lt;/<span style="color: #062873; font-weight: bold">head</span>&gt;
 
-<span style="color: #f8f8f2">&lt;</span><span style="color: #f92672">body</span><span style="color: #f8f8f2">&gt;</span>
-	<span style="color: #75715e">&lt;!-- Step 1: Create the containing elements. --&gt;</span>
-	<span style="color: #f8f8f2">&lt;</span><span style="color: #f92672">section</span> <span style="color: #a6e22e">id</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;auth-button&quot;</span><span style="color: #f8f8f2">&gt;&lt;/</span><span style="color: #f92672">section</span><span style="color: #f8f8f2">&gt;</span>
-	<span style="color: #f8f8f2">&lt;</span><span style="color: #f92672">section</span> <span style="color: #a6e22e">id</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;view-selector&quot;</span><span style="color: #f8f8f2">&gt;&lt;/</span><span style="color: #f92672">section</span><span style="color: #f8f8f2">&gt;</span>
-	<span style="color: #f8f8f2">&lt;</span><span style="color: #f92672">section</span> <span style="color: #a6e22e">id</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;timeline&quot;</span><span style="color: #f8f8f2">&gt;&lt;/</span><span style="color: #f92672">section</span><span style="color: #f8f8f2">&gt;</span>
+&lt;<span style="color: #062873; font-weight: bold">body</span>&gt;
+	<span style="color: #60a0b0; font-style: italic">&lt;!-- Step 1: Create the containing elements. --&gt;</span>
+	&lt;<span style="color: #062873; font-weight: bold">section</span> <span style="color: #4070a0">id</span><span style="color: #666666">=</span><span style="color: #4070a0">&quot;auth-button&quot;</span>&gt;&lt;/<span style="color: #062873; font-weight: bold">section</span>&gt;
+	&lt;<span style="color: #062873; font-weight: bold">section</span> <span style="color: #4070a0">id</span><span style="color: #666666">=</span><span style="color: #4070a0">&quot;view-selector&quot;</span>&gt;&lt;/<span style="color: #062873; font-weight: bold">section</span>&gt;
+	&lt;<span style="color: #062873; font-weight: bold">section</span> <span style="color: #4070a0">id</span><span style="color: #666666">=</span><span style="color: #4070a0">&quot;timeline&quot;</span>&gt;&lt;/<span style="color: #062873; font-weight: bold">section</span>&gt;
 
-	<span style="color: #75715e">&lt;!-- Step 2: Load the library. --&gt;</span>
-	<span style="color: #f8f8f2">&lt;</span><span style="color: #f92672">script</span><span style="color: #f8f8f2">&gt;</span>
-		<span style="color: #f8f8f2">(</span><span style="color: #66d9ef">function</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">w</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">d</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">s</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">g</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">js</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">fjs</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
-			<span style="color: #a6e22e">g</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">w</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">gapi</span> <span style="color: #f92672">||</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">w</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">gapi</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{});</span>
-			<span style="color: #a6e22e">g</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">analytics</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{</span>
-				<span style="color: #a6e22e">q</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">[],</span>
-				<span style="color: #a6e22e">ready</span><span style="color: #f92672">:</span> <span style="color: #66d9ef">function</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">cb</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
-					<span style="color: #66d9ef">this</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">q</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">push</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">cb</span><span style="color: #f8f8f2">)</span>
-				<span style="color: #f8f8f2">}</span>
-			<span style="color: #f8f8f2">};</span>
-			<span style="color: #a6e22e">js</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">d</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">createElement</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">s</span><span style="color: #f8f8f2">);</span>
-			<span style="color: #a6e22e">fjs</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">d</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">getElementsByTagName</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">s</span><span style="color: #f8f8f2">)[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">];</span>
-			<span style="color: #a6e22e">js</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">src</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&#39;https://apis.google.com/js/platform.js&#39;</span><span style="color: #f8f8f2">;</span>
-			<span style="color: #a6e22e">fjs</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">parentNode</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">insertBefore</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">js</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">fjs</span><span style="color: #f8f8f2">);</span>
-			<span style="color: #a6e22e">js</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">onload</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">function</span> <span style="color: #f8f8f2">()</span> <span style="color: #f8f8f2">{</span>
-				<span style="color: #a6e22e">g</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">load</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;analytics&#39;</span><span style="color: #f8f8f2">)</span>
-			<span style="color: #f8f8f2">};</span>
-		<span style="color: #f8f8f2">}(window,</span> <span style="color: #f8f8f2">document,</span> <span style="color: #e6db74">&#39;script&#39;</span><span style="color: #f8f8f2">));</span>
-	<span style="color: #f8f8f2">&lt;/</span><span style="color: #f92672">script</span><span style="color: #f8f8f2">&gt;</span>
+	<span style="color: #60a0b0; font-style: italic">&lt;!-- Step 2: Load the library. --&gt;</span>
+	&lt;<span style="color: #062873; font-weight: bold">script</span>&gt;
+		(<span style="color: #007020; font-weight: bold">function</span> (w, d, s, g, js, fjs) {
+			g <span style="color: #666666">=</span> w.gapi <span style="color: #666666">||</span> (w.gapi <span style="color: #666666">=</span> {});
+			g.analytics <span style="color: #666666">=</span> {
+				q<span style="color: #666666">:</span> [],
+				ready<span style="color: #666666">:</span> <span style="color: #007020; font-weight: bold">function</span> (cb) {
+					<span style="color: #007020; font-weight: bold">this</span>.q.push(cb)
+				}
+			};
+			js <span style="color: #666666">=</span> d.createElement(s);
+			fjs <span style="color: #666666">=</span> d.getElementsByTagName(s)[<span style="color: #40a070">0</span>];
+			js.src <span style="color: #666666">=</span> <span style="color: #4070a0">&#39;https://apis.google.com/js/platform.js&#39;</span>;
+			fjs.parentNode.insertBefore(js, fjs);
+			js.onload <span style="color: #666666">=</span> <span style="color: #007020; font-weight: bold">function</span> () {
+				g.load(<span style="color: #4070a0">&#39;analytics&#39;</span>)
+			};
+		}(<span style="color: #007020">window</span>, <span style="color: #007020">document</span>, <span style="color: #4070a0">&#39;script&#39;</span>));
+	&lt;/<span style="color: #062873; font-weight: bold">script</span>&gt;
 
-	<span style="color: #f8f8f2">&lt;</span><span style="color: #f92672">script</span><span style="color: #f8f8f2">&gt;</span>
-		<span style="color: #a6e22e">gapi</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">analytics</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">ready</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">function</span> <span style="color: #f8f8f2">()</span> <span style="color: #f8f8f2">{</span>
+	&lt;<span style="color: #062873; font-weight: bold">script</span>&gt;
+		gapi.analytics.ready(<span style="color: #007020; font-weight: bold">function</span> () {
 
-		<span style="color: #75715e">// Step 3: Authorize the user.</span>
-			<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">CLIENT_ID</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&#39;Insert Your Client-ID here&#39;</span><span style="color: #f8f8f2">;</span>
+		<span style="color: #60a0b0; font-style: italic">// Step 3: Authorize the user.</span>
+			<span style="color: #007020; font-weight: bold">var</span> CLIENT_ID <span style="color: #666666">=</span> <span style="color: #4070a0">&#39;Insert Your Client-ID here&#39;</span>;
 
-			<span style="color: #a6e22e">gapi</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">analytics</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">auth</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">authorize</span><span style="color: #f8f8f2">({</span>
-				<span style="color: #a6e22e">container</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;auth-button&#39;</span><span style="color: #f8f8f2">,</span>
-				<span style="color: #a6e22e">clientid</span><span style="color: #f92672">:</span> <span style="color: #a6e22e">CLIENT_ID</span><span style="color: #f8f8f2">,</span>
-			<span style="color: #f8f8f2">});</span>
+			gapi.analytics.auth.authorize({
+				container<span style="color: #666666">:</span> <span style="color: #4070a0">&#39;auth-button&#39;</span>,
+				clientid<span style="color: #666666">:</span> CLIENT_ID,
+			});
 
-			<span style="color: #75715e">// Step 4: Create the view selector.</span>
-			<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">viewSelector</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #a6e22e">gapi</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">analytics</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">ViewSelector</span><span style="color: #f8f8f2">({</span>
-				<span style="color: #a6e22e">container</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;view-selector&#39;</span>
-			<span style="color: #f8f8f2">});</span>
-			<span style="color: #75715e">// Step 5: Create the timeline chart.</span>
+			<span style="color: #60a0b0; font-style: italic">// Step 4: Create the view selector.</span>
+			<span style="color: #007020; font-weight: bold">var</span> viewSelector <span style="color: #666666">=</span> <span style="color: #007020; font-weight: bold">new</span> gapi.analytics.ViewSelector({
+				container<span style="color: #666666">:</span> <span style="color: #4070a0">&#39;view-selector&#39;</span>
+			});
+			<span style="color: #60a0b0; font-style: italic">// Step 5: Create the timeline chart.</span>
 
-			<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">timeline</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #a6e22e">gapi</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">analytics</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">googleCharts</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">DataChart</span><span style="color: #f8f8f2">({</span>
-				<span style="color: #a6e22e">reportType</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;ga&#39;</span><span style="color: #f8f8f2">,</span>
-				<span style="color: #a6e22e">query</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">{</span>
-					<span style="color: #e6db74">&#39;dimensions&#39;</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;ga:date&#39;</span><span style="color: #f8f8f2">,</span>
-					<span style="color: #e6db74">&#39;metrics&#39;</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;ga:sessions&#39;</span><span style="color: #f8f8f2">,</span>
-					<span style="color: #e6db74">&#39;start-date&#39;</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;30daysAgo&#39;</span><span style="color: #f8f8f2">,</span>
-					<span style="color: #e6db74">&#39;end-date&#39;</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;yesterday&#39;</span><span style="color: #f8f8f2">,</span>
-				<span style="color: #f8f8f2">},</span>
-				<span style="color: #a6e22e">chart</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">{</span>
-					<span style="color: #a6e22e">type</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;LINE&#39;</span><span style="color: #f8f8f2">,</span>
-					<span style="color: #a6e22e">container</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;timeline&#39;</span>
-				<span style="color: #f8f8f2">}</span>
-			<span style="color: #f8f8f2">});</span>
+			<span style="color: #007020; font-weight: bold">var</span> timeline <span style="color: #666666">=</span> <span style="color: #007020; font-weight: bold">new</span> gapi.analytics.googleCharts.DataChart({
+				reportType<span style="color: #666666">:</span> <span style="color: #4070a0">&#39;ga&#39;</span>,
+				query<span style="color: #666666">:</span> {
+					<span style="color: #4070a0">&#39;dimensions&#39;</span><span style="color: #666666">:</span> <span style="color: #4070a0">&#39;ga:date&#39;</span>,
+					<span style="color: #4070a0">&#39;metrics&#39;</span><span style="color: #666666">:</span> <span style="color: #4070a0">&#39;ga:sessions&#39;</span>,
+					<span style="color: #4070a0">&#39;start-date&#39;</span><span style="color: #666666">:</span> <span style="color: #4070a0">&#39;30daysAgo&#39;</span>,
+					<span style="color: #4070a0">&#39;end-date&#39;</span><span style="color: #666666">:</span> <span style="color: #4070a0">&#39;yesterday&#39;</span>,
+				},
+				chart<span style="color: #666666">:</span> {
+					type<span style="color: #666666">:</span> <span style="color: #4070a0">&#39;LINE&#39;</span>,
+					container<span style="color: #666666">:</span> <span style="color: #4070a0">&#39;timeline&#39;</span>
+				}
+			});
 
-			<span style="color: #75715e">// Step 6: Hook up the components to work together.</span>
-			<span style="color: #a6e22e">gapi</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">analytics</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">auth</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">on</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;success&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #66d9ef">function</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">response</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
-				<span style="color: #a6e22e">viewSelector</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">execute</span><span style="color: #f8f8f2">();</span>
-			<span style="color: #f8f8f2">});</span>
+			<span style="color: #60a0b0; font-style: italic">// Step 6: Hook up the components to work together.</span>
+			gapi.analytics.auth.on(<span style="color: #4070a0">&#39;success&#39;</span>, <span style="color: #007020; font-weight: bold">function</span> (response) {
+				viewSelector.execute();
+			});
 
-			<span style="color: #a6e22e">viewSelector</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">on</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;change&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #66d9ef">function</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">ids</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
-				<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">newIds</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{</span>
-					<span style="color: #a6e22e">query</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">{</span>
-						<span style="color: #a6e22e">ids</span><span style="color: #f92672">:</span> <span style="color: #a6e22e">ids</span>
-					<span style="color: #f8f8f2">}</span>
-				<span style="color: #f8f8f2">}</span>
-				<span style="color: #a6e22e">timeline</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">set</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">newIds</span><span style="color: #f8f8f2">).</span><span style="color: #a6e22e">execute</span><span style="color: #f8f8f2">();</span>
-			<span style="color: #f8f8f2">});</span>
-		<span style="color: #f8f8f2">});</span>
-	<span style="color: #f8f8f2">&lt;/</span><span style="color: #f92672">script</span><span style="color: #f8f8f2">&gt;</span>
-<span style="color: #f8f8f2">&lt;/</span><span style="color: #f92672">body</span><span style="color: #f8f8f2">&gt;</span>
+			viewSelector.on(<span style="color: #4070a0">&#39;change&#39;</span>, <span style="color: #007020; font-weight: bold">function</span> (ids) {
+				<span style="color: #007020; font-weight: bold">var</span> newIds <span style="color: #666666">=</span> {
+					query<span style="color: #666666">:</span> {
+						ids<span style="color: #666666">:</span> ids
+					}
+				}
+				timeline.set(newIds).execute();
+			});
+		});
+	&lt;/<span style="color: #062873; font-weight: bold">script</span>&gt;
+&lt;/<span style="color: #062873; font-weight: bold">body</span>&gt;
 
-<span style="color: #f8f8f2">&lt;/</span><span style="color: #f92672">html</span><span style="color: #f8f8f2">&gt;</span>
+&lt;/<span style="color: #062873; font-weight: bold">html</span>&gt;
 </pre></div>
 
 
@@ -172,32 +172,32 @@ We will begin by creating a new html doc and creating three sections with the f
 </ul>
 These sections will contain an authentication button, a view picker, and a chart.</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">&lt;</span><span style="color: #f92672">section</span> <span style="color: #a6e22e">id</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;auth-button&quot;</span><span style="color: #f8f8f2">&gt;&lt;/</span><span style="color: #f92672">section</span><span style="color: #f8f8f2">&gt;</span>
-<span style="color: #f8f8f2">&lt;</span><span style="color: #f92672">section</span> <span style="color: #a6e22e">id</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;view-selector&quot;</span><span style="color: #f8f8f2">&gt;&lt;/</span><span style="color: #f92672">section</span><span style="color: #f8f8f2">&gt;</span>
-<span style="color: #f8f8f2">&lt;</span><span style="color: #f92672">section</span> <span style="color: #a6e22e">id</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;timeline&quot;</span><span style="color: #f8f8f2">&gt;&lt;/</span><span style="color: #f92672">section</span><span style="color: #f8f8f2">&gt;</span>
+<p><div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>&lt;<span style="color: #062873; font-weight: bold">section</span> <span style="color: #4070a0">id</span><span style="color: #666666">=</span><span style="color: #4070a0">&quot;auth-button&quot;</span>&gt;&lt;/<span style="color: #062873; font-weight: bold">section</span>&gt;
+&lt;<span style="color: #062873; font-weight: bold">section</span> <span style="color: #4070a0">id</span><span style="color: #666666">=</span><span style="color: #4070a0">&quot;view-selector&quot;</span>&gt;&lt;/<span style="color: #062873; font-weight: bold">section</span>&gt;
+&lt;<span style="color: #062873; font-weight: bold">section</span> <span style="color: #4070a0">id</span><span style="color: #666666">=</span><span style="color: #4070a0">&quot;timeline&quot;</span>&gt;&lt;/<span style="color: #062873; font-weight: bold">section</span>&gt;
 </pre></div>
 </p>
 
 <p>To load the Embed API, include the following script block.</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">&lt;</span><span style="color: #f92672">script</span><span style="color: #f8f8f2">&gt;</span>
-	<span style="color: #f8f8f2">(</span><span style="color: #66d9ef">function</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">w</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">d</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">s</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">g</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">js</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">fjs</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
-		<span style="color: #a6e22e">g</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">w</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">gapi</span> <span style="color: #f92672">||</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">w</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">gapi</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{});</span>
-		<span style="color: #a6e22e">g</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">analytics</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{</span>
-			<span style="color: #a6e22e">q</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">[],</span>
-			<span style="color: #a6e22e">ready</span><span style="color: #f92672">:</span> <span style="color: #66d9ef">function</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">cb</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
-				<span style="color: #66d9ef">this</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">q</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">push</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">cb</span><span style="color: #f8f8f2">)</span>
-			<span style="color: #f8f8f2">}</span>
-		<span style="color: #f8f8f2">};</span>
-		<span style="color: #a6e22e">js</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">d</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">createElement</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">s</span><span style="color: #f8f8f2">);</span>
-		<span style="color: #a6e22e">fjs</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">d</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">getElementsByTagName</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">s</span><span style="color: #f8f8f2">)[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">];</span>
-		<span style="color: #a6e22e">js</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">src</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&#39;https://apis.google.com/js/platform.js&#39;</span><span style="color: #f8f8f2">;</span>
-		<span style="color: #a6e22e">fjs</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">parentNode</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">insertBefore</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">js</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">fjs</span><span style="color: #f8f8f2">);</span>
-		<span style="color: #a6e22e">js</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">onload</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">function</span> <span style="color: #f8f8f2">()</span> <span style="color: #f8f8f2">{</span>
-			<span style="color: #a6e22e">g</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">load</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;analytics&#39;</span><span style="color: #f8f8f2">)</span>
-		<span style="color: #f8f8f2">};</span>
-	<span style="color: #f8f8f2">}(window,</span> <span style="color: #f8f8f2">document,</span> <span style="color: #e6db74">&#39;script&#39;</span><span style="color: #f8f8f2">));</span>
-<span style="color: #f8f8f2">&lt;/</span><span style="color: #f92672">script</span><span style="color: #f8f8f2">&gt;</span>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>&lt;<span style="color: #062873; font-weight: bold">script</span>&gt;
+	(<span style="color: #007020; font-weight: bold">function</span> (w, d, s, g, js, fjs) {
+		g <span style="color: #666666">=</span> w.gapi <span style="color: #666666">||</span> (w.gapi <span style="color: #666666">=</span> {});
+		g.analytics <span style="color: #666666">=</span> {
+			q<span style="color: #666666">:</span> [],
+			ready<span style="color: #666666">:</span> <span style="color: #007020; font-weight: bold">function</span> (cb) {
+				<span style="color: #007020; font-weight: bold">this</span>.q.push(cb)
+			}
+		};
+		js <span style="color: #666666">=</span> d.createElement(s);
+		fjs <span style="color: #666666">=</span> d.getElementsByTagName(s)[<span style="color: #40a070">0</span>];
+		js.src <span style="color: #666666">=</span> <span style="color: #4070a0">&#39;https://apis.google.com/js/platform.js&#39;</span>;
+		fjs.parentNode.insertBefore(js, fjs);
+		js.onload <span style="color: #666666">=</span> <span style="color: #007020; font-weight: bold">function</span> () {
+			g.load(<span style="color: #4070a0">&#39;analytics&#39;</span>)
+		};
+	}(<span style="color: #007020">window</span>, <span style="color: #007020">document</span>, <span style="color: #4070a0">&#39;script&#39;</span>));
+&lt;/<span style="color: #062873; font-weight: bold">script</span>&gt;
 </pre></div>
 
 
@@ -207,14 +207,14 @@ These sections will contain an authentication button, a view picker, and a c
 
 <p>Here is the code for to perform authentication. Make sure to set the CLIENT-ID variable to your Client ID.</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #75715e">// Step 3: Authorize the user.</span>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic">// Step 3: Authorize the user.</span>
 
-<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">CLIENT_ID</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&#39;Client-ID Goes Here&#39;</span><span style="color: #f8f8f2">;</span>
+<span style="color: #007020; font-weight: bold">var</span> CLIENT_ID <span style="color: #666666">=</span> <span style="color: #4070a0">&#39;Client-ID Goes Here&#39;</span>;
 
-<span style="color: #a6e22e">gapi</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">analytics</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">auth</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">authorize</span><span style="color: #f8f8f2">({</span>
-	<span style="color: #a6e22e">container</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;auth-button&#39;</span><span style="color: #f8f8f2">,</span>
-	<span style="color: #a6e22e">clientid</span><span style="color: #f92672">:</span> <span style="color: #a6e22e">CLIENT_ID</span><span style="color: #f8f8f2">,</span>
-<span style="color: #f8f8f2">});</span>
+gapi.analytics.auth.authorize({
+	container<span style="color: #666666">:</span> <span style="color: #4070a0">&#39;auth-button&#39;</span>,
+	clientid<span style="color: #666666">:</span> CLIENT_ID,
+});
 </pre></div>
 
 
@@ -222,49 +222,49 @@ These sections will contain an authentication button, a view picker, and a c
 
 <p>The following function creates a view selector. The container is set to the id of the viewpicker section.</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #75715e">// Step 4: Create the view selector.</span>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic">// Step 4: Create the view selector.</span>
 
-<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">viewSelector</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #a6e22e">gapi</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">analytics</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">ViewSelector</span><span style="color: #f8f8f2">({</span>
-	<span style="color: #a6e22e">container</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;view-selector&#39;</span>
-<span style="color: #f8f8f2">});</span>
+<span style="color: #007020; font-weight: bold">var</span> viewSelector <span style="color: #666666">=</span> <span style="color: #007020; font-weight: bold">new</span> gapi.analytics.ViewSelector({
+	container<span style="color: #666666">:</span> <span style="color: #4070a0">&#39;view-selector&#39;</span>
+});
 </pre></div>
 
 
 <p>Here is the code to create the chart. The query specifies what data you want and the chart defines visual aspects.
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #75715e">// Step 5: Create the timeline chart.</span>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic">// Step 5: Create the timeline chart.</span>
 
-<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">timeline</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #a6e22e">gapi</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">analytics</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">googleCharts</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">DataChart</span><span style="color: #f8f8f2">({</span>
-	<span style="color: #a6e22e">reportType</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;ga&#39;</span><span style="color: #f8f8f2">,</span>
-	<span style="color: #a6e22e">query</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">{</span>
-		<span style="color: #e6db74">&#39;dimensions&#39;</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;ga:date&#39;</span><span style="color: #f8f8f2">,</span>
-		<span style="color: #e6db74">&#39;metrics&#39;</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;ga:sessions&#39;</span><span style="color: #f8f8f2">,</span>
-		<span style="color: #e6db74">&#39;start-date&#39;</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;30daysAgo&#39;</span><span style="color: #f8f8f2">,</span>
-		<span style="color: #e6db74">&#39;end-date&#39;</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;yesterday&#39;</span><span style="color: #f8f8f2">,</span>
-		<span style="color: #f8f8f2">},</span>
-	<span style="color: #a6e22e">chart</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">{</span>
-		<span style="color: #a6e22e">type</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;LINE&#39;</span><span style="color: #f8f8f2">,</span>
-		<span style="color: #a6e22e">container</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;timeline&#39;</span>
-	<span style="color: #f8f8f2">}</span>
-<span style="color: #f8f8f2">});</span>
+<span style="color: #007020; font-weight: bold">var</span> timeline <span style="color: #666666">=</span> <span style="color: #007020; font-weight: bold">new</span> gapi.analytics.googleCharts.DataChart({
+	reportType<span style="color: #666666">:</span> <span style="color: #4070a0">&#39;ga&#39;</span>,
+	query<span style="color: #666666">:</span> {
+		<span style="color: #4070a0">&#39;dimensions&#39;</span><span style="color: #666666">:</span> <span style="color: #4070a0">&#39;ga:date&#39;</span>,
+		<span style="color: #4070a0">&#39;metrics&#39;</span><span style="color: #666666">:</span> <span style="color: #4070a0">&#39;ga:sessions&#39;</span>,
+		<span style="color: #4070a0">&#39;start-date&#39;</span><span style="color: #666666">:</span> <span style="color: #4070a0">&#39;30daysAgo&#39;</span>,
+		<span style="color: #4070a0">&#39;end-date&#39;</span><span style="color: #666666">:</span> <span style="color: #4070a0">&#39;yesterday&#39;</span>,
+		},
+	chart<span style="color: #666666">:</span> {
+		type<span style="color: #666666">:</span> <span style="color: #4070a0">&#39;LINE&#39;</span>,
+		container<span style="color: #666666">:</span> <span style="color: #4070a0">&#39;timeline&#39;</span>
+	}
+});
 </pre></div>
 
 The last block of code ties everything together. The viewSelector onChange function updates the chart when a new view is selected.</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #75715e">// Step 6: Hook up the components to work together.</span>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic">// Step 6: Hook up the components to work together.</span>
 
-<span style="color: #a6e22e">gapi</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">analytics</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">auth</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">on</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;success&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #66d9ef">function</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">response</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
-	<span style="color: #a6e22e">viewSelector</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">execute</span><span style="color: #f8f8f2">();</span>
-<span style="color: #f8f8f2">});</span>
+gapi.analytics.auth.on(<span style="color: #4070a0">&#39;success&#39;</span>, <span style="color: #007020; font-weight: bold">function</span> (response) {
+	viewSelector.execute();
+});
 
-<span style="color: #a6e22e">viewSelector</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">on</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;change&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #66d9ef">function</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">ids</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
-	<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">newIds</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{</span>
-		<span style="color: #a6e22e">query</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">{</span>
-			<span style="color: #a6e22e">ids</span><span style="color: #f92672">:</span> <span style="color: #a6e22e">ids</span>
-		<span style="color: #f8f8f2">}</span>
-	<span style="color: #f8f8f2">}</span>
-	<span style="color: #a6e22e">timeline</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">set</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">newIds</span><span style="color: #f8f8f2">).</span><span style="color: #a6e22e">execute</span><span style="color: #f8f8f2">();</span>
-	<span style="color: #f8f8f2">});</span>
-<span style="color: #f8f8f2">});</span>
+viewSelector.on(<span style="color: #4070a0">&#39;change&#39;</span>, <span style="color: #007020; font-weight: bold">function</span> (ids) {
+	<span style="color: #007020; font-weight: bold">var</span> newIds <span style="color: #666666">=</span> {
+		query<span style="color: #666666">:</span> {
+			ids<span style="color: #666666">:</span> ids
+		}
+	}
+	timeline.set(newIds).execute();
+	});
+});
 </pre></div>
 
 

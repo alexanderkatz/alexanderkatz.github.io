@@ -30,12 +30,12 @@
 
 <p>In the past if I wanted to change the color of an icon on hover I would have changed the background of the element to a differently colored icon. The CSS would have looked something like this.</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #a6e22e">.icon</span><span style="color: #f8f8f2">{</span>
-    <span style="color: #f8f8f2">background</span><span style="color: #f92672">:</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;path/to/icon.png&#39;</span><span style="color: #f8f8f2">);</span>
-<span style="color: #f8f8f2">}</span>
-<span style="color: #a6e22e">.icon:hover</span><span style="color: #f8f8f2">{</span>
-    <span style="color: #f8f8f2">background</span><span style="color: #f92672">:</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;path/to/different-icon.png&#39;</span><span style="color: #f8f8f2">);</span>
-<span style="color: #f8f8f2">}</span>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #0e84b5; font-weight: bold">.icon</span>{
+    <span style="color: #007020">background</span><span style="color: #666666">:</span>(<span style="color: #4070a0">&#39;path/to/icon.png&#39;</span>);
+}
+<span style="color: #0e84b5; font-weight: bold">.icon</span><span style="color: #555555; font-weight: bold">:hover</span>{
+    <span style="color: #007020">background</span><span style="color: #666666">:</span>(<span style="color: #4070a0">&#39;path/to/different-icon.png&#39;</span>);
+}
 </pre></div>
 
 
@@ -45,15 +45,15 @@
 
 <p>To use this technique, set the value of <code>mask</code> to the correct file and set the <code>background-color</code> as desired. The SVG will act as mask and the <code>background-color</code> will only be visible where the icon is. Define a different <code>background-color</code> for <code>:hover</code> to switch between colors on hover.</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #a6e22e">.icon</span><span style="color: #f8f8f2">{</span>
-  <span style="color: #f8f8f2">background-color</span><span style="color: #f92672">:</span><span style="color: #ae81ff">#005397</span><span style="color: #f8f8f2">;</span>
-  <span style="color: #f8f8f2">mask</span><span style="color: #f92672">:</span> <span style="color: #e6db74">url(&#39;http://alexkatz.me/img/logo.svg&#39;)</span> <span style="color: #f8f8f2">no-repeat</span> <span style="color: #ae81ff">50%</span> <span style="color: #ae81ff">50%</span><span style="color: #f8f8f2">;</span>
-  <span style="color: #f8f8f2">mask</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">size</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">cover;</span>
-<span style="color: #f8f8f2">}</span>
-<span style="color: #f92672">icon</span><span style="color: #a6e22e">:hover</span><span style="color: #f8f8f2">{</span>
-  <span style="color: #f8f8f2">background-color</span><span style="color: #f92672">:</span><span style="color: #ae81ff">#01FFC7</span><span style="color: #f8f8f2">;</span>
-  <span style="color: #f8f8f2">transition</span><span style="color: #f92672">:</span><span style="color: #f8f8f2">background-color</span> <span style="color: #ae81ff">.5s</span><span style="color: #f8f8f2">;</span>
-<span style="color: #f8f8f2">}</span>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #0e84b5; font-weight: bold">.icon</span>{
+  <span style="color: #007020">background-color</span><span style="color: #666666">:</span><span style="color: #40a070">#005397</span>;
+  mask<span style="color: #666666">:</span> <span style="color: #c65d09">url(&#39;http://alexkatz.me/img/logo.svg&#39;)</span> <span style="color: #007020">no-repeat</span> <span style="color: #40a070">50%</span> <span style="color: #40a070">50%</span>;
+  mask<span style="color: #666666">-</span><span style="color: #007020">size</span><span style="color: #666666">:</span> cover;
+}
+<span style="color: #062873; font-weight: bold">icon</span><span style="color: #555555; font-weight: bold">:hover</span>{
+  <span style="color: #007020">background-color</span><span style="color: #666666">:</span><span style="color: #40a070">#01FFC7</span>;
+  transition<span style="color: #666666">:</span><span style="color: #007020">background-color</span> <span style="color: #40a070">.5s</span>;
+}
 </pre></div>
 
 

@@ -36,10 +36,10 @@
 
 <p>Here is the code for the audio element that we will be controlling.</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">&lt;</span><span style="color: #f92672">audio</span> <span style="color: #a6e22e">id</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;music&quot;</span> <span style="color: #a6e22e">controls</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;controls&quot;</span><span style="color: #f8f8f2">&gt;</span>
-  <span style="color: #f8f8f2">&lt;</span><span style="color: #f92672">source</span> <span style="color: #a6e22e">src</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;music/onlyidreamwithyou1.ogg&quot;</span> <span style="color: #a6e22e">type</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;audio/ogg&quot;</span> <span style="color: #f8f8f2">/&gt;</span>
-  <span style="color: #f8f8f2">&lt;</span><span style="color: #f92672">source</span> <span style="color: #a6e22e">src</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;music/onlyidreamwithyou1.mp3&quot;</span> <span style="color: #a6e22e">type</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;audio/mpeg&quot;</span> <span style="color: #f8f8f2">/&gt;</span>
-<span style="color: #f8f8f2">&lt;/</span><span style="color: #f92672">audio</span><span style="color: #f8f8f2">&gt;</span>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>&lt;<span style="color: #062873; font-weight: bold">audio</span> <span style="color: #4070a0">id</span><span style="color: #666666">=</span><span style="color: #4070a0">&quot;music&quot;</span> <span style="color: #4070a0">controls</span><span style="color: #666666">=</span><span style="color: #4070a0">&quot;controls&quot;</span>&gt;
+  &lt;<span style="color: #062873; font-weight: bold">source</span> <span style="color: #4070a0">src</span><span style="color: #666666">=</span><span style="color: #4070a0">&quot;music/onlyidreamwithyou1.ogg&quot;</span> <span style="color: #4070a0">type</span><span style="color: #666666">=</span><span style="color: #4070a0">&quot;audio/ogg&quot;</span> /&gt;
+  &lt;<span style="color: #062873; font-weight: bold">source</span> <span style="color: #4070a0">src</span><span style="color: #666666">=</span><span style="color: #4070a0">&quot;music/onlyidreamwithyou1.mp3&quot;</span> <span style="color: #4070a0">type</span><span style="color: #666666">=</span><span style="color: #4070a0">&quot;audio/mpeg&quot;</span> /&gt;
+&lt;/<span style="color: #062873; font-weight: bold">audio</span>&gt;
 </pre></div>
 
 
@@ -55,38 +55,38 @@
 </ol>
 
 <p>CODE FOR CLASSES AND BUTTON
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">&lt;</span><span style="color: #f92672">style</span><span style="color: #f8f8f2">&gt;</span>
-<span style="color: #f8f8f2">#pButton{</span>
-	<span style="color: #f8f8f2">height</span><span style="color: #f92672">:</span><span style="color: #ae81ff">60px</span><span style="color: #f8f8f2">;</span>
-	<span style="color: #f8f8f2">width</span><span style="color: #f92672">:</span> <span style="color: #ae81ff">60px</span><span style="color: #f8f8f2">;</span>
-	<span style="color: #f8f8f2">border</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">none;</span>
-	<span style="color: #f8f8f2">background</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">size</span><span style="color: #f92672">:</span> <span style="color: #ae81ff">50%</span> <span style="color: #ae81ff">50%</span><span style="color: #f8f8f2">;</span>
-	<span style="color: #f8f8f2">background-position</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">center;</span>
-<span style="color: #f8f8f2">}</span>
-<span style="color: #a6e22e">.play</span><span style="color: #f8f8f2">{background</span><span style="color: #f92672">:</span> <span style="color: #e6db74">url(&#39;../images/play.png&#39;)</span> <span style="color: #f8f8f2">no-repeat;}</span>
-<span style="color: #a6e22e">.pause</span><span style="color: #f8f8f2">{background</span><span style="color: #f92672">:</span> <span style="color: #e6db74">url(&#39;../images/pause.png&#39;)</span> <span style="color: #f8f8f2">no-repeat;}</span>
-<span style="color: #f8f8f2">&lt;/</span><span style="color: #f92672">style</span><span style="color: #f8f8f2">&gt;</span>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>&lt;<span style="color: #062873; font-weight: bold">style</span>&gt;
+<span style="color: #0e84b5; font-weight: bold">#pButton</span>{
+	<span style="color: #007020">height</span><span style="color: #666666">:</span><span style="color: #40a070">60px</span>;
+	<span style="color: #007020">width</span><span style="color: #666666">:</span> <span style="color: #40a070">60px</span>;
+	<span style="color: #007020">border</span><span style="color: #666666">:</span> <span style="color: #007020">none</span>;
+	<span style="color: #007020">background</span><span style="color: #666666">-</span><span style="color: #007020">size</span><span style="color: #666666">:</span> <span style="color: #40a070">50%</span> <span style="color: #40a070">50%</span>;
+	<span style="color: #007020">background-position</span><span style="color: #666666">:</span> <span style="color: #007020">center</span>;
+}
+<span style="color: #0e84b5; font-weight: bold">.play</span>{<span style="color: #007020">background</span><span style="color: #666666">:</span> <span style="color: #c65d09">url(&#39;../images/play.png&#39;)</span> <span style="color: #007020">no-repeat</span>;}
+<span style="color: #0e84b5; font-weight: bold">.pause</span>{<span style="color: #007020">background</span><span style="color: #666666">:</span> <span style="color: #c65d09">url(&#39;../images/pause.png&#39;)</span> <span style="color: #007020">no-repeat</span>;}
+&lt;/<span style="color: #062873; font-weight: bold">style</span>&gt;
 
-<span style="color: #f8f8f2">&lt;</span><span style="color: #f92672">button</span> <span style="color: #a6e22e">id</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;pButton&quot;</span> <span style="color: #a6e22e">class</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;play&quot;</span> <span style="color: #a6e22e">onclick</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;playAudio()&quot;</span><span style="color: #f8f8f2">&gt;&lt;/</span><span style="color: #f92672">button</span><span style="color: #f8f8f2">&gt;</span>
+&lt;<span style="color: #062873; font-weight: bold">button</span> <span style="color: #4070a0">id</span><span style="color: #666666">=</span><span style="color: #4070a0">&quot;pButton&quot;</span> <span style="color: #4070a0">class</span><span style="color: #666666">=</span><span style="color: #4070a0">&quot;play&quot;</span> <span style="color: #4070a0">onclick</span><span style="color: #666666">=</span><span style="color: #4070a0">&quot;playAudio()&quot;</span>&gt;&lt;/<span style="color: #062873; font-weight: bold">button</span>&gt;
 </pre></div>
 </p>
 
 <p>To make our play button function, we write onclick=&ldquo;playAudio&rdquo; inside the button’s opening tag. This means the playAudio function is called whenever pButton is clicked. The function toggles between the .play and .pause classes and plays and pauses the audio.</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #75715e">// variable to store HTML5 audio element</span>
-<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">music</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">document.</span><span style="color: #a6e22e">getElementById</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;music&#39;</span><span style="color: #f8f8f2">);</span>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic">// variable to store HTML5 audio element</span>
+<span style="color: #007020; font-weight: bold">var</span> music <span style="color: #666666">=</span> <span style="color: #007020">document</span>.getElementById(<span style="color: #4070a0">&#39;music&#39;</span>);
 
-<span style="color: #66d9ef">function</span> <span style="color: #a6e22e">playAudio</span><span style="color: #f8f8f2">()</span> <span style="color: #f8f8f2">{</span>
-	<span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">music</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">paused</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
-		<span style="color: #a6e22e">music</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">play</span><span style="color: #f8f8f2">();</span>
-		<span style="color: #a6e22e">pButton</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">className</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;&quot;</span><span style="color: #f8f8f2">;</span>
-		<span style="color: #a6e22e">pButton</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">className</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;pause&quot;</span><span style="color: #f8f8f2">;</span>
-	<span style="color: #f8f8f2">}</span> <span style="color: #66d9ef">else</span> <span style="color: #f8f8f2">{</span>
-		<span style="color: #a6e22e">music</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">pause</span><span style="color: #f8f8f2">();</span>
-		<span style="color: #a6e22e">pButton</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">className</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;&quot;</span><span style="color: #f8f8f2">;</span>
-		<span style="color: #a6e22e">pButton</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">className</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;play&quot;</span><span style="color: #f8f8f2">;</span>
-	<span style="color: #f8f8f2">}</span>
-<span style="color: #f8f8f2">}</span>
+<span style="color: #007020; font-weight: bold">function</span> playAudio() {
+	<span style="color: #007020; font-weight: bold">if</span> (music.paused) {
+		music.play();
+		pButton.className <span style="color: #666666">=</span> <span style="color: #4070a0">&quot;&quot;</span>;
+		pButton.className <span style="color: #666666">=</span> <span style="color: #4070a0">&quot;pause&quot;</span>;
+	} <span style="color: #007020; font-weight: bold">else</span> {
+		music.pause();
+		pButton.className <span style="color: #666666">=</span> <span style="color: #4070a0">&quot;&quot;</span>;
+		pButton.className <span style="color: #666666">=</span> <span style="color: #4070a0">&quot;play&quot;</span>;
+	}
+}
 </pre></div>
 
 
@@ -103,31 +103,31 @@ If the audio is playing we pause it and change pButton’s class to play.</p>
 
 <p>Here is the HTML and CSS. You should also add the float:left property to the play button.</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">&lt;</span><span style="color: #f92672">style</span><span style="color: #f8f8f2">&gt;</span>
-<span style="color: #f8f8f2">#timeline{</span>
-	<span style="color: #f8f8f2">width</span><span style="color: #f92672">:</span> <span style="color: #ae81ff">400px</span><span style="color: #f8f8f2">;</span>
-	<span style="color: #f8f8f2">height</span><span style="color: #f92672">:</span> <span style="color: #ae81ff">20px</span><span style="color: #f8f8f2">;</span>
-	<span style="color: #f8f8f2">background</span><span style="color: #f92672">:</span> <span style="color: #ae81ff">#4200f7</span><span style="color: #f8f8f2">;</span>
-	<span style="color: #f8f8f2">margin-top</span><span style="color: #f92672">:</span> <span style="color: #ae81ff">20px</span><span style="color: #f8f8f2">;</span>
-	<span style="color: #f8f8f2">float</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">left;</span>
-	<span style="color: #f8f8f2">border</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">radius</span><span style="color: #f92672">:</span> <span style="color: #ae81ff">15px</span><span style="color: #f8f8f2">;</span>
-<span style="color: #f8f8f2">}</span>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>&lt;<span style="color: #062873; font-weight: bold">style</span>&gt;
+<span style="color: #0e84b5; font-weight: bold">#timeline</span>{
+	<span style="color: #007020">width</span><span style="color: #666666">:</span> <span style="color: #40a070">400px</span>;
+	<span style="color: #007020">height</span><span style="color: #666666">:</span> <span style="color: #40a070">20px</span>;
+	<span style="color: #007020">background</span><span style="color: #666666">:</span> <span style="color: #40a070">#4200f7</span>;
+	<span style="color: #007020">margin-top</span><span style="color: #666666">:</span> <span style="color: #40a070">20px</span>;
+	<span style="color: #007020">float</span><span style="color: #666666">:</span> <span style="color: #007020">left</span>;
+	<span style="color: #007020">border</span><span style="color: #666666">-</span>radius<span style="color: #666666">:</span> <span style="color: #40a070">15px</span>;
+}
 
-<span style="color: #f8f8f2">#playhead{</span>
-	<span style="color: #f8f8f2">width</span><span style="color: #f92672">:</span> <span style="color: #ae81ff">18px</span><span style="color: #f8f8f2">;</span>
-	<span style="color: #f8f8f2">height</span><span style="color: #f92672">:</span> <span style="color: #ae81ff">18px</span><span style="color: #f8f8f2">;</span>
-	<span style="color: #f8f8f2">border</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">radius</span><span style="color: #f92672">:</span> <span style="color: #ae81ff">50%</span><span style="color: #f8f8f2">;</span>
-	<span style="color: #f8f8f2">margin-top</span><span style="color: #f92672">:</span> <span style="color: #ae81ff">1px</span><span style="color: #f8f8f2">;</span>
-	<span style="color: #f8f8f2">background</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">rgba(</span><span style="color: #ae81ff">0</span><span style="color: #f92672">,</span> <span style="color: #ae81ff">255</span><span style="color: #f92672">,</span> <span style="color: #ae81ff">196</span><span style="color: #f92672">,</span> <span style="color: #ae81ff">0</span><span style="color: #f92672">.</span><span style="color: #ae81ff">82</span><span style="color: #f8f8f2">);</span>
-<span style="color: #f8f8f2">}</span>
-<span style="color: #f8f8f2">&lt;/</span><span style="color: #f92672">style</span><span style="color: #f8f8f2">&gt;</span>
+<span style="color: #0e84b5; font-weight: bold">#playhead</span>{
+	<span style="color: #007020">width</span><span style="color: #666666">:</span> <span style="color: #40a070">18px</span>;
+	<span style="color: #007020">height</span><span style="color: #666666">:</span> <span style="color: #40a070">18px</span>;
+	<span style="color: #007020">border</span><span style="color: #666666">-</span>radius<span style="color: #666666">:</span> <span style="color: #40a070">50%</span>;
+	<span style="color: #007020">margin-top</span><span style="color: #666666">:</span> <span style="color: #40a070">1px</span>;
+	<span style="color: #007020">background</span><span style="color: #666666">:</span> rgba(<span style="color: #40a070">0</span><span style="color: #666666">,</span> <span style="color: #40a070">255</span><span style="color: #666666">,</span> <span style="color: #40a070">196</span><span style="color: #666666">,</span> <span style="color: #40a070">0</span><span style="color: #666666">.</span><span style="color: #40a070">82</span>);
+}
+&lt;/<span style="color: #062873; font-weight: bold">style</span>&gt;
 
-<span style="color: #f8f8f2">&lt;</span><span style="color: #f92672">div</span> <span style="color: #a6e22e">id</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;audioplayer&quot;</span><span style="color: #f8f8f2">&gt;</span>
-	<span style="color: #f8f8f2">&lt;</span><span style="color: #f92672">button</span> <span style="color: #a6e22e">id</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;pButton&quot;</span> <span style="color: #a6e22e">class</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;play&quot;</span> <span style="color: #a6e22e">onclick</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;play()&quot;</span><span style="color: #f8f8f2">&gt;&lt;/</span><span style="color: #f92672">button</span><span style="color: #f8f8f2">&gt;</span>
-	<span style="color: #f8f8f2">&lt;</span><span style="color: #f92672">div</span> <span style="color: #a6e22e">id</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;timeline&quot;</span><span style="color: #f8f8f2">&gt;</span>
-		<span style="color: #f8f8f2">&lt;</span><span style="color: #f92672">div</span> <span style="color: #a6e22e">id</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;playhead&quot;</span><span style="color: #f8f8f2">&gt;&lt;/</span><span style="color: #f92672">div</span><span style="color: #f8f8f2">&gt;</span>
-	<span style="color: #f8f8f2">&lt;/</span><span style="color: #f92672">div</span><span style="color: #f8f8f2">&gt;</span>
-<span style="color: #f8f8f2">&lt;/</span><span style="color: #f92672">div</span><span style="color: #f8f8f2">&gt;</span>
+&lt;<span style="color: #062873; font-weight: bold">div</span> <span style="color: #4070a0">id</span><span style="color: #666666">=</span><span style="color: #4070a0">&quot;audioplayer&quot;</span>&gt;
+	&lt;<span style="color: #062873; font-weight: bold">button</span> <span style="color: #4070a0">id</span><span style="color: #666666">=</span><span style="color: #4070a0">&quot;pButton&quot;</span> <span style="color: #4070a0">class</span><span style="color: #666666">=</span><span style="color: #4070a0">&quot;play&quot;</span> <span style="color: #4070a0">onclick</span><span style="color: #666666">=</span><span style="color: #4070a0">&quot;play()&quot;</span>&gt;&lt;/<span style="color: #062873; font-weight: bold">button</span>&gt;
+	&lt;<span style="color: #062873; font-weight: bold">div</span> <span style="color: #4070a0">id</span><span style="color: #666666">=</span><span style="color: #4070a0">&quot;timeline&quot;</span>&gt;
+		&lt;<span style="color: #062873; font-weight: bold">div</span> <span style="color: #4070a0">id</span><span style="color: #666666">=</span><span style="color: #4070a0">&quot;playhead&quot;</span>&gt;&lt;/<span style="color: #062873; font-weight: bold">div</span>&gt;
+	&lt;/<span style="color: #062873; font-weight: bold">div</span>&gt;
+&lt;/<span style="color: #062873; font-weight: bold">div</span>&gt;
 </pre></div>
 
 
@@ -137,21 +137,21 @@ If the audio is playing we pause it and change pButton’s class to play.</p>
 
 <p>The next step is to write JavaScript that will move the playhead as the track advances. This is accomplished by adding an event listener for timeupdate that triggers a function that moves the playhead the appropriate amount. In order for time update to work we will also need to get the duration of the audio file. The code is also below.</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">var</span> <span style="color: #a6e22e">duration</span><span style="color: #f8f8f2">;</span>
-<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">music</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">document.</span><span style="color: #a6e22e">getElementById</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;playhead&#39;</span><span style="color: #f8f8f2">);</span>
-<span style="color: #a6e22e">music</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">addEventListener</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;timeupdate&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">timeUpdate</span><span style="color: #f8f8f2">,</span> <span style="color: #66d9ef">false</span><span style="color: #f8f8f2">);</span>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020; font-weight: bold">var</span> duration;
+<span style="color: #007020; font-weight: bold">var</span> music <span style="color: #666666">=</span> <span style="color: #007020">document</span>.getElementById(<span style="color: #4070a0">&#39;playhead&#39;</span>);
+music.addEventListener(<span style="color: #4070a0">&quot;timeupdate&quot;</span>, timeUpdate, <span style="color: #007020; font-weight: bold">false</span>);
 
-<span style="color: #66d9ef">function</span> <span style="color: #a6e22e">timeUpdate</span><span style="color: #f8f8f2">()</span> <span style="color: #f8f8f2">{</span>
-	<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">playPercent</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">100</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">music</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">currentTime</span> <span style="color: #f92672">/</span> <span style="color: #a6e22e">duration</span><span style="color: #f8f8f2">);</span>
-	<span style="color: #a6e22e">playhead</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">style</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">marginLeft</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">playPercent</span> <span style="color: #f92672">+</span> <span style="color: #e6db74">&quot;%&quot;</span><span style="color: #f8f8f2">;</span>
-<span style="color: #f8f8f2">}</span>
+<span style="color: #007020; font-weight: bold">function</span> timeUpdate() {
+	<span style="color: #007020; font-weight: bold">var</span> playPercent <span style="color: #666666">=</span> <span style="color: #40a070">100</span> <span style="color: #666666">*</span> (music.currentTime <span style="color: #666666">/</span> duration);
+	playhead.style.marginLeft <span style="color: #666666">=</span> playPercent <span style="color: #666666">+</span> <span style="color: #4070a0">&quot;%&quot;</span>;
+}
 
-<span style="color: #75715e">// Gets audio file duration</span>
-<span style="color: #a6e22e">music</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">addEventListener</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;canplaythrough&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #66d9ef">function</span> <span style="color: #f8f8f2">()</span> <span style="color: #f8f8f2">{</span>
-	<span style="color: #a6e22e">duration</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">music</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">duration</span><span style="color: #f8f8f2">;</span>
-<span style="color: #f8f8f2">},</span> <span style="color: #66d9ef">false</span><span style="color: #f8f8f2">);</span>
+<span style="color: #60a0b0; font-style: italic">// Gets audio file duration</span>
+music.addEventListener(<span style="color: #4070a0">&quot;canplaythrough&quot;</span>, <span style="color: #007020; font-weight: bold">function</span> () {
+	duration <span style="color: #666666">=</span> music.duration;
+}, <span style="color: #007020; font-weight: bold">false</span>);
 </pre></div>
-</p>
+
 
 <h2 id="changing-track-position">CHANGING TRACK POSITION</h2>
 
@@ -164,36 +164,36 @@ If the audio is playing we pause it and change pButton’s class to play.</p>
 
 <p>The first method is accomplished by listening for clicks on the timeline, calculating the click’s position as a percent of the timeline’s width, and updating the playhead and track positions.</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #75715e">//Makes timeline clickable</span>
-<span style="color: #a6e22e">timeline</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">addEventListener</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;click&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #66d9ef">function</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">event</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
-	<span style="color: #a6e22e">moveplayhead</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">event</span><span style="color: #f8f8f2">);</span>
-	<span style="color: #a6e22e">music</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">currentTime</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">duration</span> <span style="color: #f92672">*</span> <span style="color: #a6e22e">clickPercent</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">event</span><span style="color: #f8f8f2">);</span>
-<span style="color: #f8f8f2">},</span> <span style="color: #66d9ef">false</span><span style="color: #f8f8f2">);</span>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic">//Makes timeline clickable</span>
+timeline.addEventListener(<span style="color: #4070a0">&quot;click&quot;</span>, <span style="color: #007020; font-weight: bold">function</span> (event) {
+	moveplayhead(event);
+	music.currentTime <span style="color: #666666">=</span> duration <span style="color: #666666">*</span> clickPercent(event);
+}, <span style="color: #007020; font-weight: bold">false</span>);
 
-<span style="color: #75715e">// returns click as decimal (.77) of the total timelineWidth</span>
-<span style="color: #66d9ef">function</span> <span style="color: #a6e22e">clickPercent</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">event</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
-    <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">event</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">clientX</span> <span style="color: #f92672">-</span> <span style="color: #a6e22e">getPosition</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">timeline</span><span style="color: #f8f8f2">))</span> <span style="color: #f92672">/</span> <span style="color: #a6e22e">timelineWidth</span><span style="color: #f8f8f2">;</span>
-<span style="color: #f8f8f2">}</span>
+<span style="color: #60a0b0; font-style: italic">// returns click as decimal (.77) of the total timelineWidth</span>
+<span style="color: #007020; font-weight: bold">function</span> clickPercent(event) {
+    <span style="color: #007020; font-weight: bold">return</span> (event.clientX <span style="color: #666666">-</span> getPosition(timeline)) <span style="color: #666666">/</span> timelineWidth;
+}
 
-<span style="color: #66d9ef">function</span> <span style="color: #a6e22e">moveplayhead</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">event</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
-    <span style="color: #66d9ef">var</span> <span style="color: #a6e22e">newMargLeft</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">event</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">clientX</span> <span style="color: #f92672">-</span> <span style="color: #a6e22e">getPosition</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">timeline</span><span style="color: #f8f8f2">);</span>
+<span style="color: #007020; font-weight: bold">function</span> moveplayhead(event) {
+    <span style="color: #007020; font-weight: bold">var</span> newMargLeft <span style="color: #666666">=</span> event.clientX <span style="color: #666666">-</span> getPosition(timeline);
 
-	<span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">newMargLeft</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0</span> <span style="color: #a6e22e">amp</span><span style="color: #f8f8f2">;</span><span style="color: #a6e22e">amp</span><span style="color: #f8f8f2">;</span> <span style="color: #a6e22e">newMargLeft</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">timelineWidth</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
-		<span style="color: #a6e22e">playhead</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">style</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">marginLeft</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">newMargLeft</span> <span style="color: #f92672">+</span> <span style="color: #e6db74">&quot;px&quot;</span><span style="color: #f8f8f2">;</span>
-	<span style="color: #f8f8f2">}</span>
-	<span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">newMargLeft</span>  <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
-		<span style="color: #a6e22e">playhead</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">style</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">marginLeft</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;0px&quot;</span><span style="color: #f8f8f2">;</span>
-	<span style="color: #f8f8f2">}</span>
-	<span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">newMargLeft</span>  <span style="color: #a6e22e">timelineWidth</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
-		<span style="color: #a6e22e">playhead</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">style</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">marginLeft</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">timelineWidth</span> <span style="color: #f92672">+</span> <span style="color: #e6db74">&quot;px&quot;</span><span style="color: #f8f8f2">;</span>
-	<span style="color: #f8f8f2">}</span>
-<span style="color: #f8f8f2">}</span>
+	<span style="color: #007020; font-weight: bold">if</span> (newMargLeft <span style="color: #666666">=</span> <span style="color: #40a070">0</span> amp;amp; newMargLeft <span style="color: #666666">=</span> timelineWidth) {
+		playhead.style.marginLeft <span style="color: #666666">=</span> newMargLeft <span style="color: #666666">+</span> <span style="color: #4070a0">&quot;px&quot;</span>;
+	}
+	<span style="color: #007020; font-weight: bold">if</span> (newMargLeft  <span style="color: #40a070">0</span>) {
+		playhead.style.marginLeft <span style="color: #666666">=</span> <span style="color: #4070a0">&quot;0px&quot;</span>;
+	}
+	<span style="color: #007020; font-weight: bold">if</span> (newMargLeft  timelineWidth) {
+		playhead.style.marginLeft <span style="color: #666666">=</span> timelineWidth <span style="color: #666666">+</span> <span style="color: #4070a0">&quot;px&quot;</span>;
+	}
+}
 
-<span style="color: #75715e">// getPosition</span>
-<span style="color: #75715e">// Returns elements left position relative to top-left of viewport</span>
-<span style="color: #66d9ef">function</span> <span style="color: #a6e22e">getPosition</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">el</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
-    <span style="color: #66d9ef">return</span> <span style="color: #a6e22e">el</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">getBoundingClientRect</span><span style="color: #f8f8f2">().</span><span style="color: #a6e22e">left</span><span style="color: #f8f8f2">;</span>
-<span style="color: #f8f8f2">}</span>
+<span style="color: #60a0b0; font-style: italic">// getPosition</span>
+<span style="color: #60a0b0; font-style: italic">// Returns elements left position relative to top-left of viewport</span>
+<span style="color: #007020; font-weight: bold">function</span> getPosition(el) {
+    <span style="color: #007020; font-weight: bold">return</span> el.getBoundingClientRect().left;
+}
 </pre></div>
 
 

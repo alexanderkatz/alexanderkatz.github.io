@@ -39,15 +39,29 @@
 
 <p>Here is the code for the audio element that we will be controlling.</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">&lt;</span><span style="color: #f92672">audio</span> <span style="color: #a6e22e">id</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;music&quot;</span> <span style="color: #a6e22e">controls</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;controls&quot;</span><span style="color: #f8f8f2">&gt;</span>
-  <span style="color: #f8f8f2">&lt;</span><span style="color: #f92672">source</span> <span style="color: #a6e22e">src</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;music/onlyidreamwithyou1.ogg&quot;</span> <span style="color: #a6e22e">type</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;audio/ogg&quot;</span> <span style="color: #f8f8f2">/&gt;</span>
-  <span style="color: #f8f8f2">&lt;</span><span style="color: #f92672">source</span> <span style="color: #a6e22e">src</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;music/onlyidreamwithyou1.mp3&quot;</span> <span style="color: #a6e22e">type</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;audio/mpeg&quot;</span> <span style="color: #f8f8f2">/&gt;</span>
-<span style="color: #f8f8f2">&lt;/</span><span style="color: #f92672">audio</span><span style="color: #f8f8f2">&gt;</span>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>&lt;<span style="color: #062873; font-weight: bold">audio</span> <span style="color: #4070a0">id</span><span style="color: #666666">=</span><span style="color: #4070a0">&quot;music&quot;</span> <span style="color: #4070a0">controls</span><span style="color: #666666">=</span><span style="color: #4070a0">&quot;controls&quot;</span>&gt;
+  &lt;<span style="color: #062873; font-weight: bold">source</span> <span style="color: #4070a0">src</span><span style="color: #666666">=</span><span style="color: #4070a0">&quot;music/onlyidreamwithyou1.ogg&quot;</span> <span style="color: #4070a0">type</span><span style="color: #666666">=</span><span style="color: #4070a0">&quot;audio/ogg&quot;</span> /&gt;
+  &lt;<span style="color: #062873; font-weight: bold">source</span> <span style="color: #4070a0">src</span><span style="color: #666666">=</span><span style="color: #4070a0">&quot;music/onlyidreamwithyou1.mp3&quot;</span> <span style="color: #4070a0">type</span><span style="color: #666666">=</span><span style="color: #4070a0">&quot;audio/mpeg&quot;</span> /&gt;
+&lt;/<span style="color: #062873; font-weight: bold">audio</span>&gt;
 </pre></div>
 
 
 <p></p></p>
         <p><a class="readmore link" href="https://alexanderkatz.github.io/posts/building-a-custom-html5-audio-player-with-javascript/">Read More</a></p>
+      </section>
+      <section class="post">
+        <h2><a class="link" href="https://alexanderkatz.github.io/posts/binary-search-tree/">Binary Search Tree</a></h2>
+        <h6 class="date">Sat, Apr 8, 2017</h6>
+        <p><p>This post will discuss how to connect a BST implementation to d3.js.</p>
+
+<p>I recently implemented a Binary Search Tree in JavaScript. It was a fun exercise and a great opportunity to use ES6 Classes.</p>
+
+<p>Below is my code for the Binary Search Tree class, Node class, and their insertion methods.</p>
+
+<!-- My complete implementation which includes node removal is [here](link). -->
+
+<p></p></p>
+        <p><a class="readmore link" href="https://alexanderkatz.github.io/posts/binary-search-tree/">Read More</a></p>
       </section>
       <section class="post">
         <h2><a class="link" href="https://alexanderkatz.github.io/posts/css-placeholder-text/">CSS Placeholder Text</a></h2>
@@ -56,9 +70,9 @@
 
 <p>My first thought was to use JavaScript, loop through each element, and populate the empty ones. This approach works, but CSS provides a simple solution.</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f92672">*</span><span style="color: #a6e22e">:empty</span><span style="color: #f92672">:</span><span style="color: #a6e22e">:before</span><span style="color: #f8f8f2">{</span> 
-    <span style="color: #f8f8f2">content</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&quot;Please Add Information&quot;</span><span style="color: #f8f8f2">;</span> 
-<span style="color: #f8f8f2">}</span>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #666666">*</span><span style="color: #555555; font-weight: bold">:empty</span><span style="color: #666666">:</span><span style="color: #555555; font-weight: bold">:before</span>{ 
+    <span style="color: #007020">content</span><span style="color: #666666">:</span> <span style="color: #4070a0">&quot;Please Add Information&quot;</span>; 
+}
 </pre></div>
 
 

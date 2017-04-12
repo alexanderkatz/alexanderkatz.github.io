@@ -18,7 +18,7 @@
       <description>&lt;p&gt;Purple Crayon is a blogging platform I developed and designed with Ilona Brand. We used Node, express, and Passport along with other technologies.&lt;/p&gt;
 
 &lt;p&gt;In addition to supporting account creation and authentication we used Express to give each user their own subdomain:
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;username&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;&amp;gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;purplecrayon&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;me&lt;/span&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&amp;lt;username&amp;gt;.purplecrayon.me
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/p&gt;
 
