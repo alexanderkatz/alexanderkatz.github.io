@@ -212,9 +212,13 @@ timeline.addEventListener(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;c
 
 &lt;p&gt;My site is in a directory named &lt;code&gt;alexkatz-hugo&lt;/code&gt;. I run &lt;code&gt;hugo&lt;/code&gt; on the command line to generate the site into the &lt;code&gt;public&lt;/code&gt; directory. The public directory is a submodule.&lt;/p&gt;
 
-&lt;p&gt;To deploy my site I use the following script. Before generating the site, the script removes all files and directories from the public folder, except for the .git directory and CNAME file. It is important to clear the public directory because Hugo does not remove previously generated files when building the site. If you don&amp;rsquo;t clear the public directory you may end up deploying drafts or deleted content.&lt;/p&gt;
+&lt;p&gt;To deploy my site I run a shell script that clears my public folder, generates the site with Hugo, and commits and pushes my changes.&lt;/p&gt;
 
-&lt;p&gt;See the &lt;a href=&#34;https://gohugo.io/overview/usage/#a-note-about-deployment&#34; target=&#34;_blank&#34;&gt;documentation for more details.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Before generating the site, my script removes all files and directories from the public folder, except for the .git directory and CNAME file. It is important to clear the public directory because running &lt;code&gt;hugo&lt;/code&gt; does not remove previously generated files. If you don&amp;rsquo;t clear the public directory you may end up deploying drafts or deleted content.&lt;/p&gt;
+
+&lt;p&gt;See the &lt;a href=&#34;https://gohugo.io/overview/usage/#a-note-about-deployment&#34; target=&#34;_blank&#34;&gt;documentation&lt;/a&gt; for more details.&lt;/p&gt;
+
+&lt;p&gt;Here is my deployment script.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;
 
