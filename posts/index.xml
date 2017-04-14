@@ -214,6 +214,8 @@ timeline.addEventListener(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;c
 
 &lt;p&gt;To deploy my site I use the following script.&lt;/p&gt;
 
+&lt;p&gt;&lt;/p&gt;
+
 &lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;#!/bin/bash&lt;/span&gt;
 
 &lt;span style=&#34;color: #007020&#34;&gt;echo&lt;/span&gt; -e &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;\033[0;32mDeploying updates to GitHub...\033[0m&amp;quot;&lt;/span&gt;
@@ -242,9 +244,7 @@ git push origin master
  
 &lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;# Come Back&lt;/span&gt;
 &lt;span style=&#34;color: #007020&#34;&gt;cd&lt;/span&gt; ..
-&lt;/pre&gt;&lt;/div&gt;
-
-</description>
+&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
     <item>
