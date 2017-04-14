@@ -28,9 +28,11 @@
     <h6 class="date">Fri, Apr 14, 2017</h6>
     <p>I built my site with Hugo and am hosting in on GitHub Pages.</p>
 
-<p>My site is in a directory named <code>alexkatz-hugo</code>. Running <code>hugo</code> on the command line generates the static site in the <code>public</code> directory. The public directory is a submodule.</p>
+<p>My site is in a directory named <code>alexkatz-hugo</code>. I run <code>hugo</code> on the command line to generate the site into the <code>public</code> directory. The public directory is a submodule.</p>
 
-<p>To deploy my site I use the following script.</p>
+<p>To deploy my site I use the following script. Before generating the site, the script removes all files and directories from the public folder, except for the .git directory and CNAME file. It is important to clear the public directory because Hugo does not remove previously generated files when building the site. If you don&rsquo;t clear the public directory you may end up deploying drafts or deleted content.</p>
+
+<p>See the <a href="https://gohugo.io/overview/usage/#a-note-about-deployment" target="_blank">documentation for more details.</a></p>
 
 <p></p>
 
@@ -38,14 +40,21 @@
 
 <span style="color: #007020">echo</span> -e <span style="color: #4070a0">&quot;\033[0;32mDeploying updates to GitHub...\033[0m&quot;</span>
 
-<span style="color: #60a0b0; font-style: italic"># Build the project.</span>
-hugo -t curlew <span style="color: #60a0b0; font-style: italic"># if using a theme, replace by `hugo -t &lt;yourtheme&gt;`</span>
-
 <span style="color: #60a0b0; font-style: italic"># Go To Public folder</span>
 <span style="color: #007020">cd</span> public
 
 <span style="color: #60a0b0; font-style: italic"># Remove all files and folders except for CNAME and .git</span>
 find . -not -path <span style="color: #4070a0">&quot;./.git/*&quot;</span> -not -name <span style="color: #4070a0">&quot;.git&quot;</span> -not -name <span style="color: #4070a0">&quot;CNAME&quot;</span> -not -name <span style="color: #4070a0">&quot;.*&quot;</span> -print0 | xargs -0 rm -r  --
+
+<span style="color: #60a0b0; font-style: italic"># Go to site root</span>
+<span style="color: #007020">cd</span> ..
+
+<span style="color: #60a0b0; font-style: italic"># Build the project.</span>
+hugo -t curlew
+
+<span style="color: #60a0b0; font-style: italic"># Go To Public folder</span>
+<span style="color: #007020">cd</span> public
+
 
 <span style="color: #60a0b0; font-style: italic"># Add changes to git.</span>
 git add -A

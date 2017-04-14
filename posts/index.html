@@ -54,9 +54,11 @@
         <h6 class="date">Fri, Apr 14, 2017</h6>
         <p><p>I built my site with Hugo and am hosting in on GitHub Pages.</p>
 
-<p>My site is in a directory named <code>alexkatz-hugo</code>. Running <code>hugo</code> on the command line generates the static site in the <code>public</code> directory. The public directory is a submodule.</p>
+<p>My site is in a directory named <code>alexkatz-hugo</code>. I run <code>hugo</code> on the command line to generate the site into the <code>public</code> directory. The public directory is a submodule.</p>
 
-<p>To deploy my site I use the following script.</p>
+<p>To deploy my site I use the following script. Before generating the site, the script removes all files and directories from the public folder, except for the .git directory and CNAME file. It is important to clear the public directory because Hugo does not remove previously generated files when building the site. If you don&rsquo;t clear the public directory you may end up deploying drafts or deleted content.</p>
+
+<p>See the <a href="https://gohugo.io/overview/usage/#a-note-about-deployment" target="_blank">documentation for more details.</a></p>
 
 <p></p></p>
         <p><a class="readmore link" href="https://alexanderkatz.github.io/posts/hugo-site-deployment/">Read More</a></p>
