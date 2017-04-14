@@ -1,0 +1,725 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Alex Katz</title>
+    <link>https://alexanderkatz.github.io/index.xml</link>
+    <description>Recent content on Alex Katz</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 04 May 2014 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://alexanderkatz.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Building a Custom HTML5 Audio Player With Javascript</title>
+      <link>https://alexanderkatz.github.io/posts/building-a-custom-html5-audio-player-with-javascript/</link>
+      <pubDate>Sun, 04 May 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://alexanderkatz.github.io/posts/building-a-custom-html5-audio-player-with-javascript/</guid>
+      <description>&lt;p&gt;This tutorial details how JavaScriptpt, HTML, and CSS can be used to make a custom HTML5 audio interface. It is divided into three sections.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The Play Button&lt;/li&gt;
+&lt;li&gt;Track Progress&lt;/li&gt;
+&lt;li&gt;Changing Track Position&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Here is the code for the audio element that we will be controlling.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&amp;lt;&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;audio&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;music&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;controls&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;controls&amp;quot;&lt;/span&gt;&amp;gt;
+  &amp;lt;&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;source&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;src&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;music/onlyidreamwithyou1.ogg&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;audio/ogg&amp;quot;&lt;/span&gt; /&amp;gt;
+  &amp;lt;&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;source&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;src&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;music/onlyidreamwithyou1.mp3&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;audio/mpeg&amp;quot;&lt;/span&gt; /&amp;gt;
+&amp;lt;/&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;audio&lt;/span&gt;&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;play-button&#34;&gt;PLAY BUTTON&lt;/h2&gt;
+
+&lt;p&gt;First we will use HTML to create the play button.We will make two CSS classes, play and pause.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Play – the background property is a play icon&lt;/li&gt;
+&lt;li&gt;Pause – the background property is a pause icon&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;CODE FOR CLASSES AND BUTTON
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&amp;lt;&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;style&lt;/span&gt;&amp;gt;
+&lt;span style=&#34;color: #0e84b5; font-weight: bold&#34;&gt;#pButton&lt;/span&gt;{
+	&lt;span style=&#34;color: #007020&#34;&gt;height&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #40a070&#34;&gt;60px&lt;/span&gt;;
+	&lt;span style=&#34;color: #007020&#34;&gt;width&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;60px&lt;/span&gt;;
+	&lt;span style=&#34;color: #007020&#34;&gt;border&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #007020&#34;&gt;none&lt;/span&gt;;
+	&lt;span style=&#34;color: #007020&#34;&gt;background&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color: #007020&#34;&gt;size&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;50%&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;50%&lt;/span&gt;;
+	&lt;span style=&#34;color: #007020&#34;&gt;background-position&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #007020&#34;&gt;center&lt;/span&gt;;
+}
+&lt;span style=&#34;color: #0e84b5; font-weight: bold&#34;&gt;.play&lt;/span&gt;{&lt;span style=&#34;color: #007020&#34;&gt;background&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #c65d09&#34;&gt;url(&amp;#39;../images/play.png&amp;#39;)&lt;/span&gt; &lt;span style=&#34;color: #007020&#34;&gt;no-repeat&lt;/span&gt;;}
+&lt;span style=&#34;color: #0e84b5; font-weight: bold&#34;&gt;.pause&lt;/span&gt;{&lt;span style=&#34;color: #007020&#34;&gt;background&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #c65d09&#34;&gt;url(&amp;#39;../images/pause.png&amp;#39;)&lt;/span&gt; &lt;span style=&#34;color: #007020&#34;&gt;no-repeat&lt;/span&gt;;}
+&amp;lt;/&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;style&lt;/span&gt;&amp;gt;
+
+&amp;lt;&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;button&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;pButton&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;play&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;onclick&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;playAudio()&amp;quot;&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;button&lt;/span&gt;&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;To make our play button function, we write onclick=&amp;ldquo;playAudio&amp;rdquo; inside the button’s opening tag. This means the playAudio function is called whenever pButton is clicked. The function toggles between the .play and .pause classes and plays and pauses the audio.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// variable to store HTML5 audio element&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;var&lt;/span&gt; music &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020&#34;&gt;document&lt;/span&gt;.getElementById(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;music&amp;#39;&lt;/span&gt;);
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; playAudio() {
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (music.paused) {
+		music.play();
+		pButton.className &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;&amp;quot;&lt;/span&gt;;
+		pButton.className &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;pause&amp;quot;&lt;/span&gt;;
+	} &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;else&lt;/span&gt; {
+		music.pause();
+		pButton.className &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;&amp;quot;&lt;/span&gt;;
+		pButton.className &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;play&amp;quot;&lt;/span&gt;;
+	}
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The playAudio function checks if the audio is paused. If the audio is paused we call the audio element’s play function. We clear pButton’s classes and add the pause class.
+If the audio is playing we pause it and change pButton’s class to play.&lt;/p&gt;
+
+&lt;p&gt;That is all the code you need to make a play button that targets the audio element.&lt;/p&gt;
+
+&lt;p&gt;Functions like play and pause are part of the HTMLMediaElement’s interface. If you are interested the API is &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;track-progress&#34;&gt;TRACK PROGRESS&lt;/h2&gt;
+
+&lt;p&gt;Before we can start tracking the progress of the audio, we should modify our HTML. Instead of just having a play button, we will create an audio player. We will nest the button, a timeline, and a playhead inside of a div whose id will be audioplayer.&lt;/p&gt;
+
+&lt;p&gt;Here is the HTML and CSS. You should also add the float:left property to the play button.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&amp;lt;&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;style&lt;/span&gt;&amp;gt;
+&lt;span style=&#34;color: #0e84b5; font-weight: bold&#34;&gt;#timeline&lt;/span&gt;{
+	&lt;span style=&#34;color: #007020&#34;&gt;width&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;400px&lt;/span&gt;;
+	&lt;span style=&#34;color: #007020&#34;&gt;height&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;20px&lt;/span&gt;;
+	&lt;span style=&#34;color: #007020&#34;&gt;background&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;#4200f7&lt;/span&gt;;
+	&lt;span style=&#34;color: #007020&#34;&gt;margin-top&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;20px&lt;/span&gt;;
+	&lt;span style=&#34;color: #007020&#34;&gt;float&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #007020&#34;&gt;left&lt;/span&gt;;
+	&lt;span style=&#34;color: #007020&#34;&gt;border&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt;radius&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;15px&lt;/span&gt;;
+}
+
+&lt;span style=&#34;color: #0e84b5; font-weight: bold&#34;&gt;#playhead&lt;/span&gt;{
+	&lt;span style=&#34;color: #007020&#34;&gt;width&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;18px&lt;/span&gt;;
+	&lt;span style=&#34;color: #007020&#34;&gt;height&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;18px&lt;/span&gt;;
+	&lt;span style=&#34;color: #007020&#34;&gt;border&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt;radius&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;50%&lt;/span&gt;;
+	&lt;span style=&#34;color: #007020&#34;&gt;margin-top&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;1px&lt;/span&gt;;
+	&lt;span style=&#34;color: #007020&#34;&gt;background&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; rgba(&lt;span style=&#34;color: #40a070&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;255&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;196&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #40a070&#34;&gt;82&lt;/span&gt;);
+}
+&amp;lt;/&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;style&lt;/span&gt;&amp;gt;
+
+&amp;lt;&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;audioplayer&amp;quot;&lt;/span&gt;&amp;gt;
+	&amp;lt;&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;button&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;pButton&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;play&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;onclick&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;play()&amp;quot;&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;button&lt;/span&gt;&amp;gt;
+	&amp;lt;&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;timeline&amp;quot;&lt;/span&gt;&amp;gt;
+		&amp;lt;&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;playhead&amp;quot;&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;div&lt;/span&gt;&amp;gt;
+	&amp;lt;/&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;div&lt;/span&gt;&amp;gt;
+&amp;lt;/&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;div&lt;/span&gt;&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The audio player should look something like this&lt;/p&gt;
+
+&lt;p&gt;&lt;img width=&#34;400&#34; src=&#34;https://alexanderkatz.github.io/img/building-a-custom-html5-audio-player-with-javascript/audioplayer.png&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;The next step is to write JavaScript that will move the playhead as the track advances. This is accomplished by adding an event listener for timeupdate that triggers a function that moves the playhead the appropriate amount. In order for time update to work we will also need to get the duration of the audio file. The code is also below.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;var&lt;/span&gt; duration;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;var&lt;/span&gt; music &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020&#34;&gt;document&lt;/span&gt;.getElementById(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;playhead&amp;#39;&lt;/span&gt;);
+music.addEventListener(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;timeupdate&amp;quot;&lt;/span&gt;, timeUpdate, &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;false&lt;/span&gt;);
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; timeUpdate() {
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;var&lt;/span&gt; playPercent &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;100&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; (music.currentTime &lt;span style=&#34;color: #666666&#34;&gt;/&lt;/span&gt; duration);
+	playhead.style.marginLeft &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; playPercent &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;%&amp;quot;&lt;/span&gt;;
+}
+
+&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// Gets audio file duration&lt;/span&gt;
+music.addEventListener(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;canplaythrough&amp;quot;&lt;/span&gt;, &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; () {
+	duration &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; music.duration;
+}, &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;false&lt;/span&gt;);
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id=&#34;changing-track-position&#34;&gt;CHANGING TRACK POSITION&lt;/h2&gt;
+
+&lt;p&gt;There are two ways that we will allow users to change the track position.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Clicking on the timeline&lt;/li&gt;
+&lt;li&gt;Dragging the playhead&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The first method is accomplished by listening for clicks on the timeline, calculating the click’s position as a percent of the timeline’s width, and updating the playhead and track positions.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;//Makes timeline clickable&lt;/span&gt;
+timeline.addEventListener(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;click&amp;quot;&lt;/span&gt;, &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; (event) {
+	moveplayhead(event);
+	music.currentTime &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; duration &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; clickPercent(event);
+}, &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;false&lt;/span&gt;);
+
+&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// returns click as decimal (.77) of the total timelineWidth&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; clickPercent(event) {
+    &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; (event.clientX &lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt; getPosition(timeline)) &lt;span style=&#34;color: #666666&#34;&gt;/&lt;/span&gt; timelineWidth;
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; moveplayhead(event) {
+    &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;var&lt;/span&gt; newMargLeft &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; event.clientX &lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt; getPosition(timeline);
+
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (newMargLeft &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;0&lt;/span&gt; amp;amp; newMargLeft &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; timelineWidth) {
+		playhead.style.marginLeft &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; newMargLeft &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;px&amp;quot;&lt;/span&gt;;
+	}
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (newMargLeft  &lt;span style=&#34;color: #40a070&#34;&gt;0&lt;/span&gt;) {
+		playhead.style.marginLeft &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;0px&amp;quot;&lt;/span&gt;;
+	}
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (newMargLeft  timelineWidth) {
+		playhead.style.marginLeft &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; timelineWidth &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;px&amp;quot;&lt;/span&gt;;
+	}
+}
+
+&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// getPosition&lt;/span&gt;
+&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// Returns elements left position relative to top-left of viewport&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; getPosition(el) {
+    &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; el.getBoundingClientRect().left;
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The code above adds an event listener to the timeline. If the timeline is clicked, this function fires which moves the playhead to the click position and updates the track’s current time.&lt;/p&gt;
+
+&lt;p&gt;The moveplayhead function works by changing the playhead’s left margin. The left margin controls the space between the left side of the timeline and the playhead. To calculate the correct left margin value, the x-coordinate of the click event is subtracted by the timeline’s left offset. The left offset is calculated with &lt;code&gt;getPosition&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The conditionals are necessary if the you want to support playhead dragging. If you don’t, just set the playhead’s left margin to newMarginLeft, as any click will be inside the timeline.&lt;/p&gt;
+
+&lt;p&gt;The codepen below puts everything together.&lt;/p&gt;
+
+&lt;p&gt;&lt;p data-height=&#34;300&#34; data-theme-id=&#34;5580&#34; data-slug-hash=&#34;Kfgix&#34; data-default-tab=&#34;result&#34; data-user=&#34;katzkode&#34; data-embed-version=&#34;2&#34; data-pen-title=&#34;HTML5 Audio Player&#34; class=&#34;codepen&#34;&gt;See the Pen &lt;a href=&#34;http://codepen.io/katzkode/pen/Kfgix/&#34;&gt;HTML5 Audio Player&lt;/a&gt; by Alex Katz (&lt;a href=&#34;http://codepen.io/katzkode&#34;&gt;@katzkode&lt;/a&gt;) on &lt;a href=&#34;http://codepen.io&#34;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
+&lt;script async src=&#34;https://production-assets.codepen.io/assets/embed/ei.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/alexanderkatz/HTML5-Audio&#34;&gt;Complete Code on GitHub&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;If you are interested in using multiple audio players on the same page, you can check out my code here – &lt;a href=&#34;https://alexanderkatz.github.io/posts/multiple-html5-audio-players&#34;&gt;Multiple HTML5 Audio Players&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hugo Site Deployment</title>
+      <link>https://alexanderkatz.github.io/posts/hugo-site-deployment/</link>
+      <pubDate>Fri, 14 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://alexanderkatz.github.io/posts/hugo-site-deployment/</guid>
+      <description>&lt;p&gt;I built my site with Hugo and am hosting in on GitHub Pages.&lt;/p&gt;
+
+&lt;p&gt;My site is in a directory named &lt;code&gt;alexkatz-hugo&lt;/code&gt;. Running &lt;code&gt;hugo&lt;/code&gt; on the command line generates the static site in the &lt;code&gt;public&lt;/code&gt; directory. The public directory is a submodule.&lt;/p&gt;
+
+&lt;p&gt;To deploy my site I use the following script.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span style=&#34;color: #007020&#34;&gt;echo&lt;/span&gt; -e &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;\033[0;32mDeploying updates to GitHub...\033[0m&amp;quot;&lt;/span&gt;
+
+&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;# Build the project.&lt;/span&gt;
+hugo -t curlew &lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;# if using a theme, replace by `hugo -t &amp;lt;yourtheme&amp;gt;`&lt;/span&gt;
+
+&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;# Go To Public folder&lt;/span&gt;
+&lt;span style=&#34;color: #007020&#34;&gt;cd&lt;/span&gt; public
+
+&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;# Remove all files and folders except for CNAME and .git&lt;/span&gt;
+find . -not -path &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;./.git/*&amp;quot;&lt;/span&gt; -not -name &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;.git&amp;quot;&lt;/span&gt; -not -name &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;CNAME&amp;quot;&lt;/span&gt; -not -name &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;.*&amp;quot;&lt;/span&gt; -print0 | xargs -0 rm -r  --
+
+&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;# Add changes to git.&lt;/span&gt;
+git add -A
+
+&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;# Commit changes.&lt;/span&gt;
+&lt;span style=&#34;color: #bb60d5&#34;&gt;msg&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;rebuilding site `date`&amp;quot;&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$#&lt;/span&gt; -eq &lt;span style=&#34;color: #40a070&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt;
+   &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;then&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;msg&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #bb60d5&#34;&gt;$1&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;fi&lt;/span&gt;
+git commit -m &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #bb60d5&#34;&gt;$msg&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;&lt;/span&gt;
+ 
+&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;# Push source and build repos.&lt;/span&gt;
+git push origin master
+ 
+&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;# Come Back&lt;/span&gt;
+&lt;span style=&#34;color: #007020&#34;&gt;cd&lt;/span&gt; ..
+&lt;/pre&gt;&lt;/div&gt;
+
+</description>
+    </item>
+    
+    <item>
+      <title>Binary Search Tree</title>
+      <link>https://alexanderkatz.github.io/posts/binary-search-tree/</link>
+      <pubDate>Sat, 08 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://alexanderkatz.github.io/posts/binary-search-tree/</guid>
+      <description>&lt;p&gt;This post will discuss how to connect a BST implementation to d3.js.&lt;/p&gt;
+
+&lt;p&gt;I recently implemented a Binary Search Tree in JavaScript. It was a fun exercise and a great opportunity to use ES6 Classes.&lt;/p&gt;
+
+&lt;p&gt;Below is my code for the Binary Search Tree class, Node class, and their insertion methods.&lt;/p&gt;
+
+&lt;!-- My complete implementation which includes node removal is [here](link). --&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;/* Binary Search Tree Class */&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;class&lt;/span&gt; BinarySearchTree {
+    &lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// constructor&lt;/span&gt;
+    constructor() {
+        &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;.root &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;null&lt;/span&gt;;
+    }
+
+    &lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// insert&lt;/span&gt;
+    insert(value) {
+        &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;.root &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;null&lt;/span&gt;) {
+            &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;.root &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;new&lt;/span&gt; Node(value);
+            &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;true&lt;/span&gt;;
+        } &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;else&lt;/span&gt; {
+            &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;.root.insert(&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;new&lt;/span&gt; Node(value));
+        }
+    }
+}
+
+&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;/* Node Class */&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;class&lt;/span&gt; Node {
+    constructor(value) {
+        &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;.value &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; value;
+        &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;.left &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;null&lt;/span&gt;;
+        &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;.right &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;null&lt;/span&gt;;
+        &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;.parent &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;null&lt;/span&gt;;
+    }
+    &lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// insert&lt;/span&gt;
+    insert(node) {
+        &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (node.value &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;.value) {
+            &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;false&lt;/span&gt;;
+        &lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// check left subtree    &lt;/span&gt;
+        } &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (node.value &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;.value) {
+            &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;.left &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;null&lt;/span&gt;) {
+                &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;.left.insert(node);
+            } &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;else&lt;/span&gt; {
+                &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;.left &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; node;
+                node.parent &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;;
+                &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;true&lt;/span&gt;;
+            }
+        &lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// check right subtree&lt;/span&gt;
+        } &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;else&lt;/span&gt; {
+            &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;.right &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;null&lt;/span&gt;) {
+                &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;.right.insert(node);
+            } &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;else&lt;/span&gt; {
+                &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;.right &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; node;
+                node.parent &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;;
+                &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;true&lt;/span&gt;;
+            }
+        }
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;After I finished my implementation I decided to use d3.js to visualize my BST.&lt;/p&gt;
+
+&lt;p&gt;To start I adapted &lt;a href=&#34;https://bl.ocks.org/d3noob/43a860bc0024792f8803bba8ca0d5ecd&#34;&gt;d3noob&amp;rsquo;s block&lt;/a&gt; to make a program that visualized a vertical tree from a hardcoded dataset.&lt;/p&gt;
+
+&lt;p&gt;&lt;p data-height=&#34;550&#34; data-theme-id=&#34;5580&#34; data-slug-hash=&#34;ZegQQB&#34; data-default-tab=&#34;result&#34; data-user=&#34;katzkode&#34; data-embed-version=&#34;2&#34; data-pen-title=&#34;D3.js Vertical Tree&#34; class=&#34;codepen&#34;&gt;See the Pen &lt;a href=&#34;http://codepen.io/katzkode/pen/ZegQQB/&#34;&gt;D3.js Vertical Tree&lt;/a&gt; by Alex Katz (&lt;a href=&#34;http://codepen.io/katzkode&#34;&gt;@katzkode&lt;/a&gt;) on &lt;a href=&#34;http://codepen.io&#34;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
+&lt;script async src=&#34;https://production-assets.codepen.io/assets/embed/ei.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;In order to visualize a tree with d3.js, the following occurs:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The SVG is configured.&lt;/li&gt;
+&lt;li&gt;A d3 tree layout is initialized&lt;/li&gt;
+&lt;li&gt;A call is made to d3.hierarchy&lt;/li&gt;
+&lt;li&gt;The nodes are drawn&lt;/li&gt;
+&lt;li&gt;The links are drawn&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Even though there are a number of steps, only one part of the code needs to be altered to visualize an instance of my BST. This is the the call to &lt;code&gt;d3.hierarchy&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;root &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; d3.hierarchy(treeData, &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt;(d){ 
+    &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; d.children; 
+});
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;The function &lt;code&gt;d3.hierarchy(data, children)&lt;/code&gt; takes in two parameters.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;An object that represents the root node of a dataset&lt;/li&gt;
+&lt;li&gt;Children accessor function&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;d3.hierarchy starts with the root and invokes the accessor function for each node. The accessor function must return an array of children or null if there are no children. Each node is given the properties: data, depth, height, parent, children, and value.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;hierarchy&lt;/code&gt; returns the root node.&lt;/p&gt;
+
+&lt;p&gt;The first part of the hierarchy call that needs to be changed is the data. Instead of passing the original hardcoded data set, pass a BST instance&amp;rsquo;s root node.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// Assigns parent, children, height, depth&lt;/span&gt;
+root &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; d3.hierarchy(bstInstance.root, &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt;(d){ 
+    &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; d.children; 
+});
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This code will run, but the visualization will only have a single node, the root. To solve this issue change the children accessor function so that it puts &lt;code&gt;d.left&lt;/code&gt; and &lt;code&gt;d.right&lt;/code&gt; into the children array for each node or datum.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;root &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; d3.hierarchy(treeData, &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt;(d){
+
+d.children&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;[];
+        &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (d.left){
+            d.children.push(d.left);
+        }
+        &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (d.right){
+            d.children.push(d.right);
+        }
+        &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; d.children; 
+});
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;While this approach correctly assigns children to each node, it does not maintain whether a child is a left or right child. If a node has no siblings it will be displayed directly beneath its parent.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;full&#34; src=&#34;https://alexanderkatz.github.io/img/posts/binary-search-tree/single-child.png&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;Instead of explicitly changing the coordinates of these nodes, I create a dummy node for each node without a sibling. If an only child is a right child, I insert the dummy node before it. If the only child is a left child, I insert the dummy node after it. This ensures that the children are correctly positioned in relation to their parent.&lt;/p&gt;
+
+&lt;p&gt;I used an XOR function to determine if a node had a single child.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; myXOR(a,b) {
+    &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; ( a &lt;span style=&#34;color: #666666&#34;&gt;||&lt;/span&gt; b ) &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;!&lt;/span&gt;( a &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; b );
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;root &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; d3.hierarchy(treeData, &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt;(d){
+        d.children&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;[];
+        &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (d.left){
+            d.children.push(d.left);
+            &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (myXOR(d.left, d.right)){
+                d.children.push(&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;new&lt;/span&gt; Node(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;e&amp;quot;&lt;/span&gt;));
+            }
+        }
+        &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (d.right){
+            &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (myXOR(d.left, d.right)){
+                d.children.push(&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;new&lt;/span&gt; Node(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;e&amp;quot;&lt;/span&gt;));
+            }
+            d.children.push(d.right);
+        }
+        &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; d.children; 
+    });
+    
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img class=&#34;full&#34; src=&#34;https://alexanderkatz.github.io/img/posts/binary-search-tree/dummy-node.png&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;This works great, but the dummy nodes need to be hidden. To hide the dummy nodes I add the class &amp;ldquo;hidden&amp;rdquo; to all nodes with a NAN value. Depending on value&amp;rsquo;s type in your BST, you may need to change to replace the &lt;code&gt;isNAN&lt;/code&gt; condition.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;nodeEnter.append(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;circle&amp;#39;&lt;/span&gt;)
+            .attr(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;class&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt;(d) {
+                &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color: #007020&#34;&gt;isNaN&lt;/span&gt;(d.value)) {
+                    &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;node hidden&amp;quot;&lt;/span&gt;;
+                }
+                &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;node&amp;#39;&lt;/span&gt;;
+            })
+            .attr(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;r&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #40a070&#34;&gt;1&lt;/span&gt;e&lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color: #40a070&#34;&gt;6&lt;/span&gt;)
+            .style(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;fill&amp;quot;&lt;/span&gt;, &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt;(d) {
+                &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; d._children &lt;span style=&#34;color: #666666&#34;&gt;?&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;lightsteelblue&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;#fff&amp;quot;&lt;/span&gt;;
+            });
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;I do the same for links.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// Enter any new links at the parent&amp;#39;s previous position&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;var&lt;/span&gt; linkEnter &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; link.enter().insert(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;path&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;g&amp;quot;&lt;/span&gt;)
+    .attr(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;class&amp;quot;&lt;/span&gt;, &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt;(d) {
+        &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color: #007020&#34;&gt;isNaN&lt;/span&gt;(d.value)) {
+            &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;link hidden &amp;quot;&lt;/span&gt;
+        }
+        &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;link&amp;quot;&lt;/span&gt;;
+    })            
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then I added the following to my CSS to hide the dummy nodes and links!&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #0e84b5; font-weight: bold&#34;&gt;.hidden&lt;/span&gt;{&lt;span style=&#34;color: #007020&#34;&gt;display&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #007020&#34;&gt;none&lt;/span&gt;;}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The .hidden links and nodes are grayed out in the example below.&lt;/p&gt;
+
+&lt;p&gt;&lt;p data-height=&#34;486&#34; data-theme-id=&#34;5580&#34; data-slug-hash=&#34;EWJxPv&#34; data-default-tab=&#34;result&#34; data-user=&#34;katzkode&#34; data-embed-version=&#34;2&#34; data-pen-title=&#34;D3 Binary Search Tree&#34; class=&#34;codepen&#34;&gt;See the Pen &lt;a href=&#34;http://codepen.io/katzkode/pen/EWJxPv/&#34;&gt;D3 Binary Search Tree&lt;/a&gt; by Alex Katz (&lt;a href=&#34;http://codepen.io/katzkode&#34;&gt;@katzkode&lt;/a&gt;) on &lt;a href=&#34;http://codepen.io&#34;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
+&lt;script async src=&#34;https://production-assets.codepen.io/assets/embed/ei.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;notes&#34;&gt;Notes:&lt;/h2&gt;
+
+&lt;p&gt;After completing my initial BST implementation, I consulted &lt;a href=&#34;http://www.algolist.net/Data_structures/Binary_search_tree/Insertion&#34;&gt;Algolist&lt;/a&gt; for some ideas on how to clean up my code. I particularly like how they have an insertion method in the BST and Node class. This allows for insertion to be called directly on a node or tree instance. This was cleaner than my method of passing the value to be inserted and a root node to insert().&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>CSS Placeholder Text</title>
+      <link>https://alexanderkatz.github.io/posts/css-placeholder-text/</link>
+      <pubDate>Fri, 10 Mar 2017 11:35:29 -0500</pubDate>
+      
+      <guid>https://alexanderkatz.github.io/posts/css-placeholder-text/</guid>
+      <description>&lt;p&gt;How can you find all empty elements on a web page and populate them with placeholder text?&lt;/p&gt;
+
+&lt;p&gt;My first thought was to use JavaScript, loop through each element, and populate the empty ones. This approach works, but CSS provides a simple solution.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color: #555555; font-weight: bold&#34;&gt;:empty&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #555555; font-weight: bold&#34;&gt;:before&lt;/span&gt;{ 
+    &lt;span style=&#34;color: #007020&#34;&gt;content&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Please Add Information&amp;quot;&lt;/span&gt;; 
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;Using the empty selector and the pseudo element before, placeholder text can be defined using the CSS &lt;code&gt;content&lt;/code&gt; property. The &lt;code&gt;:before&lt;/code&gt; element is used because the &lt;code&gt;content&lt;/code&gt; property only works with pseudo elements.&lt;/p&gt;
+
+&lt;h3 id=&#34;my-use-case&#34;&gt;My Use Case&lt;/h3&gt;
+
+&lt;p&gt;I am working on an application that allows researchers to create and manage personas.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;To create a new persona a user enters data into a form.&lt;/li&gt;
+&lt;li&gt;A page is generated for each persona that displays their associated data.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Because research is an ongoing process, not all of the data fields are filled when a persona is created. Because of this, certain persona pages had a number of blank sections. Instead of hiding blank sections, I used CSS to insert a &amp;ldquo;call to action&amp;rdquo; that prompted researches to update personas with their latest findings.&lt;/p&gt;
+
+&lt;p&gt;&lt;p data-height=&#34;487&#34; data-theme-id=&#34;5580&#34; data-slug-hash=&#34;vxxzjN&#34; data-default-tab=&#34;result&#34; data-user=&#34;katzkode&#34; data-embed-version=&#34;2&#34; data-pen-title=&#34;Placeholder Text Using CSS&#34; class=&#34;codepen&#34;&gt;See the Pen &lt;a href=&#34;http://codepen.io/katzkode/pen/vxxzjN/&#34;&gt;Placeholder Text Using CSS&lt;/a&gt; by Alex Katz (&lt;a href=&#34;http://codepen.io/katzkode&#34;&gt;@katzkode&lt;/a&gt;) on &lt;a href=&#34;http://codepen.io&#34;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
+&lt;script async src=&#34;https://production-assets.codepen.io/assets/embed/ei.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Using SVG in an Interface</title>
+      <link>https://alexanderkatz.github.io/posts/using-svg/</link>
+      <pubDate>Wed, 22 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://alexanderkatz.github.io/posts/using-svg/</guid>
+      <description>&lt;p&gt;Even though I have been working with SVG in Illustrator for years, it wasn&amp;rsquo;t until last week that I began exploring its application in web development. To start my learning I completed a few video tutorials and researched how SVG is manipulated with CSS and JavaScript.&lt;/p&gt;
+
+&lt;p&gt;I found a myriad of beautiful SVG animations and visual experiments, but it was not clear how to leverage SVG to enhance UIs. That was until I overheard two of my coworkers discussing how to implement a radial meter to track memory usage in Bluemix. One of them suggested using strokedash-offset and I immediately jumped into the conversation eager to share my new found knowledge.&lt;/p&gt;
+
+&lt;p&gt;I was thrilled because this was the perfect opportunity to use SVG in an interface.&lt;/p&gt;
+
+&lt;p&gt;Using stroke-dasharray and strokedash-offset, we were able to quickly implement a meter for memory usage.&lt;/p&gt;
+
+&lt;p&gt;stroke-dasharray - is used to turn the stroke of an SVG element/path into a dashed pattern.&lt;/p&gt;
+
+&lt;p&gt;strokedash-offset - specifies the distance into the pattern to start the dash.&lt;/p&gt;
+
+&lt;p&gt;By setting stroke-dasharray equal to the length of a shape&amp;rsquo;s perimeter, stroke-dashoffset can be used to control the amount of visible stroke. Animating or transitioning the offset gives the appearance that the shape is being drawn.&lt;/p&gt;
+
+&lt;p&gt;Here is an example of how to use the properties to create a radial meter.&lt;/p&gt;
+
+&lt;p&gt;&lt;p data-height=&#34;470&#34; data-theme-id=&#34;5580&#34; data-slug-hash=&#34;BpXGzK&#34; data-default-tab=&#34;result&#34; data-user=&#34;katzkode&#34; data-embed-version=&#34;2&#34; data-pen-title=&#34;Radial Meter&#34; class=&#34;codepen&#34;&gt;See the Pen &lt;a href=&#34;http://codepen.io/katzkode/pen/BpXGzK/&#34;&gt;Radial Meter&lt;/a&gt; by Alex Katz (&lt;a href=&#34;http://codepen.io/katzkode&#34;&gt;@katzkode&lt;/a&gt;) on &lt;a href=&#34;http://codepen.io&#34;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
+&lt;script async src=&#34;https://production-assets.codepen.io/assets/embed/ei.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Sources:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-dasharray&#34;&gt;stroke-dasharray&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-dashoffset&#34;&gt;stroke-dashoffset&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>SVG Mask</title>
+      <link>https://alexanderkatz.github.io/posts/svg-mask/</link>
+      <pubDate>Sun, 29 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://alexanderkatz.github.io/posts/svg-mask/</guid>
+      <description>&lt;p&gt;Although this technique is not new, I still wanted to share it.&lt;/p&gt;
+
+&lt;p&gt;In the past if I wanted to change the color of an icon on hover I would have changed the background of the element to a differently colored icon. The CSS would have looked something like this.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #0e84b5; font-weight: bold&#34;&gt;.icon&lt;/span&gt;{
+    &lt;span style=&#34;color: #007020&#34;&gt;background&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt;(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;path/to/icon.png&amp;#39;&lt;/span&gt;);
+}
+&lt;span style=&#34;color: #0e84b5; font-weight: bold&#34;&gt;.icon&lt;/span&gt;&lt;span style=&#34;color: #555555; font-weight: bold&#34;&gt;:hover&lt;/span&gt;{
+    &lt;span style=&#34;color: #007020&#34;&gt;background&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt;(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;path/to/different-icon.png&amp;#39;&lt;/span&gt;);
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This doesn&amp;rsquo;t seem too cumbersome, but for each icon you need two files with differently colored icons. To make a change to the color, a new file needs to be created.&lt;/p&gt;
+
+&lt;p&gt;The beauty of using the &lt;code&gt;mask&lt;/code&gt; and &lt;code&gt;background-color&lt;/code&gt; properties, is that an SVG can be changed to any color. This limits the number of files you have to keep track of, but more importantly grants more flexibility and can lead to more organized code.&lt;/p&gt;
+
+&lt;p&gt;To use this technique, set the value of &lt;code&gt;mask&lt;/code&gt; to the correct file and set the &lt;code&gt;background-color&lt;/code&gt; as desired. The SVG will act as mask and the &lt;code&gt;background-color&lt;/code&gt; will only be visible where the icon is. Define a different &lt;code&gt;background-color&lt;/code&gt; for &lt;code&gt;:hover&lt;/code&gt; to switch between colors on hover.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #0e84b5; font-weight: bold&#34;&gt;.icon&lt;/span&gt;{
+  &lt;span style=&#34;color: #007020&#34;&gt;background-color&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #40a070&#34;&gt;#005397&lt;/span&gt;;
+  mask&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #c65d09&#34;&gt;url(&amp;#39;http://alexkatz.me/img/logo.svg&amp;#39;)&lt;/span&gt; &lt;span style=&#34;color: #007020&#34;&gt;no-repeat&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;50%&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;50%&lt;/span&gt;;
+  mask&lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color: #007020&#34;&gt;size&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; cover;
+}
+&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;icon&lt;/span&gt;&lt;span style=&#34;color: #555555; font-weight: bold&#34;&gt;:hover&lt;/span&gt;{
+  &lt;span style=&#34;color: #007020&#34;&gt;background-color&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #40a070&#34;&gt;#01FFC7&lt;/span&gt;;
+  transition&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #007020&#34;&gt;background-color&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;.5s&lt;/span&gt;;
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Feel free to experiment with this pen.
+&lt;p data-height=&#34;300&#34; data-theme-id=&#34;5580&#34; data-slug-hash=&#34;PWJEjK&#34; data-default-tab=&#34;css,result&#34; data-user=&#34;katzkode&#34; data-embed-version=&#34;2&#34; data-pen-title=&#34;SVG Mask&#34; class=&#34;codepen&#34;&gt;See the Pen &lt;a href=&#34;https://codepen.io/katzkode/pen/PWJEjK/&#34;&gt;SVG Mask&lt;/a&gt; by Alex Katz (&lt;a href=&#34;http://codepen.io/katzkode&#34;&gt;@katzkode&lt;/a&gt;) on &lt;a href=&#34;http://codepen.io&#34;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
+&lt;script async src=&#34;https://production-assets.codepen.io/assets/embed/ei.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Purple Crayon</title>
+      <link>https://alexanderkatz.github.io/portfolio/purple-crayon/</link>
+      <pubDate>Sun, 01 Jan 2017 14:01:10 -0500</pubDate>
+      
+      <guid>https://alexanderkatz.github.io/portfolio/purple-crayon/</guid>
+      <description>&lt;p&gt;Purple Crayon is a blogging platform I developed and designed with Ilona Brand. We used Node, express, and Passport along with other technologies.&lt;/p&gt;
+
+&lt;p&gt;In addition to supporting account creation and authentication we used Express to give each user their own subdomain:
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&amp;lt;username&amp;gt;.purplecrayon.me
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Feel free to check out &lt;a class=&#34;link&#34; href=&#34;http://purplecrayon.me&#34;&gt;Purple Crayon&lt;/a&gt; or the &lt;a class=&#34;link&#34; href=&#34;https://github.com/alexanderkatz/node-blog&#34;&gt;GitHub Repository&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;full topmargin&#34; src=&#34;https://alexanderkatz.github.io/img/purple-crayon/purplecrayon-mobile-1.png&#34;/&gt;
+&lt;img class=&#34;full browser&#34; src=&#34;https://alexanderkatz.github.io/img/purple-crayon/purplecrayon-desktop-1.png&#34;/&gt;
+&lt;img class=&#34;full browser&#34; src=&#34;https://alexanderkatz.github.io/img/purple-crayon/purplecrayon-desktop-2.png&#34;/&gt;
+&lt;img class=&#34;full browser&#34; src=&#34;https://alexanderkatz.github.io/img/purple-crayon/purplecrayon-desktop-3.png&#34;/&gt;
+&lt;img class=&#34;full browser&#34; src=&#34;https://alexanderkatz.github.io/img/purple-crayon/purplecrayon-desktop-4.png&#34;/&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>O.D.C.</title>
+      <link>https://alexanderkatz.github.io/portfolio/odc/</link>
+      <pubDate>Sun, 01 Jan 2017 14:01:01 -0500</pubDate>
+      
+      <guid>https://alexanderkatz.github.io/portfolio/odc/</guid>
+      <description>&lt;div class=&#34;videoWrapper&#34;&gt;
+&lt;iframe src=&#34;https://player.vimeo.com/video/174838239&#34; width=&#34;640&#34; height=&#34;360&#34; frameborder=&#34;0&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>For Millie</title>
+      <link>https://alexanderkatz.github.io/portfolio/for-millie/</link>
+      <pubDate>Sun, 01 Jan 2017 14:00:50 -0500</pubDate>
+      
+      <guid>https://alexanderkatz.github.io/portfolio/for-millie/</guid>
+      <description>&lt;div class=&#34;videoWrapper&#34;&gt;
+&lt;iframe src=&#34;https://player.vimeo.com/video/146190267&#34; width=&#34;640&#34; height=&#34;360&#34; frameborder=&#34;0&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;For Millie, is a solo that I performed for Oberlin&amp;rsquo;s Fall Forward. It is a mix of choreography and structured improvisation. It is a House piece, but I also draw on breaking and contemporary.
+Thank you Millie and Rennie for introducing me to House.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Animation</title>
+      <link>https://alexanderkatz.github.io/portfolio/animation/</link>
+      <pubDate>Sun, 01 Jan 2017 14:00:25 -0500</pubDate>
+      
+      <guid>https://alexanderkatz.github.io/portfolio/animation/</guid>
+      <description>&lt;p&gt;Here is an animation I made recently. In the near future I will add more experiments and the ability to pause and play animations.&lt;/p&gt;
+
+&lt;p&gt;&lt;p data-height=&#34;441&#34; data-theme-id=&#34;5580&#34; data-slug-hash=&#34;qRGewx&#34; data-default-tab=&#34;result&#34; data-user=&#34;katzkode&#34; data-embed-version=&#34;2&#34; data-pen-title=&#34;Cube Animation&#34; class=&#34;codepen&#34;&gt;See the Pen &lt;a href=&#34;https://codepen.io/katzkode/pen/qRGewx/&#34;&gt;Cube Animation&lt;/a&gt; by Alex Katz (&lt;a href=&#34;http://codepen.io/katzkode&#34;&gt;@katzkode&lt;/a&gt;) on &lt;a href=&#34;http://codepen.io&#34;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
+&lt;script async src=&#34;https://production-assets.codepen.io/assets/embed/ei.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Personas Site</title>
+      <link>https://alexanderkatz.github.io/portfolio/personasite/</link>
+      <pubDate>Sun, 01 Jan 2017 14:00:25 -0500</pubDate>
+      
+      <guid>https://alexanderkatz.github.io/portfolio/personasite/</guid>
+      <description>&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;#attribution&#34;&gt;Property of IBM&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The Personas Site is an application I built at IBM for my team to record and share research findings. I used Node.js, Express, MongoDB, and Nunjucks.&lt;/p&gt;
+
+&lt;p&gt;Users create personas through a webform in which they can upload an image, document their research, and link to external resources.&lt;/p&gt;
+
+&lt;p&gt;I used Nunjucks macros to format the data on the individual persona pages.&lt;/p&gt;
+
+&lt;div class=&#34;sidebyside&#34;&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img class=&#34;full browser topmargin&#34; src=&#34;https://alexanderkatz.github.io/img/personas-site/home.png&#34;/&gt;
+&lt;img class=&#34;full browser&#34; src=&#34;https://alexanderkatz.github.io/img/personas-site/felix.png&#34;/&gt;
+&lt;img class=&#34;full browser&#34; src=&#34;https://alexanderkatz.github.io/img/personas-site/management.png&#34;/&gt;
+&lt;img class=&#34;full browser&#34; src=&#34;https://alexanderkatz.github.io/img/personas-site/newpersona.png&#34;/&gt;
+&lt;img class=&#34;full browser&#34; src=&#34;https://alexanderkatz.github.io/img/personas-site/patrick.png&#34;/&gt;
+&lt;img class=&#34;full browser&#34; src=&#34;https://alexanderkatz.github.io/img/personas-site/metadata.png&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a name=&#34;attribution&#34;&gt;Attribution:&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I created this application at IBM Design. I was the primary developer for this project. All of the persona information is fictitious.&lt;/p&gt;
+
+&lt;p&gt;Persona images are from &lt;a class=&#34;link&#34; href=&#34;https://thenounproject.com/yuluck/&#34;&gt;The Noun Project&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>append</title>
+      <link>https://alexanderkatz.github.io/portfolio/append/</link>
+      <pubDate>Sun, 01 Jan 2017 14:00:25 -0500</pubDate>
+      
+      <guid>https://alexanderkatz.github.io/portfolio/append/</guid>
+      <description>&lt;div class=&#34;videoWrapper&#34;&gt;
+&lt;iframe src=&#34;https://player.vimeo.com/video/173984674&#34; width=&#34;100%&#34; frameborder=&#34;0&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Kinect</title>
+      <link>https://alexanderkatz.github.io/portfolio/kinect/</link>
+      <pubDate>Sun, 01 Jan 2017 14:00:04 -0500</pubDate>
+      
+      <guid>https://alexanderkatz.github.io/portfolio/kinect/</guid>
+      <description>&lt;p&gt;During my junior year I decided to take a break from all things web and to focus my energy on combining my two passions, coding and dance. I designed a private study in which I created a dance piece that utilized a dancer’s motion to manipulate and generate audio. I used a Kinect to capture video and processed it using Synapse and MAX.&lt;/p&gt;
+
+&lt;p&gt;My piece was performed at Oberlin’s Student Dance Showcase. The piece would not have been possible without Jon Bellona’s Kinect-via-Synapse and Synapse.&lt;/p&gt;
+
+&lt;p&gt;The video below is of the second performance, the audio was generated and recorded live.&lt;/p&gt;
+
+&lt;div class=&#34;videoWrapper&#34;&gt;
+&lt;iframe src=&#34;https://player.vimeo.com/video/112592624&#34; width=&#34;640&#34; height=&#34;360&#34; frameborder=&#34;0&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;videoWrapper&#34;&gt;
+&lt;iframe src=&#34;https://player.vimeo.com/video/138936244&#34; width=&#34;640&#34; height=&#34;360&#34; frameborder=&#34;0&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Personal Brand</title>
+      <link>https://alexanderkatz.github.io/portfolio/personal-brand/</link>
+      <pubDate>Sun, 01 Jan 2017 13:59:43 -0500</pubDate>
+      
+      <guid>https://alexanderkatz.github.io/portfolio/personal-brand/</guid>
+      <description>&lt;p&gt;&lt;img class=&#34;full&#34; src=&#34;https://alexanderkatz.github.io/img/personal-brand/logostudy2.png&#34;/&gt;
+&lt;img class=&#34;full&#34; src=&#34;https://alexanderkatz.github.io/img/personal-brand/logostudy1.png&#34;/&gt;
+&lt;img class=&#34;full&#34; src=&#34;https://alexanderkatz.github.io/img/personal-brand/logostudy3.png&#34;/&gt;
+&lt;img class=&#34;full&#34; src=&#34;https://alexanderkatz.github.io/img/personal-brand/logostudy4.png&#34;/&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>ocovoco</title>
+      <link>https://alexanderkatz.github.io/portfolio/ocovoco/</link>
+      <pubDate>Sun, 01 Jan 2017 13:59:32 -0500</pubDate>
+      
+      <guid>https://alexanderkatz.github.io/portfolio/ocovoco/</guid>
+      <description>&lt;p&gt;&lt;img class=&#34;full&#34; src=&#34;https://alexanderkatz.github.io/img/ocovoco/ocovoco.png&#34;/&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

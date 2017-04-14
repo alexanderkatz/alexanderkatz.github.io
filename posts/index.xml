@@ -1,0 +1,948 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Alex Katz</title>
+    <link>https://alexanderkatz.github.io/posts/index.xml</link>
+    <description>Recent content in Posts on Alex Katz</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 04 May 2014 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://alexanderkatz.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Building a Custom HTML5 Audio Player With Javascript</title>
+      <link>https://alexanderkatz.github.io/posts/building-a-custom-html5-audio-player-with-javascript/</link>
+      <pubDate>Sun, 04 May 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://alexanderkatz.github.io/posts/building-a-custom-html5-audio-player-with-javascript/</guid>
+      <description>&lt;p&gt;This tutorial details how JavaScriptpt, HTML, and CSS can be used to make a custom HTML5 audio interface. It is divided into three sections.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The Play Button&lt;/li&gt;
+&lt;li&gt;Track Progress&lt;/li&gt;
+&lt;li&gt;Changing Track Position&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Here is the code for the audio element that we will be controlling.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&amp;lt;&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;audio&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;music&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;controls&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;controls&amp;quot;&lt;/span&gt;&amp;gt;
+  &amp;lt;&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;source&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;src&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;music/onlyidreamwithyou1.ogg&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;audio/ogg&amp;quot;&lt;/span&gt; /&amp;gt;
+  &amp;lt;&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;source&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;src&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;music/onlyidreamwithyou1.mp3&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;audio/mpeg&amp;quot;&lt;/span&gt; /&amp;gt;
+&amp;lt;/&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;audio&lt;/span&gt;&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;play-button&#34;&gt;PLAY BUTTON&lt;/h2&gt;
+
+&lt;p&gt;First we will use HTML to create the play button.We will make two CSS classes, play and pause.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Play – the background property is a play icon&lt;/li&gt;
+&lt;li&gt;Pause – the background property is a pause icon&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;CODE FOR CLASSES AND BUTTON
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&amp;lt;&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;style&lt;/span&gt;&amp;gt;
+&lt;span style=&#34;color: #0e84b5; font-weight: bold&#34;&gt;#pButton&lt;/span&gt;{
+	&lt;span style=&#34;color: #007020&#34;&gt;height&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #40a070&#34;&gt;60px&lt;/span&gt;;
+	&lt;span style=&#34;color: #007020&#34;&gt;width&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;60px&lt;/span&gt;;
+	&lt;span style=&#34;color: #007020&#34;&gt;border&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #007020&#34;&gt;none&lt;/span&gt;;
+	&lt;span style=&#34;color: #007020&#34;&gt;background&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color: #007020&#34;&gt;size&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;50%&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;50%&lt;/span&gt;;
+	&lt;span style=&#34;color: #007020&#34;&gt;background-position&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #007020&#34;&gt;center&lt;/span&gt;;
+}
+&lt;span style=&#34;color: #0e84b5; font-weight: bold&#34;&gt;.play&lt;/span&gt;{&lt;span style=&#34;color: #007020&#34;&gt;background&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #c65d09&#34;&gt;url(&amp;#39;../images/play.png&amp;#39;)&lt;/span&gt; &lt;span style=&#34;color: #007020&#34;&gt;no-repeat&lt;/span&gt;;}
+&lt;span style=&#34;color: #0e84b5; font-weight: bold&#34;&gt;.pause&lt;/span&gt;{&lt;span style=&#34;color: #007020&#34;&gt;background&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #c65d09&#34;&gt;url(&amp;#39;../images/pause.png&amp;#39;)&lt;/span&gt; &lt;span style=&#34;color: #007020&#34;&gt;no-repeat&lt;/span&gt;;}
+&amp;lt;/&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;style&lt;/span&gt;&amp;gt;
+
+&amp;lt;&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;button&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;pButton&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;play&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;onclick&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;playAudio()&amp;quot;&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;button&lt;/span&gt;&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;To make our play button function, we write onclick=&amp;ldquo;playAudio&amp;rdquo; inside the button’s opening tag. This means the playAudio function is called whenever pButton is clicked. The function toggles between the .play and .pause classes and plays and pauses the audio.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// variable to store HTML5 audio element&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;var&lt;/span&gt; music &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020&#34;&gt;document&lt;/span&gt;.getElementById(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;music&amp;#39;&lt;/span&gt;);
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; playAudio() {
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (music.paused) {
+		music.play();
+		pButton.className &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;&amp;quot;&lt;/span&gt;;
+		pButton.className &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;pause&amp;quot;&lt;/span&gt;;
+	} &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;else&lt;/span&gt; {
+		music.pause();
+		pButton.className &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;&amp;quot;&lt;/span&gt;;
+		pButton.className &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;play&amp;quot;&lt;/span&gt;;
+	}
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The playAudio function checks if the audio is paused. If the audio is paused we call the audio element’s play function. We clear pButton’s classes and add the pause class.
+If the audio is playing we pause it and change pButton’s class to play.&lt;/p&gt;
+
+&lt;p&gt;That is all the code you need to make a play button that targets the audio element.&lt;/p&gt;
+
+&lt;p&gt;Functions like play and pause are part of the HTMLMediaElement’s interface. If you are interested the API is &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;track-progress&#34;&gt;TRACK PROGRESS&lt;/h2&gt;
+
+&lt;p&gt;Before we can start tracking the progress of the audio, we should modify our HTML. Instead of just having a play button, we will create an audio player. We will nest the button, a timeline, and a playhead inside of a div whose id will be audioplayer.&lt;/p&gt;
+
+&lt;p&gt;Here is the HTML and CSS. You should also add the float:left property to the play button.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&amp;lt;&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;style&lt;/span&gt;&amp;gt;
+&lt;span style=&#34;color: #0e84b5; font-weight: bold&#34;&gt;#timeline&lt;/span&gt;{
+	&lt;span style=&#34;color: #007020&#34;&gt;width&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;400px&lt;/span&gt;;
+	&lt;span style=&#34;color: #007020&#34;&gt;height&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;20px&lt;/span&gt;;
+	&lt;span style=&#34;color: #007020&#34;&gt;background&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;#4200f7&lt;/span&gt;;
+	&lt;span style=&#34;color: #007020&#34;&gt;margin-top&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;20px&lt;/span&gt;;
+	&lt;span style=&#34;color: #007020&#34;&gt;float&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #007020&#34;&gt;left&lt;/span&gt;;
+	&lt;span style=&#34;color: #007020&#34;&gt;border&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt;radius&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;15px&lt;/span&gt;;
+}
+
+&lt;span style=&#34;color: #0e84b5; font-weight: bold&#34;&gt;#playhead&lt;/span&gt;{
+	&lt;span style=&#34;color: #007020&#34;&gt;width&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;18px&lt;/span&gt;;
+	&lt;span style=&#34;color: #007020&#34;&gt;height&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;18px&lt;/span&gt;;
+	&lt;span style=&#34;color: #007020&#34;&gt;border&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt;radius&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;50%&lt;/span&gt;;
+	&lt;span style=&#34;color: #007020&#34;&gt;margin-top&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;1px&lt;/span&gt;;
+	&lt;span style=&#34;color: #007020&#34;&gt;background&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; rgba(&lt;span style=&#34;color: #40a070&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;255&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;196&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #40a070&#34;&gt;82&lt;/span&gt;);
+}
+&amp;lt;/&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;style&lt;/span&gt;&amp;gt;
+
+&amp;lt;&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;audioplayer&amp;quot;&lt;/span&gt;&amp;gt;
+	&amp;lt;&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;button&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;pButton&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;play&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;onclick&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;play()&amp;quot;&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;button&lt;/span&gt;&amp;gt;
+	&amp;lt;&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;timeline&amp;quot;&lt;/span&gt;&amp;gt;
+		&amp;lt;&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;playhead&amp;quot;&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;div&lt;/span&gt;&amp;gt;
+	&amp;lt;/&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;div&lt;/span&gt;&amp;gt;
+&amp;lt;/&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;div&lt;/span&gt;&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The audio player should look something like this&lt;/p&gt;
+
+&lt;p&gt;&lt;img width=&#34;400&#34; src=&#34;https://alexanderkatz.github.io/img/building-a-custom-html5-audio-player-with-javascript/audioplayer.png&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;The next step is to write JavaScript that will move the playhead as the track advances. This is accomplished by adding an event listener for timeupdate that triggers a function that moves the playhead the appropriate amount. In order for time update to work we will also need to get the duration of the audio file. The code is also below.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;var&lt;/span&gt; duration;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;var&lt;/span&gt; music &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020&#34;&gt;document&lt;/span&gt;.getElementById(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;playhead&amp;#39;&lt;/span&gt;);
+music.addEventListener(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;timeupdate&amp;quot;&lt;/span&gt;, timeUpdate, &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;false&lt;/span&gt;);
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; timeUpdate() {
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;var&lt;/span&gt; playPercent &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;100&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; (music.currentTime &lt;span style=&#34;color: #666666&#34;&gt;/&lt;/span&gt; duration);
+	playhead.style.marginLeft &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; playPercent &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;%&amp;quot;&lt;/span&gt;;
+}
+
+&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// Gets audio file duration&lt;/span&gt;
+music.addEventListener(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;canplaythrough&amp;quot;&lt;/span&gt;, &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; () {
+	duration &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; music.duration;
+}, &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;false&lt;/span&gt;);
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id=&#34;changing-track-position&#34;&gt;CHANGING TRACK POSITION&lt;/h2&gt;
+
+&lt;p&gt;There are two ways that we will allow users to change the track position.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Clicking on the timeline&lt;/li&gt;
+&lt;li&gt;Dragging the playhead&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The first method is accomplished by listening for clicks on the timeline, calculating the click’s position as a percent of the timeline’s width, and updating the playhead and track positions.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;//Makes timeline clickable&lt;/span&gt;
+timeline.addEventListener(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;click&amp;quot;&lt;/span&gt;, &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; (event) {
+	moveplayhead(event);
+	music.currentTime &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; duration &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; clickPercent(event);
+}, &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;false&lt;/span&gt;);
+
+&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// returns click as decimal (.77) of the total timelineWidth&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; clickPercent(event) {
+    &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; (event.clientX &lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt; getPosition(timeline)) &lt;span style=&#34;color: #666666&#34;&gt;/&lt;/span&gt; timelineWidth;
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; moveplayhead(event) {
+    &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;var&lt;/span&gt; newMargLeft &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; event.clientX &lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt; getPosition(timeline);
+
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (newMargLeft &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;0&lt;/span&gt; amp;amp; newMargLeft &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; timelineWidth) {
+		playhead.style.marginLeft &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; newMargLeft &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;px&amp;quot;&lt;/span&gt;;
+	}
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (newMargLeft  &lt;span style=&#34;color: #40a070&#34;&gt;0&lt;/span&gt;) {
+		playhead.style.marginLeft &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;0px&amp;quot;&lt;/span&gt;;
+	}
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (newMargLeft  timelineWidth) {
+		playhead.style.marginLeft &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; timelineWidth &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;px&amp;quot;&lt;/span&gt;;
+	}
+}
+
+&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// getPosition&lt;/span&gt;
+&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// Returns elements left position relative to top-left of viewport&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; getPosition(el) {
+    &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; el.getBoundingClientRect().left;
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The code above adds an event listener to the timeline. If the timeline is clicked, this function fires which moves the playhead to the click position and updates the track’s current time.&lt;/p&gt;
+
+&lt;p&gt;The moveplayhead function works by changing the playhead’s left margin. The left margin controls the space between the left side of the timeline and the playhead. To calculate the correct left margin value, the x-coordinate of the click event is subtracted by the timeline’s left offset. The left offset is calculated with &lt;code&gt;getPosition&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The conditionals are necessary if the you want to support playhead dragging. If you don’t, just set the playhead’s left margin to newMarginLeft, as any click will be inside the timeline.&lt;/p&gt;
+
+&lt;p&gt;The codepen below puts everything together.&lt;/p&gt;
+
+&lt;p&gt;&lt;p data-height=&#34;300&#34; data-theme-id=&#34;5580&#34; data-slug-hash=&#34;Kfgix&#34; data-default-tab=&#34;result&#34; data-user=&#34;katzkode&#34; data-embed-version=&#34;2&#34; data-pen-title=&#34;HTML5 Audio Player&#34; class=&#34;codepen&#34;&gt;See the Pen &lt;a href=&#34;http://codepen.io/katzkode/pen/Kfgix/&#34;&gt;HTML5 Audio Player&lt;/a&gt; by Alex Katz (&lt;a href=&#34;http://codepen.io/katzkode&#34;&gt;@katzkode&lt;/a&gt;) on &lt;a href=&#34;http://codepen.io&#34;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
+&lt;script async src=&#34;https://production-assets.codepen.io/assets/embed/ei.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/alexanderkatz/HTML5-Audio&#34;&gt;Complete Code on GitHub&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;If you are interested in using multiple audio players on the same page, you can check out my code here – &lt;a href=&#34;https://alexanderkatz.github.io/posts/multiple-html5-audio-players&#34;&gt;Multiple HTML5 Audio Players&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hugo Site Deployment</title>
+      <link>https://alexanderkatz.github.io/posts/hugo-site-deployment/</link>
+      <pubDate>Fri, 14 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://alexanderkatz.github.io/posts/hugo-site-deployment/</guid>
+      <description>&lt;p&gt;I built my site with Hugo and am hosting in on GitHub Pages.&lt;/p&gt;
+
+&lt;p&gt;My site is in a directory named &lt;code&gt;alexkatz-hugo&lt;/code&gt;. Running &lt;code&gt;hugo&lt;/code&gt; on the command line generates the static site in the &lt;code&gt;public&lt;/code&gt; directory. The public directory is a submodule.&lt;/p&gt;
+
+&lt;p&gt;To deploy my site I use the following script.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span style=&#34;color: #007020&#34;&gt;echo&lt;/span&gt; -e &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;\033[0;32mDeploying updates to GitHub...\033[0m&amp;quot;&lt;/span&gt;
+
+&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;# Build the project.&lt;/span&gt;
+hugo -t curlew &lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;# if using a theme, replace by `hugo -t &amp;lt;yourtheme&amp;gt;`&lt;/span&gt;
+
+&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;# Go To Public folder&lt;/span&gt;
+&lt;span style=&#34;color: #007020&#34;&gt;cd&lt;/span&gt; public
+
+&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;# Remove all files and folders except for CNAME and .git&lt;/span&gt;
+find . -not -path &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;./.git/*&amp;quot;&lt;/span&gt; -not -name &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;.git&amp;quot;&lt;/span&gt; -not -name &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;CNAME&amp;quot;&lt;/span&gt; -not -name &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;.*&amp;quot;&lt;/span&gt; -print0 | xargs -0 rm -r  --
+
+&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;# Add changes to git.&lt;/span&gt;
+git add -A
+
+&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;# Commit changes.&lt;/span&gt;
+&lt;span style=&#34;color: #bb60d5&#34;&gt;msg&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;rebuilding site `date`&amp;quot;&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$#&lt;/span&gt; -eq &lt;span style=&#34;color: #40a070&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt;
+   &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;then&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;msg&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #bb60d5&#34;&gt;$1&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;fi&lt;/span&gt;
+git commit -m &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #bb60d5&#34;&gt;$msg&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;&lt;/span&gt;
+ 
+&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;# Push source and build repos.&lt;/span&gt;
+git push origin master
+ 
+&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;# Come Back&lt;/span&gt;
+&lt;span style=&#34;color: #007020&#34;&gt;cd&lt;/span&gt; ..
+&lt;/pre&gt;&lt;/div&gt;
+
+</description>
+    </item>
+    
+    <item>
+      <title>Binary Search Tree</title>
+      <link>https://alexanderkatz.github.io/posts/binary-search-tree/</link>
+      <pubDate>Sat, 08 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://alexanderkatz.github.io/posts/binary-search-tree/</guid>
+      <description>&lt;p&gt;This post will discuss how to connect a BST implementation to d3.js.&lt;/p&gt;
+
+&lt;p&gt;I recently implemented a Binary Search Tree in JavaScript. It was a fun exercise and a great opportunity to use ES6 Classes.&lt;/p&gt;
+
+&lt;p&gt;Below is my code for the Binary Search Tree class, Node class, and their insertion methods.&lt;/p&gt;
+
+&lt;!-- My complete implementation which includes node removal is [here](link). --&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;/* Binary Search Tree Class */&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;class&lt;/span&gt; BinarySearchTree {
+    &lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// constructor&lt;/span&gt;
+    constructor() {
+        &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;.root &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;null&lt;/span&gt;;
+    }
+
+    &lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// insert&lt;/span&gt;
+    insert(value) {
+        &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;.root &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;null&lt;/span&gt;) {
+            &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;.root &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;new&lt;/span&gt; Node(value);
+            &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;true&lt;/span&gt;;
+        } &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;else&lt;/span&gt; {
+            &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;.root.insert(&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;new&lt;/span&gt; Node(value));
+        }
+    }
+}
+
+&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;/* Node Class */&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;class&lt;/span&gt; Node {
+    constructor(value) {
+        &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;.value &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; value;
+        &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;.left &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;null&lt;/span&gt;;
+        &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;.right &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;null&lt;/span&gt;;
+        &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;.parent &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;null&lt;/span&gt;;
+    }
+    &lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// insert&lt;/span&gt;
+    insert(node) {
+        &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (node.value &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;.value) {
+            &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;false&lt;/span&gt;;
+        &lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// check left subtree    &lt;/span&gt;
+        } &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (node.value &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;.value) {
+            &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;.left &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;null&lt;/span&gt;) {
+                &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;.left.insert(node);
+            } &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;else&lt;/span&gt; {
+                &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;.left &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; node;
+                node.parent &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;;
+                &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;true&lt;/span&gt;;
+            }
+        &lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// check right subtree&lt;/span&gt;
+        } &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;else&lt;/span&gt; {
+            &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;.right &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;null&lt;/span&gt;) {
+                &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;.right.insert(node);
+            } &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;else&lt;/span&gt; {
+                &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;.right &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; node;
+                node.parent &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;;
+                &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;true&lt;/span&gt;;
+            }
+        }
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;After I finished my implementation I decided to use d3.js to visualize my BST.&lt;/p&gt;
+
+&lt;p&gt;To start I adapted &lt;a href=&#34;https://bl.ocks.org/d3noob/43a860bc0024792f8803bba8ca0d5ecd&#34;&gt;d3noob&amp;rsquo;s block&lt;/a&gt; to make a program that visualized a vertical tree from a hardcoded dataset.&lt;/p&gt;
+
+&lt;p&gt;&lt;p data-height=&#34;550&#34; data-theme-id=&#34;5580&#34; data-slug-hash=&#34;ZegQQB&#34; data-default-tab=&#34;result&#34; data-user=&#34;katzkode&#34; data-embed-version=&#34;2&#34; data-pen-title=&#34;D3.js Vertical Tree&#34; class=&#34;codepen&#34;&gt;See the Pen &lt;a href=&#34;http://codepen.io/katzkode/pen/ZegQQB/&#34;&gt;D3.js Vertical Tree&lt;/a&gt; by Alex Katz (&lt;a href=&#34;http://codepen.io/katzkode&#34;&gt;@katzkode&lt;/a&gt;) on &lt;a href=&#34;http://codepen.io&#34;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
+&lt;script async src=&#34;https://production-assets.codepen.io/assets/embed/ei.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;In order to visualize a tree with d3.js, the following occurs:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The SVG is configured.&lt;/li&gt;
+&lt;li&gt;A d3 tree layout is initialized&lt;/li&gt;
+&lt;li&gt;A call is made to d3.hierarchy&lt;/li&gt;
+&lt;li&gt;The nodes are drawn&lt;/li&gt;
+&lt;li&gt;The links are drawn&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Even though there are a number of steps, only one part of the code needs to be altered to visualize an instance of my BST. This is the the call to &lt;code&gt;d3.hierarchy&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;root &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; d3.hierarchy(treeData, &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt;(d){ 
+    &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; d.children; 
+});
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;The function &lt;code&gt;d3.hierarchy(data, children)&lt;/code&gt; takes in two parameters.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;An object that represents the root node of a dataset&lt;/li&gt;
+&lt;li&gt;Children accessor function&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;d3.hierarchy starts with the root and invokes the accessor function for each node. The accessor function must return an array of children or null if there are no children. Each node is given the properties: data, depth, height, parent, children, and value.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;hierarchy&lt;/code&gt; returns the root node.&lt;/p&gt;
+
+&lt;p&gt;The first part of the hierarchy call that needs to be changed is the data. Instead of passing the original hardcoded data set, pass a BST instance&amp;rsquo;s root node.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// Assigns parent, children, height, depth&lt;/span&gt;
+root &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; d3.hierarchy(bstInstance.root, &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt;(d){ 
+    &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; d.children; 
+});
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This code will run, but the visualization will only have a single node, the root. To solve this issue change the children accessor function so that it puts &lt;code&gt;d.left&lt;/code&gt; and &lt;code&gt;d.right&lt;/code&gt; into the children array for each node or datum.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;root &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; d3.hierarchy(treeData, &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt;(d){
+
+d.children&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;[];
+        &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (d.left){
+            d.children.push(d.left);
+        }
+        &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (d.right){
+            d.children.push(d.right);
+        }
+        &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; d.children; 
+});
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;While this approach correctly assigns children to each node, it does not maintain whether a child is a left or right child. If a node has no siblings it will be displayed directly beneath its parent.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;full&#34; src=&#34;https://alexanderkatz.github.io/img/posts/binary-search-tree/single-child.png&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;Instead of explicitly changing the coordinates of these nodes, I create a dummy node for each node without a sibling. If an only child is a right child, I insert the dummy node before it. If the only child is a left child, I insert the dummy node after it. This ensures that the children are correctly positioned in relation to their parent.&lt;/p&gt;
+
+&lt;p&gt;I used an XOR function to determine if a node had a single child.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; myXOR(a,b) {
+    &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; ( a &lt;span style=&#34;color: #666666&#34;&gt;||&lt;/span&gt; b ) &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;!&lt;/span&gt;( a &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; b );
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;root &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; d3.hierarchy(treeData, &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt;(d){
+        d.children&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;[];
+        &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (d.left){
+            d.children.push(d.left);
+            &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (myXOR(d.left, d.right)){
+                d.children.push(&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;new&lt;/span&gt; Node(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;e&amp;quot;&lt;/span&gt;));
+            }
+        }
+        &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (d.right){
+            &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (myXOR(d.left, d.right)){
+                d.children.push(&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;new&lt;/span&gt; Node(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;e&amp;quot;&lt;/span&gt;));
+            }
+            d.children.push(d.right);
+        }
+        &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; d.children; 
+    });
+    
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img class=&#34;full&#34; src=&#34;https://alexanderkatz.github.io/img/posts/binary-search-tree/dummy-node.png&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;This works great, but the dummy nodes need to be hidden. To hide the dummy nodes I add the class &amp;ldquo;hidden&amp;rdquo; to all nodes with a NAN value. Depending on value&amp;rsquo;s type in your BST, you may need to change to replace the &lt;code&gt;isNAN&lt;/code&gt; condition.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;nodeEnter.append(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;circle&amp;#39;&lt;/span&gt;)
+            .attr(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;class&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt;(d) {
+                &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color: #007020&#34;&gt;isNaN&lt;/span&gt;(d.value)) {
+                    &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;node hidden&amp;quot;&lt;/span&gt;;
+                }
+                &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;node&amp;#39;&lt;/span&gt;;
+            })
+            .attr(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;r&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #40a070&#34;&gt;1&lt;/span&gt;e&lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color: #40a070&#34;&gt;6&lt;/span&gt;)
+            .style(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;fill&amp;quot;&lt;/span&gt;, &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt;(d) {
+                &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; d._children &lt;span style=&#34;color: #666666&#34;&gt;?&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;lightsteelblue&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;#fff&amp;quot;&lt;/span&gt;;
+            });
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;I do the same for links.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// Enter any new links at the parent&amp;#39;s previous position&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;var&lt;/span&gt; linkEnter &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; link.enter().insert(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;path&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;g&amp;quot;&lt;/span&gt;)
+    .attr(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;class&amp;quot;&lt;/span&gt;, &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt;(d) {
+        &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color: #007020&#34;&gt;isNaN&lt;/span&gt;(d.value)) {
+            &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;link hidden &amp;quot;&lt;/span&gt;
+        }
+        &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;link&amp;quot;&lt;/span&gt;;
+    })            
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then I added the following to my CSS to hide the dummy nodes and links!&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #0e84b5; font-weight: bold&#34;&gt;.hidden&lt;/span&gt;{&lt;span style=&#34;color: #007020&#34;&gt;display&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #007020&#34;&gt;none&lt;/span&gt;;}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The .hidden links and nodes are grayed out in the example below.&lt;/p&gt;
+
+&lt;p&gt;&lt;p data-height=&#34;486&#34; data-theme-id=&#34;5580&#34; data-slug-hash=&#34;EWJxPv&#34; data-default-tab=&#34;result&#34; data-user=&#34;katzkode&#34; data-embed-version=&#34;2&#34; data-pen-title=&#34;D3 Binary Search Tree&#34; class=&#34;codepen&#34;&gt;See the Pen &lt;a href=&#34;http://codepen.io/katzkode/pen/EWJxPv/&#34;&gt;D3 Binary Search Tree&lt;/a&gt; by Alex Katz (&lt;a href=&#34;http://codepen.io/katzkode&#34;&gt;@katzkode&lt;/a&gt;) on &lt;a href=&#34;http://codepen.io&#34;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
+&lt;script async src=&#34;https://production-assets.codepen.io/assets/embed/ei.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;notes&#34;&gt;Notes:&lt;/h2&gt;
+
+&lt;p&gt;After completing my initial BST implementation, I consulted &lt;a href=&#34;http://www.algolist.net/Data_structures/Binary_search_tree/Insertion&#34;&gt;Algolist&lt;/a&gt; for some ideas on how to clean up my code. I particularly like how they have an insertion method in the BST and Node class. This allows for insertion to be called directly on a node or tree instance. This was cleaner than my method of passing the value to be inserted and a root node to insert().&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>CSS Placeholder Text</title>
+      <link>https://alexanderkatz.github.io/posts/css-placeholder-text/</link>
+      <pubDate>Fri, 10 Mar 2017 11:35:29 -0500</pubDate>
+      
+      <guid>https://alexanderkatz.github.io/posts/css-placeholder-text/</guid>
+      <description>&lt;p&gt;How can you find all empty elements on a web page and populate them with placeholder text?&lt;/p&gt;
+
+&lt;p&gt;My first thought was to use JavaScript, loop through each element, and populate the empty ones. This approach works, but CSS provides a simple solution.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color: #555555; font-weight: bold&#34;&gt;:empty&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #555555; font-weight: bold&#34;&gt;:before&lt;/span&gt;{ 
+    &lt;span style=&#34;color: #007020&#34;&gt;content&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Please Add Information&amp;quot;&lt;/span&gt;; 
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;Using the empty selector and the pseudo element before, placeholder text can be defined using the CSS &lt;code&gt;content&lt;/code&gt; property. The &lt;code&gt;:before&lt;/code&gt; element is used because the &lt;code&gt;content&lt;/code&gt; property only works with pseudo elements.&lt;/p&gt;
+
+&lt;h3 id=&#34;my-use-case&#34;&gt;My Use Case&lt;/h3&gt;
+
+&lt;p&gt;I am working on an application that allows researchers to create and manage personas.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;To create a new persona a user enters data into a form.&lt;/li&gt;
+&lt;li&gt;A page is generated for each persona that displays their associated data.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Because research is an ongoing process, not all of the data fields are filled when a persona is created. Because of this, certain persona pages had a number of blank sections. Instead of hiding blank sections, I used CSS to insert a &amp;ldquo;call to action&amp;rdquo; that prompted researches to update personas with their latest findings.&lt;/p&gt;
+
+&lt;p&gt;&lt;p data-height=&#34;487&#34; data-theme-id=&#34;5580&#34; data-slug-hash=&#34;vxxzjN&#34; data-default-tab=&#34;result&#34; data-user=&#34;katzkode&#34; data-embed-version=&#34;2&#34; data-pen-title=&#34;Placeholder Text Using CSS&#34; class=&#34;codepen&#34;&gt;See the Pen &lt;a href=&#34;http://codepen.io/katzkode/pen/vxxzjN/&#34;&gt;Placeholder Text Using CSS&lt;/a&gt; by Alex Katz (&lt;a href=&#34;http://codepen.io/katzkode&#34;&gt;@katzkode&lt;/a&gt;) on &lt;a href=&#34;http://codepen.io&#34;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
+&lt;script async src=&#34;https://production-assets.codepen.io/assets/embed/ei.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Using SVG in an Interface</title>
+      <link>https://alexanderkatz.github.io/posts/using-svg/</link>
+      <pubDate>Wed, 22 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://alexanderkatz.github.io/posts/using-svg/</guid>
+      <description>&lt;p&gt;Even though I have been working with SVG in Illustrator for years, it wasn&amp;rsquo;t until last week that I began exploring its application in web development. To start my learning I completed a few video tutorials and researched how SVG is manipulated with CSS and JavaScript.&lt;/p&gt;
+
+&lt;p&gt;I found a myriad of beautiful SVG animations and visual experiments, but it was not clear how to leverage SVG to enhance UIs. That was until I overheard two of my coworkers discussing how to implement a radial meter to track memory usage in Bluemix. One of them suggested using strokedash-offset and I immediately jumped into the conversation eager to share my new found knowledge.&lt;/p&gt;
+
+&lt;p&gt;I was thrilled because this was the perfect opportunity to use SVG in an interface.&lt;/p&gt;
+
+&lt;p&gt;Using stroke-dasharray and strokedash-offset, we were able to quickly implement a meter for memory usage.&lt;/p&gt;
+
+&lt;p&gt;stroke-dasharray - is used to turn the stroke of an SVG element/path into a dashed pattern.&lt;/p&gt;
+
+&lt;p&gt;strokedash-offset - specifies the distance into the pattern to start the dash.&lt;/p&gt;
+
+&lt;p&gt;By setting stroke-dasharray equal to the length of a shape&amp;rsquo;s perimeter, stroke-dashoffset can be used to control the amount of visible stroke. Animating or transitioning the offset gives the appearance that the shape is being drawn.&lt;/p&gt;
+
+&lt;p&gt;Here is an example of how to use the properties to create a radial meter.&lt;/p&gt;
+
+&lt;p&gt;&lt;p data-height=&#34;470&#34; data-theme-id=&#34;5580&#34; data-slug-hash=&#34;BpXGzK&#34; data-default-tab=&#34;result&#34; data-user=&#34;katzkode&#34; data-embed-version=&#34;2&#34; data-pen-title=&#34;Radial Meter&#34; class=&#34;codepen&#34;&gt;See the Pen &lt;a href=&#34;http://codepen.io/katzkode/pen/BpXGzK/&#34;&gt;Radial Meter&lt;/a&gt; by Alex Katz (&lt;a href=&#34;http://codepen.io/katzkode&#34;&gt;@katzkode&lt;/a&gt;) on &lt;a href=&#34;http://codepen.io&#34;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
+&lt;script async src=&#34;https://production-assets.codepen.io/assets/embed/ei.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Sources:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-dasharray&#34;&gt;stroke-dasharray&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-dashoffset&#34;&gt;stroke-dashoffset&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>SVG Mask</title>
+      <link>https://alexanderkatz.github.io/posts/svg-mask/</link>
+      <pubDate>Sun, 29 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://alexanderkatz.github.io/posts/svg-mask/</guid>
+      <description>&lt;p&gt;Although this technique is not new, I still wanted to share it.&lt;/p&gt;
+
+&lt;p&gt;In the past if I wanted to change the color of an icon on hover I would have changed the background of the element to a differently colored icon. The CSS would have looked something like this.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #0e84b5; font-weight: bold&#34;&gt;.icon&lt;/span&gt;{
+    &lt;span style=&#34;color: #007020&#34;&gt;background&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt;(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;path/to/icon.png&amp;#39;&lt;/span&gt;);
+}
+&lt;span style=&#34;color: #0e84b5; font-weight: bold&#34;&gt;.icon&lt;/span&gt;&lt;span style=&#34;color: #555555; font-weight: bold&#34;&gt;:hover&lt;/span&gt;{
+    &lt;span style=&#34;color: #007020&#34;&gt;background&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt;(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;path/to/different-icon.png&amp;#39;&lt;/span&gt;);
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This doesn&amp;rsquo;t seem too cumbersome, but for each icon you need two files with differently colored icons. To make a change to the color, a new file needs to be created.&lt;/p&gt;
+
+&lt;p&gt;The beauty of using the &lt;code&gt;mask&lt;/code&gt; and &lt;code&gt;background-color&lt;/code&gt; properties, is that an SVG can be changed to any color. This limits the number of files you have to keep track of, but more importantly grants more flexibility and can lead to more organized code.&lt;/p&gt;
+
+&lt;p&gt;To use this technique, set the value of &lt;code&gt;mask&lt;/code&gt; to the correct file and set the &lt;code&gt;background-color&lt;/code&gt; as desired. The SVG will act as mask and the &lt;code&gt;background-color&lt;/code&gt; will only be visible where the icon is. Define a different &lt;code&gt;background-color&lt;/code&gt; for &lt;code&gt;:hover&lt;/code&gt; to switch between colors on hover.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #0e84b5; font-weight: bold&#34;&gt;.icon&lt;/span&gt;{
+  &lt;span style=&#34;color: #007020&#34;&gt;background-color&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #40a070&#34;&gt;#005397&lt;/span&gt;;
+  mask&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #c65d09&#34;&gt;url(&amp;#39;http://alexkatz.me/img/logo.svg&amp;#39;)&lt;/span&gt; &lt;span style=&#34;color: #007020&#34;&gt;no-repeat&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;50%&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;50%&lt;/span&gt;;
+  mask&lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color: #007020&#34;&gt;size&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; cover;
+}
+&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;icon&lt;/span&gt;&lt;span style=&#34;color: #555555; font-weight: bold&#34;&gt;:hover&lt;/span&gt;{
+  &lt;span style=&#34;color: #007020&#34;&gt;background-color&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #40a070&#34;&gt;#01FFC7&lt;/span&gt;;
+  transition&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #007020&#34;&gt;background-color&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;.5s&lt;/span&gt;;
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Feel free to experiment with this pen.
+&lt;p data-height=&#34;300&#34; data-theme-id=&#34;5580&#34; data-slug-hash=&#34;PWJEjK&#34; data-default-tab=&#34;css,result&#34; data-user=&#34;katzkode&#34; data-embed-version=&#34;2&#34; data-pen-title=&#34;SVG Mask&#34; class=&#34;codepen&#34;&gt;See the Pen &lt;a href=&#34;https://codepen.io/katzkode/pen/PWJEjK/&#34;&gt;SVG Mask&lt;/a&gt; by Alex Katz (&lt;a href=&#34;http://codepen.io/katzkode&#34;&gt;@katzkode&lt;/a&gt;) on &lt;a href=&#34;http://codepen.io&#34;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
+&lt;script async src=&#34;https://production-assets.codepen.io/assets/embed/ei.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Image Upload with Node and Multer</title>
+      <link>https://alexanderkatz.github.io/posts/image-upload-with-node-and-multer/</link>
+      <pubDate>Sat, 03 Dec 2016 21:54:24 -0600</pubDate>
+      
+      <guid>https://alexanderkatz.github.io/posts/image-upload-with-node-and-multer/</guid>
+      <description>&lt;p&gt;This tutorial provides an end to end walkthrough of uploading images in Node with Multer.&lt;/p&gt;
+
+&lt;p&gt;To make things simple I am providing an app-template and complete code.
+Feel free to use the template or an app that you are working on.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/alexanderkatz/app-template&#34; target=&#34;_blank&#34;&gt;App-Template&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://Complete Code&#34; target=&#34;_blank&#34;&gt;Complete Code&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I am using &lt;a href=&#34;https://github.com/expressjs/multer&#34; target=&#34;_blank&#34;&gt;Multer 1.2.0&lt;/a&gt; and Node 6.4.0.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Install Multer, Mime, and Cryto and save to dependencies.&lt;/li&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;`npm install -S multer`&lt;/span&gt;
+
+ &lt;span style=&#34;color: #4070a0&#34;&gt;`npm install -S mime`&lt;/span&gt;
+
+ &lt;span style=&#34;color: #4070a0&#34;&gt;`npm install -S crypto`&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+
+&lt;li&gt;Require depencies in route `index.js`&lt;/li&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;var&lt;/span&gt; express &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; require(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;express&amp;#39;&lt;/span&gt;),
+    router &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; express.Router(),
+    mime &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; require(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;mime&amp;#39;&lt;/span&gt;),
+    multer &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; require(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;multer&amp;#39;&lt;/span&gt;);
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;li&gt;Create a form in `index.ejs`&lt;/li&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&amp;lt;&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;form&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;action&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;/upload&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;enctype&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;multipart/form-data&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;method&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;POST&amp;quot;&lt;/span&gt;&amp;gt;
+Select an image to upload:
+&amp;lt;&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;image&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;file&amp;quot;&lt;/span&gt; /&amp;gt;
+&amp;lt;&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;submit&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Upload Image&amp;quot;&lt;/span&gt; /&amp;gt;
+&amp;lt;/&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;form&lt;/span&gt;&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+The form `enctype` must be `multipart/form-data`, which is the encoding used for forms that upload files. The `enctype` specifies how the form-data is encoded when it is submitted to a server.
+
+When submitted, the form will send a POST request to our upload route. We will construct the route in a later step.
+
+&lt;li&gt;Before we can write our upload route, we need to configure Multer&#39;s storage. Multer ships with two different storage engines, `DiskStorage` and `MemoryStorage`. I will be using `DiskStorage` which gives you full control over storing files to disk. &lt;/li&gt;
+
+Create a folder called `uploads` in `public`.
+
+In `index.js` underneath your require statements, write the following.
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;var&lt;/span&gt; storage &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; multer.diskStorage({
+  destination&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt;(req, file, cb) {
+      cb(&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;null&lt;/span&gt;, &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;public/uploads/&amp;#39;&lt;/span&gt;)
+  },
+  filename&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt;(req, file, cb) {
+      crypto.pseudoRandomBytes(&lt;span style=&#34;color: #40a070&#34;&gt;16&lt;/span&gt;, &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt;(err, raw) {
+          cb(&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;null&lt;/span&gt;, raw.toString(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;hex&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color: #007020&#34;&gt;Date&lt;/span&gt;.now() &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;.&amp;#39;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; mime.extension(file.mimetype));
+      });
+    }
+});
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;var&lt;/span&gt; upload &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; multer({
+  storage&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; storage
+});
+&lt;/pre&gt;&lt;/div&gt;
+
+
+The two options for `DiskStorage`, `destination` and `filename`, are functions that determine where the file should be stored. As their name&#39;s suggest, destination determines the upload location and filename determines the filename.
+
+Multer does not provide a file extension for the upload, so the filename function must return a filename with an extension. Filename uses `Crypto` to generate a random name and uses `Mime` to determine the correct file extension. Generating a random filename prevents collisions if two files are uploaded with the same name. While not required, this is good practice.
+
+`upload` will be called to upload an image.
+
+&lt;li&gt;Write upload route &lt;/li&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// POST Upload Image&lt;/span&gt;
+router.post(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;/upload&amp;#39;&lt;/span&gt;, upload.single(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;image&amp;quot;&lt;/span&gt;), &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt;(req, res) {
+  res.send(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;&amp;lt;img src=&amp;quot;/uploads/&amp;#39;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; req.file.filename &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;&amp;quot; /&amp;gt;&amp;#39;&lt;/span&gt;);
+});
+&lt;/pre&gt;&lt;/div&gt;
+
+This route first uses Multer to upload the image and then sends a response to the client that includes the image, now hosted on the server.
+
+You should be all set, but if there are any issues please comment.
+&lt;/ol&gt;
+
+&lt;p&gt;Sources&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/expressjs/multer&#34; target=&#34;_blank&#34;&gt;Multer&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/expressjs/multer/issues/170&#34; target=&#34;_blank&#34;&gt;Multer Issue: Files are uploading as &amp;lsquo;file without its extension&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Google Analytics Embed API</title>
+      <link>https://alexanderkatz.github.io/posts/google-analytics-embed-api/</link>
+      <pubDate>Sun, 14 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://alexanderkatz.github.io/posts/google-analytics-embed-api/</guid>
+      <description>&lt;p&gt;The Embed API is a JavaScript library that lets you create custom dashboards for Google Analytics that can be hosted on your own site. Why bother creating a dashboard programmatically when you can just create one using Google’s site? Because you can make a better one, control its styling, and accomplish things that cannot be done through Google Analytics alone.&lt;/p&gt;
+
+&lt;p&gt;There is a Google tutorial on the Embed API which I used and and enjoyed. I am borrowing from it, but am filling in gaps and adding sections.&lt;/p&gt;
+
+&lt;p&gt;To see the types of dashboards that can be built using the API, check out the Embed API &lt;a title=&#34;demos&#34; href=&#34;https://ga-dev-tools.appspot.com/demos/embed-api&#34; target=&#34;_blank&#34;&gt;demos&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;!--GETTING STARTED--&gt;
+
+&lt;p&gt;&lt;h2 class=&#34;segment&#34;&gt;Creating a Client ID&lt;/h2&gt;
+The first thing we are going to do is create a Google Client ID. This ID is needed to perform user authorization.&lt;/p&gt;
+
+&lt;p&gt;To get a client ID we need to go to the &lt;a title=&#34;Google Developers Console&#34; href=&#34;https://console.developers.google.com/&#34; target=&#34;_blank&#34;&gt;Google Developer&amp;rsquo;s Console&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Login to the Console and press the &amp;ldquo;Create Project&amp;rdquo; button. Give your project a name and a unique ID.&lt;/p&gt;
+
+&lt;!-- &lt;img class=&#34;alignnone wp-image-298 size-full&#34; src=&#34;http://www.alexkatz.me/wp-content/uploads/2014/08/nameproject.png&#34; alt=&#34;nameproject&#34; width=&#34;515&#34; height=&#34;281&#34; /&gt; --&gt;
+
+&lt;p&gt;Now that we have created a project, we can enable the Analytics API.  To do so, click on the &lt;strong&gt;APIs&lt;/strong&gt; link, which is nested under &lt;strong&gt;APIs and auth&lt;/strong&gt; in the left sidebar.&lt;/p&gt;
+
+&lt;p&gt;You should see a list of APIs.  Click on the &lt;strong&gt;off&lt;/strong&gt; button to the right of the Analytics API, this will turn it on.&lt;/p&gt;
+
+&lt;!-- &lt;img class=&#34;alignnone wp-image-301 size-full&#34; src=&#34;http://www.alexkatz.me/wp-content/uploads/2014/08/Screen-Shot-2014-08-22-at-1.05.18-PM-e1408729119445.png&#34; alt=&#34;Screen Shot 2014-08-22 at 1.05.18 PM&#34; width=&#34;579&#34; height=&#34;267&#34; /&gt; --&gt;
+
+&lt;p&gt;After enabling the Analytics API, click on &lt;strong&gt;Credentials&lt;/strong&gt;, which is under &lt;strong&gt;APIs&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Click the blue, &lt;strong&gt;Create New Client ID&lt;/strong&gt;, button.&lt;/p&gt;
+
+&lt;!-- &lt;img class=&#34;alignnone size-full wp-image-304&#34; src=&#34;http://www.alexkatz.me/wp-content/uploads/2014/08/Screen-Shot-2014-08-22-at-1.06.25-PM.png&#34; alt=&#34;Screen Shot 2014-08-22 at 1.06.25 PM&#34; width=&#34;514&#34; height=&#34;605&#34; /&gt; --&gt;
+
+&lt;p&gt;You see where it says JavaScript origins. This needs to be set to your domain. Do not include any paths.&lt;/p&gt;
+
+&lt;p&gt;If you are using localhost, simply set the origins to &lt;a href=&#34;http://localhost/&#34;&gt;http://localhost/&lt;/a&gt;.
+It is important to type your host address exactly. If your site is accessed through https, you must include https in the address.
+Sometimes this can be finicky, so for safe measure include your domain with https, http, and &lt;a href=&#34;http://www&#34;&gt;http://www&lt;/a&gt; at the beginning.&lt;/p&gt;
+
+&lt;p&gt;When this is all set, press &lt;strong&gt;Create Client ID&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;We are all done with the Dev Console, but you should copy the Client ID or leave the window open for future reference.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;!--THE CODE--&gt;
+
+&lt;p&gt;&lt;h2 class=&#34;segment&#34;&gt;The Code&lt;/h2&gt;
+Finally we can start the fun part. Everything up until this point has been setup. It hasn&amp;rsquo;t been thrilling, but it has been important.&lt;/p&gt;
+
+&lt;p&gt;As much as I wanted to wait until the end to give the complete code, it makes more sense for me to do it now and then provide a walkthrough.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #007020&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&amp;lt;&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;html&lt;/span&gt;&amp;gt;
+
+&amp;lt;&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;head&lt;/span&gt;&amp;gt;
+	&amp;lt;&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;title&lt;/span&gt;&amp;gt;Embed API Demo&amp;lt;/&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;title&lt;/span&gt;&amp;gt;
+&amp;lt;/&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;head&lt;/span&gt;&amp;gt;
+
+&amp;lt;&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;body&lt;/span&gt;&amp;gt;
+	&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;&amp;lt;!-- Step 1: Create the containing elements. --&amp;gt;&lt;/span&gt;
+	&amp;lt;&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;section&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;auth-button&amp;quot;&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;section&lt;/span&gt;&amp;gt;
+	&amp;lt;&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;section&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;view-selector&amp;quot;&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;section&lt;/span&gt;&amp;gt;
+	&amp;lt;&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;section&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;timeline&amp;quot;&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;section&lt;/span&gt;&amp;gt;
+
+	&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;&amp;lt;!-- Step 2: Load the library. --&amp;gt;&lt;/span&gt;
+	&amp;lt;&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;script&lt;/span&gt;&amp;gt;
+		(&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; (w, d, s, g, js, fjs) {
+			g &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; w.gapi &lt;span style=&#34;color: #666666&#34;&gt;||&lt;/span&gt; (w.gapi &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; {});
+			g.analytics &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; {
+				q&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; [],
+				ready&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; (cb) {
+					&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;.q.push(cb)
+				}
+			};
+			js &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; d.createElement(s);
+			fjs &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; d.getElementsByTagName(s)[&lt;span style=&#34;color: #40a070&#34;&gt;0&lt;/span&gt;];
+			js.src &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;https://apis.google.com/js/platform.js&amp;#39;&lt;/span&gt;;
+			fjs.parentNode.insertBefore(js, fjs);
+			js.onload &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; () {
+				g.load(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;analytics&amp;#39;&lt;/span&gt;)
+			};
+		}(&lt;span style=&#34;color: #007020&#34;&gt;window&lt;/span&gt;, &lt;span style=&#34;color: #007020&#34;&gt;document&lt;/span&gt;, &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;script&amp;#39;&lt;/span&gt;));
+	&amp;lt;/&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;script&lt;/span&gt;&amp;gt;
+
+	&amp;lt;&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;script&lt;/span&gt;&amp;gt;
+		gapi.analytics.ready(&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; () {
+
+		&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// Step 3: Authorize the user.&lt;/span&gt;
+			&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;var&lt;/span&gt; CLIENT_ID &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;Insert Your Client-ID here&amp;#39;&lt;/span&gt;;
+
+			gapi.analytics.auth.authorize({
+				container&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;auth-button&amp;#39;&lt;/span&gt;,
+				clientid&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; CLIENT_ID,
+			});
+
+			&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// Step 4: Create the view selector.&lt;/span&gt;
+			&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;var&lt;/span&gt; viewSelector &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;new&lt;/span&gt; gapi.analytics.ViewSelector({
+				container&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;view-selector&amp;#39;&lt;/span&gt;
+			});
+			&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// Step 5: Create the timeline chart.&lt;/span&gt;
+
+			&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;var&lt;/span&gt; timeline &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;new&lt;/span&gt; gapi.analytics.googleCharts.DataChart({
+				reportType&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;ga&amp;#39;&lt;/span&gt;,
+				query&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; {
+					&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;dimensions&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;ga:date&amp;#39;&lt;/span&gt;,
+					&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;metrics&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;ga:sessions&amp;#39;&lt;/span&gt;,
+					&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;start-date&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;30daysAgo&amp;#39;&lt;/span&gt;,
+					&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;end-date&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;yesterday&amp;#39;&lt;/span&gt;,
+				},
+				chart&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; {
+					type&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;LINE&amp;#39;&lt;/span&gt;,
+					container&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;timeline&amp;#39;&lt;/span&gt;
+				}
+			});
+
+			&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// Step 6: Hook up the components to work together.&lt;/span&gt;
+			gapi.analytics.auth.on(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;success&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; (response) {
+				viewSelector.execute();
+			});
+
+			viewSelector.on(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;change&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; (ids) {
+				&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;var&lt;/span&gt; newIds &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; {
+					query&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; {
+						ids&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; ids
+					}
+				}
+				timeline.set(newIds).execute();
+			});
+		});
+	&amp;lt;/&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;script&lt;/span&gt;&amp;gt;
+&amp;lt;/&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;body&lt;/span&gt;&amp;gt;
+
+&amp;lt;/&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;html&lt;/span&gt;&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;h3&gt;Walkthrough&lt;/h3&gt;
+We will begin by creating a new html doc and creating three sections with the following ids.
+&lt;ul&gt;
+    &lt;li&gt;auth&lt;/li&gt;
+    &lt;li&gt;view-selector&lt;/li&gt;
+    &lt;li&gt;data-chart&lt;/li&gt;
+&lt;/ul&gt;
+These sections will contain an authentication button, a view picker, and a chart.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&amp;lt;&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;section&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;auth-button&amp;quot;&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;section&lt;/span&gt;&amp;gt;
+&amp;lt;&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;section&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;view-selector&amp;quot;&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;section&lt;/span&gt;&amp;gt;
+&amp;lt;&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;section&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;timeline&amp;quot;&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;section&lt;/span&gt;&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;To load the Embed API, include the following script block.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&amp;lt;&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;script&lt;/span&gt;&amp;gt;
+	(&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; (w, d, s, g, js, fjs) {
+		g &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; w.gapi &lt;span style=&#34;color: #666666&#34;&gt;||&lt;/span&gt; (w.gapi &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; {});
+		g.analytics &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; {
+			q&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; [],
+			ready&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; (cb) {
+				&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;this&lt;/span&gt;.q.push(cb)
+			}
+		};
+		js &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; d.createElement(s);
+		fjs &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; d.getElementsByTagName(s)[&lt;span style=&#34;color: #40a070&#34;&gt;0&lt;/span&gt;];
+		js.src &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;https://apis.google.com/js/platform.js&amp;#39;&lt;/span&gt;;
+		fjs.parentNode.insertBefore(js, fjs);
+		js.onload &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; () {
+			g.load(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;analytics&amp;#39;&lt;/span&gt;)
+		};
+	}(&lt;span style=&#34;color: #007020&#34;&gt;window&lt;/span&gt;, &lt;span style=&#34;color: #007020&#34;&gt;document&lt;/span&gt;, &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;script&amp;#39;&lt;/span&gt;));
+&amp;lt;/&lt;span style=&#34;color: #062873; font-weight: bold&#34;&gt;script&lt;/span&gt;&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The remaining javascript will be wrapped in the gapi.analytics.ready function. This function is triggered when the API is finished loading.&lt;/p&gt;
+
+&lt;p&gt;The first thing we will do is authorize the user using OAUTH 2.0. This will allow the us to display information tied to their google analytics account.&lt;/p&gt;
+
+&lt;p&gt;Here is the code for to perform authentication. Make sure to set the CLIENT-ID variable to your Client ID.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// Step 3: Authorize the user.&lt;/span&gt;
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;var&lt;/span&gt; CLIENT_ID &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;Client-ID Goes Here&amp;#39;&lt;/span&gt;;
+
+gapi.analytics.auth.authorize({
+	container&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;auth-button&amp;#39;&lt;/span&gt;,
+	clientid&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; CLIENT_ID,
+});
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;!--VIEWSELECTOR--&gt;
+
+&lt;p&gt;The following function creates a view selector. The container is set to the id of the viewpicker section.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// Step 4: Create the view selector.&lt;/span&gt;
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;var&lt;/span&gt; viewSelector &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;new&lt;/span&gt; gapi.analytics.ViewSelector({
+	container&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;view-selector&amp;#39;&lt;/span&gt;
+});
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Here is the code to create the chart. The query specifies what data you want and the chart defines visual aspects.
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// Step 5: Create the timeline chart.&lt;/span&gt;
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;var&lt;/span&gt; timeline &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;new&lt;/span&gt; gapi.analytics.googleCharts.DataChart({
+	reportType&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;ga&amp;#39;&lt;/span&gt;,
+	query&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; {
+		&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;dimensions&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;ga:date&amp;#39;&lt;/span&gt;,
+		&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;metrics&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;ga:sessions&amp;#39;&lt;/span&gt;,
+		&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;start-date&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;30daysAgo&amp;#39;&lt;/span&gt;,
+		&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;end-date&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;yesterday&amp;#39;&lt;/span&gt;,
+		},
+	chart&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; {
+		type&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;LINE&amp;#39;&lt;/span&gt;,
+		container&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;timeline&amp;#39;&lt;/span&gt;
+	}
+});
+&lt;/pre&gt;&lt;/div&gt;
+
+The last block of code ties everything together. The viewSelector onChange function updates the chart when a new view is selected.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #60a0b0; font-style: italic&#34;&gt;// Step 6: Hook up the components to work together.&lt;/span&gt;
+
+gapi.analytics.auth.on(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;success&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; (response) {
+	viewSelector.execute();
+});
+
+viewSelector.on(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;change&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; (ids) {
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;var&lt;/span&gt; newIds &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; {
+		query&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; {
+			ids&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; ids
+		}
+	}
+	timeline.set(newIds).execute();
+	});
+});
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;!-- I will be updating this tutorial and providing more tutorials related to the Embed API. --&gt;
+
+&lt;p&gt;Here is a link to &lt;a href=&#34;https://developers.google.com/analytics/devguides/reporting/embed/v1/devguide&#34; title=&#34;Google&#39;s tutorial.&#34; target=&#34;_blank&#34;&gt;Google&amp;rsquo;s tutorial&lt;/a&gt; if you are interested in exploring more.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Multiple HTML5 Audio Players</title>
+      <link>https://alexanderkatz.github.io/posts/multiple-html5-audio-players/</link>
+      <pubDate>Tue, 25 Aug 2015 21:54:59 -0600</pubDate>
+      
+      <guid>https://alexanderkatz.github.io/posts/multiple-html5-audio-players/</guid>
+      <description>&lt;p&gt;This is a follow up to my original article, Building a Custom HTML5 Audio Player With Javascript.&lt;/p&gt;
+
+&lt;p&gt;A number of people have asked me how to make multiple audio players on one page, so I decided to figure it out. I am posting the code before writing a tutorial so it can be used for your projects.&lt;/p&gt;
+
+&lt;p&gt;In brief I created an object called AudioObject for each track and store each object in an array. By storing all the tracks I am able to access each players audio and the components of their interface. I also created a lookup table that maps components like a playbutton or playhead to the array index of the correct AudioObject. The code is well commented, but still needs to be refined and further tested.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;Enjoy and as always if you have any questions just let me know!&lt;/p&gt;
+
+&lt;p&gt;&lt;p data-height=&#34;553&#34; data-theme-id=&#34;5580&#34; data-slug-hash=&#34;ZbxYYG&#34; data-default-tab=&#34;result&#34; data-user=&#34;katzkode&#34; class=&#39;codepen&#39;&gt;See the Pen &lt;a href=&#39;http://codepen.io/katzkode/pen/ZbxYYG/&#39;&gt;Multiple HTML5 Audio Players&lt;/a&gt; by Alex Katz (&lt;a href=&#39;http://codepen.io/katzkode&#39;&gt;@katzkode&lt;/a&gt;) on &lt;a href=&#39;http://codepen.io&#39;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
+&lt;script async src=&#34;//assets.codepen.io/assets/embed/ei.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
