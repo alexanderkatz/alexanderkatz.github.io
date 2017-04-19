@@ -359,10 +359,10 @@ git push origin master
 
 &lt;ol&gt;
 &lt;li&gt;An object that represents the root node of a dataset&lt;/li&gt;
-&lt;li&gt;Children accessor function&lt;/li&gt;
+&lt;li&gt;A children accessor function&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;d3.hierarchy starts with the root and invokes the accessor function for each node. The accessor function must return an array of children or null if there are no children. Each node is given the properties: data, depth, height, parent, children, and value.&lt;/p&gt;
+&lt;p&gt;d3.hierarchy starts with the root and invokes the accessor function for each node. The accessor function must return an array of children or null if there are no children. The hierarchy function gives each node the properties: data, depth, height, parent, children, and value.&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;hierarchy&lt;/code&gt; returns the root node.&lt;/p&gt;
 
@@ -427,7 +427,7 @@ d.children&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;[];
 
 &lt;p&gt;&lt;img class=&#34;full&#34; src=&#34;https://alexanderkatz.github.io/img/posts/binary-search-tree/dummy-node.png&#34;/&gt;&lt;/p&gt;
 
-&lt;p&gt;This works great, but the dummy nodes need to be hidden. To hide the dummy nodes I add the class &amp;ldquo;hidden&amp;rdquo; to all nodes with a NAN value. Depending on value&amp;rsquo;s type in your BST, you may need to change to replace the &lt;code&gt;isNAN&lt;/code&gt; condition.&lt;/p&gt;
+&lt;p&gt;This works great, but the dummy nodes need to be hidden. To hide the dummy nodes I add the class &amp;ldquo;hidden&amp;rdquo; to all nodes with a NAN value. Depending on value&amp;rsquo;s type in your BST, you may need to change the &lt;code&gt;isNAN&lt;/code&gt; condition.&lt;/p&gt;
 
 &lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;nodeEnter.append(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;circle&amp;#39;&lt;/span&gt;)
             .attr(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;#39;class&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt;(d) {

@@ -119,10 +119,10 @@
 
 <ol>
 <li>An object that represents the root node of a dataset</li>
-<li>Children accessor function</li>
+<li>A children accessor function</li>
 </ol>
 
-<p>d3.hierarchy starts with the root and invokes the accessor function for each node. The accessor function must return an array of children or null if there are no children. Each node is given the properties: data, depth, height, parent, children, and value.</p>
+<p>d3.hierarchy starts with the root and invokes the accessor function for each node. The accessor function must return an array of children or null if there are no children. The hierarchy function gives each node the properties: data, depth, height, parent, children, and value.</p>
 
 <p><code>hierarchy</code> returns the root node.</p>
 
@@ -187,7 +187,7 @@ d.children<span style="color: #666666">=</span>[];
 
 <p><img class="full" src="https://alexanderkatz.github.io/img/posts/binary-search-tree/dummy-node.png"/></p>
 
-<p>This works great, but the dummy nodes need to be hidden. To hide the dummy nodes I add the class &ldquo;hidden&rdquo; to all nodes with a NAN value. Depending on value&rsquo;s type in your BST, you may need to change to replace the <code>isNAN</code> condition.</p>
+<p>This works great, but the dummy nodes need to be hidden. To hide the dummy nodes I add the class &ldquo;hidden&rdquo; to all nodes with a NAN value. Depending on value&rsquo;s type in your BST, you may need to change the <code>isNAN</code> condition.</p>
 
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>nodeEnter.append(<span style="color: #4070a0">&#39;circle&#39;</span>)
             .attr(<span style="color: #4070a0">&#39;class&#39;</span>, <span style="color: #007020; font-weight: bold">function</span>(d) {
